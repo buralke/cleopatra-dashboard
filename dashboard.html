@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cleopatra Ink - Studio Reactivation Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand-header">
+          <span class="brand-name" data-i18n="brandName">Cleopatra Gündoğdu</span>
+        </div>
+
+        <nav>
+          <ul class="nav-list" id="sidebarNav">
+            <li class="nav-item active" data-tab="dashboard">
+              <a href="#dashboard" data-tab="dashboard">
+                <span class="nav-icon">📊</span>
+                <span data-i18n="navDashboard">Gösterge Paneli</span>
+              </a>
+            </li>
+            <li class="nav-item" data-tab="customers">
+              <a href="#customers" data-tab="customers">
+                <span class="nav-icon">👥</span>
+                <span data-i18n="navCustomers">Müşteriler</span>
+              </a>
+            </li>
+            <li class="nav-item" data-tab="campaigns">
+              <a href="#campaigns" data-tab="campaigns">
+                <span class="nav-icon">🚀</span>
+                <span data-i18n="navCampaigns">Kampanyalar</span>
+              </a>
+            </li>
+            <li class="nav-item" data-tab="appointments">
+              <a href="#appointments" data-tab="appointments">
+                <span class="nav-icon">📅</span>
+                <span data-i18n="navAppointments">Randevular</span>
+              </a>
+            </li>
+            <li class="nav-item" data-tab="analytics">
+              <a href="#analytics" data-tab="analytics">
+                <span class="nav-icon">📈</span>
+                <span data-i18n="navAnalytics">Analizler</span>
+              </a>
+            </li>
+            <li class="nav-item" data-tab="franchises">
+              <a href="#franchises" data-tab="franchises">
+                <span class="nav-icon">🏢</span>
+                <span data-i18n="navFranchises">Şubeler</span>
+              </a>
+            </li>
+            <li class="nav-item" data-tab="bot-rules">
+              <a href="#bot-rules" data-tab="bot-rules">
+                <span class="nav-icon">🤖</span>
+                <span>Otomatik Yanıt</span>
+              </a>
+            </li>
+            <li class="nav-item" data-tab="settings">
+              <a href="#settings" data-tab="settings">
+                <span class="nav-icon">⚙️</span>
+                <span data-i18n="navSettings">Ayarlar</span>
+              </a>
+            </li>
+            <li class="nav-item" data-tab="template-aliases">
+              <a href="#template-aliases" data-tab="template-aliases">
+                <span class="nav-icon">🏷️</span>
+                <span>Şablon Takma Adları</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- DB Connection Status Indicator -->
+      <div class="db-status-badge" id="dbStatusBadge">
+        <span class="status-dot"></span>
+        <span id="dbStatusText" data-i18n="dbDemoMode">Supabase Canlı Sistem</span>
+      </div>
+    </aside>
+
+    <!-- Main Content Work Area -->
+    <main class="main-content">
+      
+      <!-- Header Bar -->
+      <header class="top-header">
+        <div>
+          <h1 class="greeting-title" id="pageTitle">İyi Akşamlar, Stüdyo Yöneticisi 👋</h1>
+          <p class="greeting-subtitle" id="pageSubtitle">Koltuklarınızı dolu tutun. Pasif müşterilerinizi yeniden aktifleştirin.</p>
+        </div>
+
+        <div class="header-actions">
+          <div class="lang-toggle-group" id="langToggle">
+            <button type="button" class="lang-btn active" data-lang="tr">🇹🇷 TR</button>
+            <button type="button" class="lang-btn" data-lang="en">🇬🇧 EN</button>
+          </div>
+
+          <div class="user-avatar" title="Studio Owner Profile">
+            GD
+          </div>
+        </div>
+      </header>
+
+      <!-- TAB 1: DASHBOARD VIEW -->
+      <div class="tab-view active" id="view-dashboard">
+        <!-- KPI Metrics Row -->
+        <section class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title" data-i18n="kpiCustomerPool">Müşteri Havuzu</span>
+              <div class="kpi-icon blue">👤</div>
+            </div>
+            <div class="kpi-value-row">
+              <div class="kpi-value" id="kpiCustomerPool">12,487</div>
+              <div class="kpi-trend">
+                ↑ <span id="kpiCustomerPoolTrend">+12.4%</span> <span class="kpi-subtext" data-i18n="vsLast30Days">son 30 güne göre</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title" data-i18n="kpiReactivationMessages">Reaktivasyon Mesajları</span>
+              <div class="kpi-icon green">💬</div>
+            </div>
+            <div class="kpi-value-row">
+              <div class="kpi-value" id="kpiMessages">8,932</div>
+              <div class="kpi-trend">
+                ↑ <span id="kpiMessagesTrend">+28.6%</span> <span class="kpi-subtext" data-i18n="vsLast30Days">son 30 güne göre</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title" data-i18n="kpiAppointmentsBooked">Alınan Randevular</span>
+              <div class="kpi-icon blue">📅</div>
+            </div>
+            <div class="kpi-value-row">
+              <div class="kpi-value" id="kpiAppointments">643</div>
+              <div class="kpi-trend">
+                ↑ <span id="kpiAppointmentsTrend">+34.8%</span> <span class="kpi-subtext" data-i18n="vsLast30Days">son 30 güne göre</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-title" data-i18n="kpiResponseRate">Yanıt Oranı</span>
+              <div class="donut-container">
+                <svg width="58" height="58" viewBox="0 0 68 68">
+                  <circle cx="34" cy="34" r="28" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+                  <circle cx="34" cy="34" r="28" fill="none" stroke="#FBA200" stroke-width="6" stroke-dasharray="175" stroke-dashoffset="142" stroke-linecap="round"/>
+                </svg>
+                <div class="donut-text" id="kpiResponseRate">18.7%</div>
+              </div>
+            </div>
+            <div class="kpi-value-row" style="margin-top: 0;">
+              <div class="kpi-trend">
+                ↑ <span id="kpiResponseRateTrend">+4.9%</span> <span class="kpi-subtext" data-i18n="vsLast30Days">son 30 güne göre</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Middle Grid: Performance Chart & Live WhatsApp Chat -->
+        <section class="middle-grid" id="middleGrid">
+          <div class="card-panel">
+            <div class="panel-header">
+              <div class="panel-title" data-i18n="reactivationPerformance">Reaktivasyon Performansı</div>
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span class="legend-dot messages"></span>
+                  <span data-i18n="messagesSent">Gönderilen Mesajlar</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot appointments"></span>
+                  <span data-i18n="appointmentsBooked">Alınan Randevular</span>
+                </div>
+                <select class="timeframe-select" id="chartTimeframe">
+                  <option value="14" data-i18n="last14Days">Son 14 Gün</option>
+                  <option value="30" data-i18n="last30Days">Son 30 Gün</option>
+                  <option value="90" data-i18n="last90Days">Son 90 Gün</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <svg id="performanceChartSvg" width="100%" height="100%" viewBox="0 0 600 220" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="gradientMessages" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#FBA200" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#FBA200" stop-opacity="0.0"/>
+                  </linearGradient>
+                  <linearGradient id="gradientAppointments" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#13A89E" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#13A89E" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+
+                <line x1="40" y1="40" x2="580" y2="40" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4"/>
+                <line x1="40" y1="80" x2="580" y2="80" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4"/>
+                <line x1="40" y1="120" x2="580" y2="120" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4"/>
+                <line x1="40" y1="160" x2="580" y2="160" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4"/>
+
+                <text x="30" y="44" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="end">1,200</text>
+                <text x="30" y="84" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="end">1,000</text>
+                <text x="30" y="124" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="end">600</text>
+                <text x="30" y="164" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="end">200</text>
+                <text x="30" y="200" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="end">0</text>
+
+                <text x="50" y="215" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="middle">Oct 28</text>
+                <text x="120" y="215" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="middle">Oct 30</text>
+                <text x="190" y="215" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="middle">Nov 1</text>
+                <text x="260" y="215" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="middle">Nov 3</text>
+                <text x="330" y="215" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="middle">Nov 5</text>
+                <text x="400" y="215" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="middle">Nov 7</text>
+                <text x="470" y="215" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="middle">Nov 9</text>
+                <text x="540" y="215" fill="#94A3B8" font-size="11" font-weight="600" text-anchor="middle">Nov 11</text>
+
+                <!-- Empty Baseline for Chart -->
+                <line x1="50" y1="190" x2="540" y2="190" stroke="rgba(251, 162, 0, 0.4)" stroke-width="2" stroke-dasharray="6"/>
+              </svg>
+              <div class="chart-callout-empty" style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); color: var(--text-dim); font-size: 13px; font-weight: 600; background: rgba(15, 23, 42, 0.85); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border-color);">
+                - Supabase Mesaj & Randevu Geçmişi Bulunamadı -
+              </div>
+            </div>
+          </div>
+
+          <div class="card-panel wa-chat-card">
+            <!-- Fullscreen Active Lock Overlay -->
+            <div class="wa-fullscreen-lock-overlay" id="waFullscreenLockOverlay">
+              <div class="lock-overlay-card">
+                <div class="lock-icon">🖥️</div>
+                <h3>WhatsApp Canlı Tam Ekran Modunda Açık</h3>
+                <p>Sohbet ekranı yeni bir tarayıcı sekmesinde tam ekran olarak çalışıyor. Veri çakışmasını önlemek için bu panel geçici olarak devre dışı bırakıldı.</p>
+                <button type="button" class="btn-primary" id="restoreWaChatBtn">
+                  ⚡ Sohbeti Buraya Geri Al
+                </button>
+              </div>
+            </div>
+
+            <!-- Bottom-Left Control Bar (Corner Resizer + Fullscreen Button) -->
+            <div class="card-bottom-left-controls">
+              <div class="card-corner-resizer" id="cardCornerResizer" title="Sürükleyerek Paneli En ve Boyut Yönünde Ayarlayın (Yatay & Dikey)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 3h6v6"/>
+                  <path d="M9 21H3v-6"/>
+                  <path d="M21 3l-7 7"/>
+                  <path d="M3 21l7-7"/>
+                </svg>
+              </div>
+              <button type="button" class="btn-corner-fullscreen" id="waFullscreenBtn" title="Tam Ekran Aç (Yeni Sekme)">
+                ⛶ Tam Ekran
+              </button>
+            </div>
+
+            <!-- Left Side: WhatsApp Chat List Sidebar -->
+            <div class="wa-sidebar">
+              <div class="wa-sidebar-header" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="wa-sidebar-title" data-i18n="chatListTitle">💬 Sohbetler</span>
+                </div>
+                <button type="button" id="startNewChatBtn" title="Yeni Numarayla Canlı Sohbet Başlat" style="background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer;">➕ Yeni Sohbet</button>
+              </div>
+              <div class="wa-chat-list" id="waChatList">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Right Side: Active Chat Window -->
+            <div class="wa-chat-main">
+              <!-- WhatsApp Web Header -->
+              <div class="wa-header">
+                <div class="wa-header-user">
+                  <div class="wa-avatar" id="activeChatAvatar">CD</div>
+                  <div class="wa-user-info">
+                    <span class="wa-user-name" id="activeChatName">Can Demir</span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="wa-user-status" id="activeChatStatus" data-i18n="onlineStatus">çevrimiçi</span>
+                      <span id="webhookStatusBadge" style="font-size: 11px; padding: 2px 8px; border-radius: 12px; background: rgba(239, 68, 68, 0.15); color: #ef4444; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">🔴 Webhook Bağlantısı Yok</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="wa-header-actions">
+                  <button type="button" class="wa-icon-btn" id="openBulkFromChatHeaderBtn" title="Çoklu Numaralara Sırayla Mesaj Gönder" style="font-size: 12px; width: auto; padding: 4px 12px; background: linear-gradient(135deg, rgba(0, 168, 132, 0.25) 0%, rgba(5, 150, 105, 0.35) 100%); color: #00F2FE; border: 1px solid rgba(0, 242, 254, 0.4); border-radius: 6px; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">🚀 Toplu Mesaj Gönder</button>
+                  <button type="button" class="wa-icon-btn" id="quickTemplateBtn" title="Hızlı Şablon Gönder" style="font-size: 12px; width: auto; padding: 4px 10px; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); border-radius: 6px; cursor: pointer;">⚡ Şablon Gönder</button>
+                  <button type="button" class="wa-icon-btn" title="Yenile / Canlı Senkronize Et" id="refreshChatBtn">🔄</button>
+                </div>
+              </div>
+
+              <!-- WhatsApp Web Chat Body -->
+              <div class="chat-history wa-chat-body" id="chatHistory"></div>
+
+              <!-- Quick Template Panel — Ultra-kolay, görsel ve tek tıkla gönderim -->
+              <div id="quickTemplateModal" class="qt-panel" style="display: none;">
+                <div class="qt-header">
+                  <div class="qt-title-group">
+                    <span class="qt-title">⚡ Hızlı WhatsApp Şablonu Gönder</span>
+                    <span class="qt-subtitle" id="qtActiveCustomerBadge">👤 Can Demir</span>
+                  </div>
+                  <div class="qt-header-actions">
+                    <button type="button" id="quickFetchTemplatesBtn" class="qt-icon-btn" title="Şablonları Yenile">🔄 Meta'dan Çek</button>
+                    <button type="button" id="closeQuickTmplBtn" class="qt-icon-btn qt-close-btn" title="Kapat">✕</button>
+                  </div>
+                </div>
+
+                <!-- Template Selector & Search Bar -->
+                <div class="qt-selector-row">
+                  <select id="quickTmplSelect" class="qt-select">
+                    <option value="hello_world" data-lang="en_US" data-params="0" data-body="Hello World!">hello_world (en_US)</option>
+                  </select>
+                </div>
+
+                <!-- Template Mockup WhatsApp Card (with optional Header Media dropzone + body) -->
+                <div class="qt-whatsapp-card-wrapper">
+                  <div id="quickTmplMediaDropzone" class="qt-media-dropzone" style="display: none;">
+                    <div class="qt-dropzone-content" id="qtDropzoneContent">
+                      <div class="qt-dropzone-icon">📷</div>
+                      <div class="qt-dropzone-text">
+                        <strong>Şablon Başlık Görseli Ekle</strong>
+                        <span>Tıklayın veya fotoğrafı buraya sürükleyin</span>
+                      </div>
+                      <input type="file" id="tmplHeaderFile" accept="image/*,video/*,application/pdf" style="display: none;">
+                      <button type="button" class="qt-dropzone-btn" id="qtChooseFileBtn">Görsel Seç</button>
+                    </div>
+                    <!-- Live Image Thumbnail Preview -->
+                    <div class="qt-dropzone-preview" id="qtDropzonePreview" style="display: none;">
+                      <img id="qtHeaderPreviewImg" src="" alt="Header Media">
+                      <div class="qt-preview-overlay">
+                        <span id="tmplHeaderUploadStatus" class="qt-upload-badge">✅ Yüklendi</span>
+                        <button type="button" class="qt-change-media-btn" id="qtChangeMediaBtn">Değiştir</button>
+                      </div>
+                    </div>
+                    <input type="hidden" id="tmplHeaderMedia" value="">
+                  </div>
+
+                  <!-- WhatsApp Message Bubble -->
+                  <div id="quickTmplPreview" class="qt-preview-bubble">Şablon seçin…</div>
+                </div>
+
+                <!-- Quick Autofill Helper Row (if template has parameters) -->
+                <div class="qt-autofill-row" id="qtAutofillRow" style="display: none;">
+                  <span class="qt-autofill-label">✨ Hızlı Doldur:</span>
+                  <button type="button" class="qt-chip-btn" id="qtFillCustomerNameBtn">👤 Müşteri Adı</button>
+                  <button type="button" class="qt-chip-btn" id="qtFillTodayDateBtn">📅 Bugünün Tarihi</button>
+                  <button type="button" class="qt-chip-btn" id="qtFillStudioLocBtn">📍 Stüdyo Konumu</button>
+                </div>
+
+                <div class="qt-footer">
+                  <span id="quickTmplHint" class="qt-hint">Mavi alanları kontrol edip doğrudan gönderin</span>
+                  <button type="button" id="sendQuickTmplBtn" class="qt-send-btn">
+                    <span>🚀 Şablonu Gönder</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Quick Template Chips Bar (Hızlı Şablon Kısayolları) -->
+              <div class="wa-quick-chips-bar" id="waQuickChipsBar">
+                <span class="wa-chips-label">⚡ Hızlı Şablon:</span>
+                <button type="button" class="wa-quick-chip" data-template-keyword="tattoo_reengagement">🎨 Dövme Tekrar İletişim</button>
+                <button type="button" class="wa-quick-chip" data-template-keyword="randevu">📅 Randevu Bilgisi</button>
+                <button type="button" class="wa-quick-chip" data-template-keyword="fiyat">💰 Fiyat & Teklif</button>
+                <button type="button" class="wa-quick-chip" data-template-keyword="konum">📍 Konum & Adres</button>
+                <button type="button" class="wa-quick-chip wa-quick-chip-all" id="waOpenAllTemplatesChip">+ Tüm Şablonlar</button>
+              </div>
+
+              <!-- WhatsApp Web Input Bar -->
+              <div class="wa-input-bar">
+                <button type="button" class="wa-action-btn" id="emojiBtn" title="Hızlı Tepki">😀</button>
+                <input type="text" class="chat-input wa-input" id="chatInput" data-i18n="typeMessagePlaceholder" placeholder="Bir mesaj yazın...">
+                <button type="button" id="quickTemplateInlineBtn" class="wa-action-btn wa-tmpl-btn" title="Şablon Gönder">⚡ Şablon</button>
+                <button type="button" class="wa-send-btn" id="sendBtn">➤</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bottom Grid: Top Campaigns & Funnel -->
+        <section class="bottom-grid">
+          <div class="card-panel">
+            <div class="panel-header">
+              <div class="panel-title" data-i18n="topPerformingCampaigns">En Başarılı Kampanyalar</div>
+              <a href="#campaigns" class="tab-link" data-tab="campaigns" data-i18n="viewAll" style="color: var(--accent-blue); text-decoration: none; font-size: 13px; font-weight: 600;">Tümünü Gör →</a>
+            </div>
+
+            <div class="campaign-list" id="campaignList"></div>
+          </div>
+
+          <div class="card-panel">
+            <div class="panel-header">
+              <div class="panel-title" data-i18n="customerReactivationFunnel">Müşteri Reaktivasyon Hunisi</div>
+            </div>
+
+            <div class="funnel-container">
+              <div class="funnel-visual">
+                <div class="funnel-tier funnel-tier-1"></div>
+                <div class="funnel-tier funnel-tier-2"></div>
+                <div class="funnel-tier funnel-tier-3"></div>
+                <div class="funnel-tier funnel-tier-4"></div>
+              </div>
+
+              <div class="funnel-metrics" id="funnelMetrics"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- TAB 2: CUSTOMERS VIEW -->
+      <div class="tab-view" id="view-customers">
+        <div class="card-panel" style="margin-bottom: 20px;">
+          <div class="panel-header">
+            <div class="panel-title" data-i18n="customerDirectoryStatus">Müşteri Dizini ve Reaktivasyon Durumu</div>
+            <div class="action-row">
+              <button class="btn-primary" id="openBulkMsgBtn" style="background: linear-gradient(135deg, #00A884 0%, #059669 100%); display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0, 168, 132, 0.3);">
+                💬 <span data-i18n="bulkSendBtnLabel">Seçilenlere Mesaj Gönder</span> (<span id="selectedCountBadge">0</span>)
+              </button>
+              <select class="timeframe-select" id="customerLimitSelect" title="Gösterilecek Müşteri Sayısı">
+                <option value="20" data-i18n="limit20">20 Göster</option>
+                <option value="50" data-i18n="limit50">50 Göster</option>
+                <option value="100" data-i18n="limit100">100 Göster</option>
+                <option value="all" data-i18n="limitAll">Hepsi</option>
+              </select>
+              <input type="text" class="search-input" id="customerSearch" data-i18n="searchCustomerPlaceholder" placeholder="Müşteri adı, telefon veya ID ara...">
+              <button class="btn-primary" data-i18n="addCustomerBtn">+ Müşteri Ekle</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px; text-align: center;">
+                    <input type="checkbox" id="selectAllCustomers" title="Tümünü Seç / Kaldır" style="width: 16px; height: 16px; accent-color: #00A884; cursor: pointer;">
+                  </th>
+                  <th data-i18n="tableHeaderCustomer">Müşteri</th>
+                  <th data-i18n="tableHeaderPhone">Telefon Numarası</th>
+                  <th data-i18n="tableHeaderLastVisit">Son Ziyaret</th>
+                  <th data-i18n="tableHeaderTotalSpent">Toplam Harcama</th>
+                  <th data-i18n="tableHeaderReactivationStatus">Reaktivasyon Durumu</th>
+                  <th data-i18n="tableHeaderActions">İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="customerTableBody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: CAMPAIGNS VIEW -->
+      <div class="tab-view" id="view-campaigns">
+        <div class="panel-header" style="margin-bottom: 20px;">
+          <div class="panel-title" data-i18n="automatedCampaignsTitle">Otomatik Reaktivasyon Kampanyaları</div>
+          <button class="btn-primary" data-i18n="createNewCampaignBtn">+ Yeni Kampanya Oluştur</button>
+        </div>
+
+        <div class="grid-3-col" id="campaignCardsGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- TAB 4: APPOINTMENTS VIEW -->
+      <div class="tab-view" id="view-appointments">
+        <div class="card-panel" style="margin-bottom: 20px;">
+          <div class="panel-header">
+            <div class="panel-title" data-i18n="appointmentCalendarTitle">Stüdyo Randevu Takvimi</div>
+            <div class="action-row">
+              <select class="timeframe-select">
+                <option data-i18n="thisWeek">Bu Hafta</option>
+                <option data-i18n="thisMonth">Bu Ay</option>
+              </select>
+              <button class="btn-primary" data-i18n="newBookingBtn">+ Yeni Randevu Kaydı</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th data-i18n="tableHeaderTimeDate">Tarih & Saat</th>
+                  <th data-i18n="tableHeaderClient">Müşteri</th>
+                  <th data-i18n="tableHeaderArtist">Sanatçı</th>
+                  <th data-i18n="tableHeaderPlacement">Dövme Bölgesi & Stil</th>
+                  <th data-i18n="tableHeaderDeposit">Kapora</th>
+                  <th data-i18n="tableHeaderStatus">Durum</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentsTableBody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: ANALYTICS VIEW -->
+      <div class="tab-view" id="view-analytics">
+        <div class="kpi-grid" style="margin-bottom: 24px;">
+          <div class="kpi-card">
+            <div class="kpi-title" data-i18n="reactivationRevenue">Reaktivasyon Geliri</div>
+            <div class="kpi-value" id="analyticsRevenue" style="color: #10B981;">$0</div>
+            <div class="kpi-trend" data-i18n="trendRevenue">↑ +%24.1 geçen aya göre</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title" data-i18n="avgTicketSize">Ort. Sepet Tutarı</div>
+            <div class="kpi-value" id="analyticsTicket">$150</div>
+            <div class="kpi-trend" data-i18n="trendTicket">↑ +%5.2 geçen aya göre</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title" data-i18n="whatsappConvRate">WhatsApp Dönüşüm Oranı</div>
+            <div class="kpi-value" style="color: #38BDF8;">21.4%</div>
+            <div class="kpi-trend" data-i18n="trendConv">↑ +%3.8 geçen aya göre</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-title" data-i18n="repeatVisitRatio">Tekrar Ziyaret Oranı</div>
+            <div class="kpi-value">44.8%</div>
+            <div class="kpi-trend" data-i18n="trendRepeat">↑ +%8.4 geçen aya göre</div>
+          </div>
+        </div>
+
+        <div class="card-panel">
+          <div class="panel-header">
+            <div class="panel-title" data-i18n="monthlyGrowthTrend">Aylık Dönüşüm ve Büyüme Trendi</div>
+          </div>
+          <div style="padding: 40px 0; text-align: center; color: var(--text-muted);">
+            <div style="font-size: 48px; margin-bottom: 12px;">📈</div>
+            <h3 data-i18n="analyticsH3">Detaylı Reaktivasyon Analizi & Sanatçı Performansı</h3>
+            <p style="font-size: 13px; margin-top: 6px; color: var(--text-dim);" data-i18n="analyticsSubtext">Supabase veritabanı toplama sorgularına bağlı gerçek zamanlı metrikler.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 6: FRANCHISES VIEW -->
+      <div class="tab-view" id="view-franchises">
+        <div class="panel-header" style="margin-bottom: 20px;">
+          <div class="panel-title" data-i18n="franchiseNetworkTitle">Cleopatra Ink Şube Ağı</div>
+          <button class="btn-primary" data-i18n="registerBranchBtn">+ Yeni Şube Kaydet</button>
+        </div>
+
+        <div class="grid-2-col" id="franchiseGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- TAB 7: SETTINGS VIEW -->
+      <div class="tab-view" id="view-settings">
+        <div class="card-panel" style="max-width: 800px;">
+          <div class="panel-header">
+            <div class="panel-title" data-i18n="systemConfigTitle">Sistem ve Veritabanı Yapılandırması</div>
+          </div>
+
+          <form id="settingsForm" onsubmit="event.preventDefault();">
+            <div class="form-group">
+              <label class="form-label" data-i18n="supabaseUrlLabel">Supabase Proje URL'si</label>
+              <input type="text" class="form-input" value="https://qtccvlqegrhkewxrnazp.supabase.co" readonly>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-i18n="supabaseKeyLabel">Supabase Anonim API Anahtarı</label>
+              <input type="password" class="form-input" value="sb_publishable_PtpHnY0rQ3eVToJiNxzkdA_tnQ8hEZS" readonly>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="color: #38BDF8; font-weight: 700;">📱 Meta WhatsApp Cloud API Telefon ID (Phone Number ID)</label>
+              <input type="text" class="form-input" id="metaPhoneId" value="1259356973928757" placeholder="Kendi Canlı WhatsApp Telefon ID'nizi girin">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="color: #38BDF8; font-weight: 700;">🏢 Meta WhatsApp Business Account ID (WABA ID)</label>
+              <input type="text" class="form-input" id="metaWabaId" value="27800533569587222" placeholder="Kendi İş Hesabı WABA ID'nizi girin">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="color: #38BDF8; font-weight: 700;">🔑 Meta WhatsApp Access Token (EAAO...)</label>
+              <input type="password" class="form-input" id="metaToken" value="EAAO4OmZBwpzsBSGfHh9ozCJOJuu8XjDwfiWqPIKzyj3yHkgdd43JykeBiZCoZAvQBFEbrbcoLcxs82PZAELYKo8iLT5OFuboIWd4Q0swS5aSDfYJjk7EW8SeHeHaVYdvEOsMqJCHJo87MuFZAZBIZCIZBTW2pQDJAIniAmNyFWWZAOlZBD4jWLgDgV8JFkBjaUwdTu4QZDZD" placeholder="Meta Graph API Yetki Anahtarı">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="color: #22C55E; font-weight: 700;">🌐 Webhook Dinleyici Sunucu URL'si (http://localhost:3000)</label>
+              <input type="text" class="form-input" id="webhookServerUrl" value="http://localhost:3000" placeholder="Örn: http://localhost:3000 veya https://xyz.ngrok-free.app">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="color: #22C55E; font-weight: 700;">🛡️ Webhook Verify Token (Doğrulama Anahtarı)</label>
+              <input type="text" class="form-input" id="webhookVerifyToken" value="cleopatra_wh_9f8a7c6b5a4d3e2f1a0b9c8d7e6f5a4b" placeholder="Örn: cleopatra_wh_9f8a7c6b5a4d3e2f1a0b9c8d7e6f5a4b">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-i18n="cleopatraEndpointLabel">Cleopatra Portal Canlı Tutma Adresi</label>
+              <input type="text" class="form-input" value="https://t.cleopatraink.com/api/user/status" readonly>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-i18n="autoDispatcherLabel">Otomatik Reaktivasyon Dağıtıcısı</label>
+              <label for="autoDispatch" class="checkbox-card">
+                <input type="checkbox" id="autoDispatch" checked style="width: 18px; height: 18px; accent-color: #38BDF8; cursor: pointer;">
+                <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;" data-i18n="autoDispatchDescription">6 aydan uzun süredir pasif olan müşterilere otomatik WhatsApp mesajı gönder.</span>
+              </label>
+            </div>
+
+            <div style="margin-top: 24px; display: flex; gap: 12px;">
+              <button class="btn-primary" id="saveSettingsBtn" data-i18n="saveConfigBtn">Yapılandırmayı Kaydet</button>
+              <button class="btn-secondary" id="testDbBtn" data-i18n="testDbBtn">Supabase Bağlantısını Test Et</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 8: BOT RULES VIEW -->
+      <div class="tab-view" id="view-bot-rules">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 20px; font-weight: 700; color: #F8FAFC; display: flex; align-items: center; gap: 8px;">
+              🤖 Otomatik Yanıt Kuralları & WhatsApp Bot Yönetimi
+            </h2>
+            <p style="font-size: 13px; color: #94A3B8; margin-top: 4px;">
+              Müşterilerinizden gelen mesajları anahtar kelimelere göre otomatik yanıtlayın ve 24 saatlik karşılama mesajlarını yönetin.
+            </p>
+          </div>
+          <button class="btn-primary" onclick="openAddRuleModal()" style="background: linear-gradient(135deg, #00A884 0%, #059669 100%); font-weight: 700;">
+            ➕ Yeni Yanıt Kuralı Ekle
+          </button>
+        </div>
+
+        <!-- Master Bot Switch & Status Banner -->
+        <div class="card-panel" style="margin-bottom: 20px; background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%); border: 1px solid rgba(0, 168, 132, 0.3);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <div style="font-size: 32px;">⚡</div>
+              <div>
+                <h4 style="font-size: 15px; font-weight: 700; color: #E2E8F0;">Otomatik Yanıt Sistemi (Ana Şalter)</h4>
+                <p style="font-size: 12px; color: #94A3B8;">Pasif yapıldığında gelen hiçbir mesaja otomatik yanıt verilmez.</p>
+              </div>
+            </div>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #00F2FE; cursor: pointer;">
+              <input type="checkbox" id="botGlobalToggle" checked onchange="toggleBotGlobalState(this.checked)" style="width: 22px; height: 22px; accent-color: #00A884; cursor: pointer;">
+              <span id="botGlobalToggleLabel">SİSTEM AKTİF</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Reservation Analytics & Country Distribution Card -->
+        <div class="card-panel" style="margin-bottom: 20px; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%); border: 1px solid rgba(56, 189, 248, 0.3);">
+          <div class="panel-header" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+              <div class="panel-title" style="color: #38BDF8; font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                📊 Rezervasyon Butonu Analitiği & Ülke Dağılımı
+              </div>
+              <span id="totalResClicksBadge" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700;">
+                0 Toplam Tıklama
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Summary Stats Grid -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 16px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #00F2FE;" id="statResToday">0</div>
+              <div style="font-size: 11px; color: #94A3B8; margin-top: 2px;">📅 Bugün</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #38BDF8;" id="statResTR">0</div>
+              <div style="font-size: 11px; color: #94A3B8; margin-top: 2px;">🇹🇷 Türkiye (+90)</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #F59E0B;" id="statResDE">0</div>
+              <div style="font-size: 11px; color: #94A3B8; margin-top: 2px;">🇩🇪 Almanya (+49)</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #10B981;" id="statResNL">0</div>
+              <div style="font-size: 11px; color: #94A3B8; margin-top: 2px;">🇳🇱 Felemenkçe (+31)</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #A855F7;" id="statResEN">0</div>
+              <div style="font-size: 11px; color: #94A3B8; margin-top: 2px;">🇬🇧 İngilizce / Diğer</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 12px; border-radius: 8px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 800; color: #EC4899;" id="statResRU">0</div>
+              <div style="font-size: 11px; color: #94A3B8; margin-top: 2px;">🇷🇺 Rusça (+7, +380)</div>
+            </div>
+          </div>
+
+          <!-- Recent Reservation Click Logs Table -->
+          <div style="margin-top: 14px;">
+            <div style="font-size: 12px; font-weight: 700; color: #E2E8F0; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+              <span>🕒 Son Rezervasyon Tıklamaları (Canlı Günlük)</span>
+              <button type="button" class="btn-secondary" onclick="renderBotRulesUI()" style="padding: 2px 8px; font-size: 10px;">🔄 Yenile</button>
+            </div>
+            <div style="max-height: 180px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; background: rgba(15, 23, 42, 0.6);">
+              <table style="width: 100%; border-collapse: collapse; font-size: 11px; text-align: left;">
+                <thead>
+                  <tr style="background: rgba(255,255,255,0.05); color: #94A3B8; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                    <th style="padding: 6px 10px;">Tarih / Saat</th>
+                    <th style="padding: 6px 10px;">Telefon No</th>
+                    <th style="padding: 6px 10px;">Ülke & Dil</th>
+                    <th style="padding: 6px 10px;">Tetiklenen Yanıt</th>
+                  </tr>
+                </thead>
+                <tbody id="resAnalyticsTbody">
+                  <tr><td colspan="4" style="text-align: center; padding: 14px; color: #94A3B8;">Henüz kayıtlı rezervasyon tıklaması yok.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 24-Hour Welcome Message Configuration Card -->
+        <div class="card-panel" style="margin-bottom: 20px;">
+          <div class="panel-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+              <div class="panel-title" style="color: #38BDF8; font-size: 15px; display: flex; align-items: center; gap: 8px;">
+                👋 24 Saatlik Karşılama Mesajı & Çok Dilli Yönetim
+              </div>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #E2E8F0; cursor: pointer;">
+                <input type="checkbox" id="welcomeToggle" checked style="width: 18px; height: 18px; accent-color: #38BDF8;">
+                <span style="font-weight: 600;">Aktif</span>
+              </label>
+            </div>
+          </div>
+          <p style="font-size: 12px; color: #94A3B8; margin-bottom: 12px;">
+            Müşteri <strong>ilk defa yazıyorsa</strong> veya son 24 saat içinde hiç mesajlaşılmadıysa gönderilecek otomatik karşılama mesajı:
+          </p>
+
+          <!-- DİL SEÇİM TABLARI -->
+          <div style="display: flex; gap: 6px; margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; flex-wrap: wrap;">
+            <button type="button" class="lang-tab-btn active" id="langTab_tr" onclick="switchWelcomeLangTab('tr')" style="padding: 6px 12px; font-size: 12px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid #38BDF8; background: rgba(56, 189, 248, 0.2); color: #38BDF8;">🇹🇷 Türkçe (+90)</button>
+            <button type="button" class="lang-tab-btn" id="langTab_de" onclick="switchWelcomeLangTab('de')" style="padding: 6px 12px; font-size: 12px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #94A3B8;">🇩🇪 Almanca (+49, +43)</button>
+            <button type="button" class="lang-tab-btn" id="langTab_nl" onclick="switchWelcomeLangTab('nl')" style="padding: 6px 12px; font-size: 12px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #94A3B8;">🇳🇱 Felemenkçe (+31)</button>
+            <button type="button" class="lang-tab-btn" id="langTab_en" onclick="switchWelcomeLangTab('en')" style="padding: 6px 12px; font-size: 12px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #94A3B8;">🇬🇧 İngilizce (Diğer Ülkeler)</button>
+            <button type="button" class="lang-tab-btn" id="langTab_ru" onclick="switchWelcomeLangTab('ru')" style="padding: 6px 12px; font-size: 12px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #94A3B8;">🇷🇺 Rusça (+7, +380)</button>
+          </div>
+
+          <textarea class="form-input" id="welcomeText" rows="3" style="width: 100%; resize: vertical; margin-bottom: 12px; font-size: 13px; line-height: 1.5;"></textarea>
+
+          <div style="margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 12px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <label style="font-size: 13px; font-weight: 700; color: #00F2FE; margin: 0;">
+                🔘 Karşılama Mesajı Alt Butonları (Opsiyonel)
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #E2E8F0; cursor: pointer;">
+                <input type="checkbox" id="welcomeButtonsToggle" onchange="toggleWelcomeButtonsContainer(this.checked)" style="width: 18px; height: 18px; accent-color: #00F2FE;">
+                <span id="welcomeButtonsToggleLabel" style="font-weight: 600; font-size: 12px; color: #94A3B8;">Kapalı</span>
+              </label>
+            </div>
+
+            <div id="welcomeButtonsContainerWrapper" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px;">
+              <small style="font-size: 11px; color: #94A3B8; margin-bottom: 6px; display: block;">
+                Müşteri butona bastığında doğrudan gönderilecek yanıt metnini veya web linkini yanındaki kutuya yazabilirsiniz.
+              </small>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span style="font-size: 12px; color: #38BDF8; font-weight: 600; width: 55px;">1. Buton:</span>
+                <input type="text" id="welcomeBtn1Title" class="form-input" placeholder="Buton Yazısı (Örn: info 1)" style="width: 170px; font-size: 12px;" maxlength="20">
+                <input type="text" id="welcomeBtn1Reply" class="form-input" placeholder="Tıklanınca Gönderilecek Yanıt / Link (Örn: https://...)" style="flex: 1; font-size: 12px;">
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span style="font-size: 12px; color: #38BDF8; font-weight: 600; width: 55px;">2. Buton:</span>
+                <input type="text" id="welcomeBtn2Title" class="form-input" placeholder="Buton Yazısı (Örn: info 2)" style="width: 170px; font-size: 12px;" maxlength="20">
+                <input type="text" id="welcomeBtn2Reply" class="form-input" placeholder="Tıklanınca Gönderilecek Yanıt / Link (Örn: https://...)" style="flex: 1; font-size: 12px;">
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span style="font-size: 12px; color: #38BDF8; font-weight: 600; width: 55px;">3. Buton:</span>
+                <input type="text" id="welcomeBtn3Title" class="form-input" placeholder="Buton Yazısı (Örn: 📅 Rezervasyon)" style="width: 170px; font-size: 12px;" maxlength="20">
+                <input type="text" id="welcomeBtn3Reply" class="form-input" placeholder="Tıklanınca Gönderilecek Yanıt / Link (Örn: https://wa.me/...)" style="flex: 1; font-size: 12px;">
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end;">
+            <button class="btn-secondary" onclick="saveWelcomeMessage()" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); font-weight: 600; padding: 8px 16px;">
+              💾 Karşılama Mesajını & Butonları Kaydet
+            </button>
+          </div>
+        </div>
+
+        <!-- Keyword Rules Table / Card List -->
+        <div class="card-panel">
+          <div class="panel-header" style="margin-bottom: 16px;">
+            <div class="panel-title" style="color: #F8FAFC; font-size: 15px;">🎯 Anahtar Kelime Yanıt Kuralları</div>
+            <span style="font-size: 12px; color: #94A3B8;" id="ruleCountBadge">Loading rules...</span>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="data-table" id="botRulesTable">
+              <thead>
+                <tr>
+                  <th>Kural Adı</th>
+                  <th>Tetikleyici Anahtar Kelimeler</th>
+                  <th>Eşleşme Tipi</th>
+                  <th>Otomatik Yanıt Metni</th>
+                  <th>Durum</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="botRulesTbody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 9: TEMPLATE ALIASES VIEW -->
+      <div class="tab-view" id="view-template-aliases">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 20px; font-weight: 700; color: #F8FAFC; display: flex; align-items: center; gap: 8px;">
+              🏷️ Meta Mesaj Şablonları & Takma Ad (Alias) Yönetimi
+            </h2>
+            <p style="font-size: 13px; color: #94A3B8; margin-top: 4px;">
+              Meta'dan gelen tüm şablonların içeriklerini görsel olarak inceleyin, kolay anlaşılır takma adlar (alias) atayın.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button type="button" class="btn-primary" id="syncTmplAliasesBtn" style="background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%); font-weight: 700;">
+              🔄 Meta'dan Şablonları Çek & Yenile
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="card-panel" style="margin-bottom: 20px; padding: 14px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.2);">
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+            <div style="flex: 1; min-width: 260px; position: relative;">
+              <input type="text" class="form-input" id="aliasSearchInput" placeholder="🔍 Orijinal şablon adı, takma ad veya mesaj içeriğinde ara..." style="width: 100%; padding-left: 12px; font-size: 13px; background: #0f172a; border-color: #334155;">
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <select class="form-input" id="aliasLangFilter" style="font-size: 13px; width: 150px; background: #0f172a; border-color: #334155;">
+                <option value="ALL">🌐 Tüm Diller</option>
+                <option value="tr">🇹🇷 Türkçe (tr)</option>
+                <option value="de">🇩🇪 Almanca (de)</option>
+                <option value="en">🇺🇸 İngilizce (en/en_US)</option>
+              </select>
+              <select class="form-input" id="aliasCategoryFilter" style="font-size: 13px; width: 170px; background: #0f172a; border-color: #334155;">
+                <option value="ALL">📁 Tüm Kategoriler</option>
+                <option value="MARKETING">MARKETING</option>
+                <option value="UTILITY">UTILITY</option>
+                <option value="AUTHENTICATION">AUTHENTICATION</option>
+              </select>
+              <span id="tmplCountBadge" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;">
+                0 Şablon
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Container for Template Cards -->
+        <div id="tmplAliasGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px;">
+          <!-- Dynamic Cards Rendered via JS -->
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- MODAL 1: Add New Customer to Supabase -->
+  <div class="modal-overlay" id="addCustomerModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="modalAddCustomerTitle">➕ Supabase'e Yeni Müşteri Kaydet</h3>
+        <button type="button" class="modal-close" onclick="closeModal('addCustomerModal')">✕</button>
+      </div>
+      <form id="addCustomerForm">
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCustomerNameLabel">Müşteri Ad Soyad</label>
+          <input type="text" class="form-input" id="newCustName" placeholder="Örn: Caner Yılmaz" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCustomerPhoneLabel">Telefon Numarası</label>
+          <input type="tel" class="form-input" id="newCustPhone" placeholder="+90 532 100 2233" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCustomerDateLabel">İlk Ziyaret / Seans Tarihi</label>
+          <input type="datetime-local" class="form-input" id="newCustDate" required>
+        </div>
+        <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-secondary" onclick="closeModal('addCustomerModal')" data-i18n="modalCancelBtn">İptal</button>
+          <button type="submit" class="btn-primary" data-i18n="modalSaveBtn">Supabase'e Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Add New Appointment / Booking -->
+  <div class="modal-overlay" id="addAppointmentModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="modalAddBookingTitle">📅 Yeni Stüdyo Randevu Kaydı</h3>
+        <button type="button" class="modal-close" onclick="closeModal('addAppointmentModal')">✕</button>
+      </div>
+      <form id="addAppointmentForm">
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCustomerNameLabel">Müşteri Ad Soyad</label>
+          <input type="text" class="form-input" id="newAppClient" placeholder="Müşteri Adı" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCustomerPhoneLabel">Telefon Numarası</label>
+          <input type="tel" class="form-input" id="newAppPhone" placeholder="+90 533 999 8877" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalBookingDateLabel">Tarih & Saat</label>
+          <input type="datetime-local" class="form-input" id="newAppDate" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalArtistLabel">Atanan Sanatçı</label>
+          <select class="form-input" id="newAppArtist">
+            <option value="Alex Realism">Alex Realism (Realizm Uzmanı)</option>
+            <option value="Elena Dotwork">Elena Dotwork (Dotwork & Mandala)</option>
+            <option value="Marco Neo-Trad">Marco Neo-Trad (Neo-Traditional)</option>
+            <option value="Selin FineLine">Selin FineLine (Çizgi & Minimal)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalDepositLabel">Kapora Tutar ($)</label>
+          <input type="number" class="form-input" id="newAppDeposit" placeholder="150" value="150" required>
+        </div>
+        <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-secondary" onclick="closeModal('addAppointmentModal')" data-i18n="modalCancelBtn">İptal</button>
+          <button type="submit" class="btn-primary" data-i18n="modalSaveBtn">Randevuyu Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Add New Campaign -->
+  <div class="modal-overlay" id="addCampaignModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="modalAddCampaignTitle">🚀 Yeni Reaktivasyon Kampanyası</h3>
+        <button type="button" class="modal-close" onclick="closeModal('addCampaignModal')">✕</button>
+      </div>
+      <form id="addCampaignForm">
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCampaignTitleLabel">Kampanya Başlığı</label>
+          <input type="text" class="form-input" id="newCampTitle" placeholder="Örn: VIP Yıl Dönümü İndirimi" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalCampaignDescLabel">WhatsApp Mesaj Açıklaması</label>
+          <textarea class="form-input" id="newCampDesc" rows="3" placeholder="Pasif müşterilere otomatik gönderilecek WhatsApp mesaj metni..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalDiscountRateLabel">Hedef İndirim / Teklif Oranı (%)</label>
+          <input type="number" class="form-input" id="newCampRate" placeholder="20" value="20" required>
+        </div>
+        <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-secondary" onclick="closeModal('addCampaignModal')" data-i18n="modalCancelBtn">İptal</button>
+          <button type="submit" class="btn-primary" data-i18n="modalSaveCampaignBtn">Kampanyayı Başlat</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 4: Add New Branch -->
+  <div class="modal-overlay" id="addBranchModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="modalAddBranchTitle">🏢 Yeni Cleopatra Şubesi Kaydet</h3>
+        <button type="button" class="modal-close" onclick="closeModal('addBranchModal')">✕</button>
+      </div>
+      <form id="addBranchForm">
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalBranchNameLabel">Şube Adı</label>
+          <input type="text" class="form-input" id="newBranchName" placeholder="Örn: Bodrum Marina Stüdyosu" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalBranchManagerLabel">Şube Yöneticisi</label>
+          <input type="text" class="form-input" id="newBranchManager" placeholder="Yönetici Ad Soyad" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modalBranchPhoneLabel">İletişim Telefonu</label>
+          <input type="tel" class="form-input" id="newBranchPhone" placeholder="+90 252 316 0011" required>
+        </div>
+        <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-secondary" onclick="closeModal('addBranchModal')" data-i18n="modalCancelBtn">İptal</button>
+          <button type="submit" class="btn-primary" data-i18n="modalSaveBranchBtn">Şubeyi Ekle</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 5: Bulk WhatsApp Message Dispatcher (Ultra-Intuitive UI) -->
+  <div class="modal-overlay" id="bulkMessageModal">
+    <div class="modal-card" style="max-width: 680px; width: 95%; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; padding: 0; background: #111b21; border: 1px solid rgba(0, 168, 132, 0.35); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75);">
+      <!-- Header -->
+      <div class="modal-header" style="background: linear-gradient(135deg, rgba(0, 168, 132, 0.2) 0%, rgba(15, 23, 42, 0.95) 100%); padding: 14px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+        <h3 class="modal-title" style="color: #25d366; font-size: 15px; font-weight: 800; display: flex; align-items: center; gap: 8px; margin: 0;">
+          ⚡ WhatsApp Şablonu Gönder
+        </h3>
+        <button type="button" class="modal-close" onclick="closeModal('bulkMessageModal')" style="font-size: 16px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: none; color: #94a3b8; cursor: pointer;">✕</button>
+      </div>
+
+      <!-- Scrollable Modal Body -->
+      <div style="padding: 16px 18px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 14px; scrollbar-width: thin;">
+        
+        <!-- STEP 1: INITIAL SELECTION VIEW (Hidden by default, used only when switching to manual CSV) -->
+        <div id="bulkStepSelection" class="bulk-option-grid" style="display: none;">
+          <button type="button" class="bulk-option-card" onclick="selectBulkMode('table')">
+            <div class="option-icon">👥</div>
+            <div class="option-info">
+              <h4>Müşteri Havuzuna Mesaj Gönder</h4>
+              <p>Tabloda seçilen kayıtlı müşterilerinize WhatsApp mesajı gönderin.</p>
+            </div>
+            <div class="option-arrow">➔</div>
+          </button>
+          <button type="button" class="bulk-option-card" onclick="selectBulkMode('manual')">
+            <div class="option-icon">📋</div>
+            <div class="option-info">
+              <h4>Numara Listesi Yapıştırarak Gönder</h4>
+              <p>Excel veya metin dosyasından kopyalanan numaraları yapıştırın.</p>
+            </div>
+            <div class="option-arrow">➔</div>
+          </button>
+        </div>
+
+        <!-- STEP 2: MAIN FORM VIEW -->
+        <div id="bulkStepForm" style="display: flex; flex-direction: column; gap: 12px;">
+          
+          <!-- Recipient Summary Bar (Kime Gönderiliyor?) -->
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 10px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 12px; font-weight: 800; color: #94a3b8;">KİME:</span>
+                <span id="bulkModalRecipientCount" style="font-size: 12.5px; font-weight: 800; color: #38bdf8; background: rgba(56, 189, 248, 0.15); padding: 3px 10px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
+                  0 Müşteri Seçildi
+                </span>
+                <span id="bulkModalPhonePreview" style="font-size: 11.5px; color: #94a3b8; max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></span>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" id="toggleCustomerListBtn" class="btn-secondary" style="padding: 3px 10px; font-size: 11px; border-radius: 6px; border-color: rgba(56, 189, 248, 0.3); color: #38bdf8;">
+                  ✏️ Müşterileri Listele / Düzenle
+                </button>
+                <button type="button" class="btn-secondary" onclick="openBulkModalWithManualNumbers()" style="padding: 3px 8px; font-size: 11px; border-radius: 6px; color: #94a3b8;" title="Excel/CSV Numaraları Yapıştır">
+                  📋 Numara Yapıştır
+                </button>
+              </div>
+            </div>
+
+            <!-- Expandable Customer Selection List -->
+            <div id="sectionCustomerList" style="display: none; margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 11px; color: #cbd5e1; font-weight: 600;" id="modalCustomerTotalBadge">(0 Kayıt)</span>
+                <label style="font-size: 11px; color: #38bdf8; cursor: pointer; display: flex; align-items: center; gap: 4px; user-select: none;">
+                  <input type="checkbox" id="modalSelectAllCustomers" checked style="cursor: pointer; accent-color: #00A884;">
+                  Tümünü Seç / Kaldır
+                </label>
+              </div>
+              <input type="text" class="form-input" id="modalCustomerSearch" placeholder="🔍 İsim veya telefon ile ara..." style="font-size: 11.5px; padding: 5px 8px; background: #0b141a; border-color: #334155; margin-bottom: 6px; border-radius: 6px;">
+              <div id="modalCustomerListContainer" style="max-height: 130px; overflow-y: auto; padding-right: 4px; scrollbar-width: thin;"></div>
+            </div>
+
+            <!-- Manual CSV Input Section (Hidden unless toggled) -->
+            <div id="sectionManualInput" style="display: none; margin-top: 10px; border-top: 1px dashed rgba(56, 189, 248, 0.3); padding-top: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <label style="font-size: 11px; color: #38bdf8; font-weight: 700; margin: 0;">📋 Satır Satır Telefon Numaraları:</label>
+                <span style="font-size: 10.5px; color: #94a3b8;">Format: <code>905xxxxxxxxx, İsim</code></span>
+              </div>
+              <textarea class="form-input" id="bulkManualNumbersInput" rows="3" placeholder="905xxxxxxxxx, İsim&#10;905xxxxxxxxx" style="font-family: monospace; font-size: 11.5px; line-height: 1.4; background: #0b141a; border-radius: 6px;"></textarea>
+              <div style="font-size: 11px; color: #38bdf8; margin-top: 4px;" id="manualParseBadge"></div>
+            </div>
+          </div>
+
+          <!-- Hidden Mode Toggles for backward compatibility -->
+          <div style="display: none;">
+            <button type="button" id="btnModeText">Text</button>
+            <button type="button" id="btnModeTemplate" class="active">Template</button>
+            <div id="sectionCustomText"><textarea id="bulkMsgText"></textarea></div>
+            <div id="sectionTemplate"></div>
+            <input type="hidden" id="bulkTemplateName" value="hello_world">
+            <input type="hidden" id="bulkTemplateLang" value="en_US">
+            <span id="tmplCategoryBadge"></span>
+            <span id="tmplStatusBadge"></span>
+            <div id="tmplBodyPreview"></div>
+            <div id="bulkTmplParamsSection"></div>
+            <span id="bulkSelectedModeTitle"></span>
+          </div>
+
+          <!-- Template Selector Dropdown -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label style="font-size: 12px; font-weight: 800; color: #e2e8f0; display: flex; align-items: center; gap: 6px; margin: 0;">
+                📑 Gönderilecek WhatsApp Şablonu:
+              </label>
+              <button type="button" class="btn-secondary" id="fetchTemplatesBtn" style="padding: 2px 8px; font-size: 10.5px; display: flex; align-items: center; gap: 4px; border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">
+                🔄 Meta'dan Çek
+              </button>
+            </div>
+            <select class="form-input" id="bulkTemplateSelect" style="padding: 8px 12px; cursor: pointer; font-size: 13px; font-weight: 600; background: #0b141a; border-color: rgba(0, 168, 132, 0.4); color: #ffffff; border-radius: 8px; width: 100%;">
+              <!-- Rendered dynamically -->
+            </select>
+          </div>
+
+          <!-- Header Media Dropzone (Shown strictly for IMAGE/DOCUMENT/VIDEO templates) -->
+          <div id="bulkTmplMediaDropzone" style="display: none; background: #0b141a; border: 2px dashed rgba(0, 168, 132, 0.45); border-radius: 8px; padding: 8px 12px; text-align: center; cursor: pointer; transition: all 0.2s;">
+            <input type="file" id="bulkHeaderFileInput" accept="image/*,video/*,application/pdf" style="display: none;">
+            <input type="hidden" id="bulkHeaderMedia" value="">
+            <div id="bulkDropzoneContent" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+              <span style="font-size: 20px;">🖼️</span>
+              <div style="text-align: left;">
+                <strong style="font-size: 11.5px; color: #e9edef; display: block;">Şablon Başlık Görseli Seçin</strong>
+                <span style="font-size: 10px; color: #8696a0;">Fotoğrafı buraya sürükleyin veya tıklayarak seçin</span>
+              </div>
+              <button type="button" id="bulkChooseFileBtn" style="background: #00a884; color: #fff; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;">Görsel Seç</button>
+            </div>
+            <div id="bulkDropzonePreview" style="display: none; position: relative; max-height: 85px; border-radius: 6px; overflow: hidden; background: #000; justify-content: center; cursor: pointer;">
+              <img id="bulkHeaderPreviewImg" src="" alt="Önizleme" style="max-height: 85px; width: auto; max-width: 100%; object-fit: contain;">
+              <div style="position: absolute; top: 5px; right: 5px; display: flex; gap: 5px;">
+                <span id="bulkHeaderUploadStatus" style="background: rgba(0, 168, 132, 0.9); color: #fff; font-size: 10.5px; padding: 2px 7px; border-radius: 8px; font-weight: 700;">✅ Yüklendi</span>
+                <button type="button" id="bulkChangeMediaBtn" style="background: rgba(0,0,0,0.7); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.3); padding: 2px 7px; border-radius: 5px; font-size: 10.5px; cursor: pointer;">Değiştir</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive WhatsApp Bubble (Inline Variable Editing) -->
+          <div>
+            <label style="font-size: 11px; font-weight: 700; color: #8696a0; margin-bottom: 4px; display: block;">
+              💬 Canlı WhatsApp Önizlemesi (Mavi kutulara tıklayarak düzenleyebilirsiniz):
+            </label>
+            <div style="background: #0b141a; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 12px; background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0); background-size: 20px 20px;">
+              <div style="background: #005c4b; color: #e9edef; padding: 10px 14px; border-radius: 8px 8px 0px 8px; max-width: 95%; margin-left: auto; font-size: 13px; line-height: 1.6; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); word-wrap: break-word;">
+                <div id="bulkInteractivePreviewBubble" style="color: #e9edef;">
+                  <!-- Dynamically populated with inline inputs -->
+                </div>
+                <div style="text-align: right; font-size: 10px; color: #8696a0; margin-top: 6px; display: flex; justify-content: flex-end; align-items: center; gap: 3px;">
+                  <span>Şimdi</span>
+                  <span style="color: #53bdeb; font-weight: bold;">✓✓</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Autofill Helper Row -->
+          <div id="bulkAutofillRow" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 10.5px; font-weight: 700; color: #8696a0;">✨ Hızlı Doldur:</span>
+            <button type="button" class="qt-chip-btn" data-fill="{name}">👤 Müşteri Adı ({name})</button>
+            <button type="button" class="qt-chip-btn" data-fill="%25">%25 İndirim</button>
+            <button type="button" class="qt-chip-btn" data-fill="date">📅 Bugünün Tarihi</button>
+            <button type="button" class="qt-chip-btn" data-fill="studio">📍 Cleopatra Ink Studio</button>
+          </div>
+
+          <!-- Speed Delay Setting (Compact Inline) -->
+          <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.5); padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.06);">
+            <label style="font-size: 11px; color: #94a3b8; font-weight: 600; margin: 0;">⏱️ Gönderim Hızı (Bekleme Süresi):</label>
+            <select class="form-input" id="bulkMessageDelay" style="padding: 3px 8px; font-size: 11.5px; width: auto; background: #0b141a; border-color: #334155; border-radius: 4px; color: #38bdf8;">
+              <option value="500">0.5 Saniye (Seri / Çok Hızlı)</option>
+              <option value="1000">1 Saniye (Hızlı)</option>
+              <option value="2000" selected>2 Saniye (Önerilen - Güvenli)</option>
+              <option value="3000">3 Saniye (Yüksek Güvenlik)</option>
+            </select>
+          </div>
+
+          <!-- Live Progress Section (Shown during dispatch) -->
+          <div id="bulkProgressSection" style="display: none; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(0, 168, 132, 0.4); padding: 12px; border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 700; margin-bottom: 6px;">
+              <span id="bulkStatusLabel" style="color: #25d366;">Mesajlar Gönderiliyor...</span>
+              <span id="bulkPercentLabel" style="color: #38bdf8;">0%</span>
+            </div>
+            <div style="width: 100%; height: 7px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; margin-bottom: 8px;">
+              <div id="bulkProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #00A884, #38bdf8); transition: width 0.3s ease;"></div>
+            </div>
+            <div style="max-height: 100px; overflow-y: auto; font-family: monospace; font-size: 11px; background: #090D16; border-radius: 6px; padding: 6px 8px; color: #cbd5e1; scrollbar-width: thin;" id="bulkLogBox"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sticky Modal Footer -->
+      <div style="padding: 12px 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); background: #16222f; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+        <button type="button" class="btn-secondary" onclick="closeModal('bulkMessageModal')" style="padding: 8px 16px; font-size: 12px;">Vazgeç</button>
+        
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button type="button" class="btn-secondary" id="cancelBulkDispatchBtn" style="display: none; background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); font-weight: 700; padding: 8px 14px; font-size: 12px;">
+            🛑 Duraklat / İptal Et
+          </button>
+          <button type="button" class="btn-secondary" id="retryFailedBulkBtn" style="display: none; background: rgba(234, 179, 8, 0.2); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.4); font-weight: 700; padding: 8px 14px; font-size: 12px;">
+            🔄 Başarısızları Tekrar Dene
+          </button>
+          <button type="button" class="btn-primary" id="startBulkDispatchBtn" style="background: linear-gradient(135deg, #00A884 0%, #059669 100%); font-weight: 800; padding: 9px 22px; font-size: 13px; border-radius: 8px; box-shadow: 0 4px 14px rgba(0, 168, 132, 0.4); display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            🚀 Şablonu Gönder
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    </div>
+  </div>
+
+  <!-- MODAL 6: Add / Edit Bot Rule Modal -->
+  <div class="modal-overlay" id="addRuleModal">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header" style="background: linear-gradient(135deg, rgba(0, 168, 132, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);">
+        <h3 class="modal-title" id="ruleModalTitle" style="color: #00F2FE;">🤖 Yeni Otomatik Yanıt Kuralı Ekle</h3>
+        <button type="button" class="modal-close" onclick="closeModal('addRuleModal')">✕</button>
+      </div>
+      <form id="addRuleForm" onsubmit="saveBotRuleFromModal(event)">
+        <input type="hidden" id="editRuleId" value="">
+        
+        <div class="form-group">
+          <label class="form-label">Kural Tanım Adı</label>
+          <input type="text" class="form-input" id="ruleNameInput" placeholder="Örn: Fiyat / Ücret Yanıtı" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tetikleyici Anahtar Kelimeler (Virgülle ayırın)</label>
+          <input type="text" class="form-input" id="ruleKeywordsInput" placeholder="Örn: fiyat, ücret, kaç para, ne kadar" required>
+          <small style="font-size: 11px; color: #94A3B8; margin-top: 4px; display: block;">Müşterinin gönderdiği mesaj bu kelimelerden herhangi birini içeriyorsa yanıt tetiklenir.</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Eşleşme Tipi</label>
+          <select class="form-input" id="ruleMatchTypeInput">
+            <option value="contains" selected>Metin İçeriyor Mu? (İçerir - Önerilen)</option>
+            <option value="exact">Birebir Kelime Eşleşmesi (Tam Eşleşme)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Hedef Ülke / Dil Grubu</label>
+          <select class="form-input" id="ruleLangInput">
+            <option value="all" selected>🌐 Tüm Ülkeler / Diller (Varsayılan)</option>
+            <option value="tr">🇹🇷 Türkçe (+90 Türkiye)</option>
+            <option value="de">🇩🇪 Almanca (+49 Almanya, +43 Avusturya)</option>
+            <option value="nl">🇳🇱 Felemenkçe (+31 Hollanda)</option>
+            <option value="en">🇬🇧 İngilizce (Uluslararası / İngiltere)</option>
+            <option value="ru">🇷🇺 Rusça (+7 Rusya, +380 Ukrayna)</option>
+          </select>
+          <small style="font-size: 11px; color: #94A3B8; margin-top: 4px; display: block;">Kuralın sadece belirli bir ülke/dil grubuna özel çalışmasını istiyorsanız seçebilirsiniz.</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Gönderilecek Otomatik Yanıt Metni</label>
+          <textarea class="form-input" id="ruleReplyTextInput" rows="4" placeholder="Müşteriye gönderilecek WhatsApp yanıtı..." required style="resize: vertical; font-size: 13px;"></textarea>
+        </div>
+
+        <div style="margin-top: 14px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 12px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <label class="form-label" style="color: #00F2FE; margin: 0; display: flex; align-items: center; gap: 6px;">
+              🔘 WhatsApp Hızlı Yanıt Butonları (Opsiyonel)
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #E2E8F0; cursor: pointer;">
+              <input type="checkbox" id="ruleButtonsToggle" onchange="toggleRuleButtonsContainer(this.checked)" style="width: 18px; height: 18px; accent-color: #00F2FE;">
+              <span id="ruleButtonsToggleLabel" style="font-weight: 600; font-size: 12px; color: #94A3B8;">Kapalı</span>
+            </label>
+          </div>
+
+          <div id="ruleButtonsContainerWrapper" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px;">
+            <small style="font-size: 11px; color: #94A3B8; margin-bottom: 6px; display: block;">
+              Müşteri butona bastığında doğrudan gönderilecek yanıt metnini veya web linkini yanındaki kutuya yazın.
+            </small>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span style="font-size: 12px; color: #38BDF8; font-weight: 600; width: 55px;">1. Buton:</span>
+              <input type="text" id="ruleBtn1Title" class="form-input" placeholder="Buton Yazısı (Örn: info 1)" style="width: 170px; font-size: 12px;" maxlength="20">
+              <input type="text" id="ruleBtn1Reply" class="form-input" placeholder="Tıklanınca Gönderilecek Yanıt / Link (Örn: https://...)" style="flex: 1; font-size: 12px;">
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span style="font-size: 12px; color: #38BDF8; font-weight: 600; width: 55px;">2. Buton:</span>
+              <input type="text" id="ruleBtn2Title" class="form-input" placeholder="Buton Yazısı (Örn: info 2)" style="width: 170px; font-size: 12px;" maxlength="20">
+              <input type="text" id="ruleBtn2Reply" class="form-input" placeholder="Tıklanınca Gönderilecek Yanıt / Link (Örn: https://...)" style="flex: 1; font-size: 12px;">
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span style="font-size: 12px; color: #38BDF8; font-weight: 600; width: 55px;">3. Buton:</span>
+              <input type="text" id="ruleBtn3Title" class="form-input" placeholder="Buton Yazısı (Örn: 📅 Rezervasyon)" style="width: 170px; font-size: 12px;" maxlength="20">
+              <input type="text" id="ruleBtn3Reply" class="form-input" placeholder="Tıklanınca Gönderilecek Yanıt / Link (Örn: https://wa.me/...)" style="flex: 1; font-size: 12px;">
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn-secondary" onclick="closeModal('addRuleModal')">İptal</button>
+          <button type="submit" class="btn-primary" style="background: linear-gradient(135deg, #00A884 0%, #059669 100%);">Kuralı Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="dashboard-db.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

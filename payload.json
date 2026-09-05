@@ -1,0 +1,21 @@
+{
+  "messaging_product": "whatsapp",
+  "to": "905455064024",
+  "type": "template",
+  "template": {
+    "name": "tattoo_reengagement_tr_redirect",
+    "language": {
+      "code": "tr"
+    },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          { "type": "text", "text": "harun" },
+          { "type": "text", "text": "22.4" },
+          { "type": "text", "text": "burak" }
+        ]
+      }
+    ]
+  }
+}

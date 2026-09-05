@@ -1,0 +1,134 @@
+{
+  "enabled": true,
+  "metaPhoneId": "1259356973928757",
+  "metaToken": "EAAO4OmZBwpzsBSGfHh9ozCJOJuu8XjDwfiWqPIKzyj3yHkgdd43JykeBiZCoZAvQBFEbrbcoLcxs82PZAELYKo8iLT5OFuboIWd4Q0swS5aSDfYJjk7EW8SeHeHaVYdvEOsMqJCHJo87MuFZAZBIZCIZBTW2pQDJAIniAmNyFWWZAOlZBD4jWLgDgV8JFkBjaUwdTu4QZDZD",
+  "welcomeMessage": {
+    "enabled": true,
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "cooldownHours": 24,
+    "buttons": [
+      {
+        "id": "btn_fiyat",
+        "title": "🎨 Dövme Bilgisi"
+      },
+      {
+        "id": "btn_adres",
+        "title": "📍 Adres & Konum"
+      },
+      {
+        "id": "btn_randevu",
+        "title": "📅 Rezervasyon"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "id": "rule_merhaba",
+      "name": "Karşılama / Selamlaşma",
+      "keywords": [
+        "merhaba",
+        "selam",
+        "selamlar",
+        "slm",
+        "mrb",
+        "sa",
+        "s.a",
+        "iyi günler",
+        "iyi gunler",
+        "kolay gelsin",
+        "günaydın",
+        "gunaydin",
+        "iyi akşamlar",
+        "iyi aksamlar"
+      ],
+      "matchType": "contains",
+      "replyText": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz bilgiyi tek tıkla seçebilirsiniz:",
+      "buttons": [
+        {
+          "id": "btn_fiyat",
+          "title": "🎨 Dövme Bilgisi"
+        },
+        {
+          "id": "btn_adres",
+          "title": "📍 Adres & Konum"
+        },
+        {
+          "id": "btn_randevu",
+          "title": "📅 Rezervasyon"
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": "rule_fiyat",
+      "name": "Fiyat / Ücret Yanıtı",
+      "keywords": [
+        "btn_fiyat",
+        "dövme bilgisi",
+        "dovme bilgisi",
+        "fiyat",
+        "fiyatı",
+        "ücret",
+        "ücreti",
+        "kaç para",
+        "kac para",
+        "ne kadar",
+        "maliyet",
+        "bütçe",
+        "butce",
+        "fiyatlar",
+        "ücretler"
+      ],
+      "matchType": "contains",
+      "replyText": "🎨 Dövme fiyatlarımız tasarımın boyutu, detay seviyesi, renk durumu ve yapılacağı bölgeye göre belirlenmektedir.\n\nAklınızdaki tasarımı/görseli ve yaptırmak istediğiniz bölgeyi iletirseniz ortalama fiyat bilgisi verebiliriz!",
+      "enabled": true
+    },
+    {
+      "id": "rule_randevu",
+      "name": "Randevu & Müsaitlik Bilgisi",
+      "keywords": [
+        "btn_randevu",
+        "rezervasyon",
+        "randevu",
+        "müsait",
+        "musait",
+        "saat",
+        "gün",
+        "gun",
+        "koltuk",
+        "tarih",
+        "boş yer",
+        "bos yer",
+        "ne zaman",
+        "gelebilir"
+      ],
+      "matchType": "contains",
+      "replyText": "📅 Randevu kaydı ve detaylı bilgi almak için yetkili ekibimizle doğrudan iletişime geçebilirsiniz:\n\n📲 WhatsApp'tan Doğrudan İletişime Geçmek İçin Tıklayın:\nhttps://wa.me/905524278949?text=Merhaba,%20d%C3%B6vme%20rezervasyonu%20yapt%C4%B1rmak%20istiyorum.%20(Reconnect%20taraf%C4%B1ndan%20geliyorum)\n\n📞 Doğrudan Arama / Telefon: +90 552 427 89 49",
+      "enabled": true
+    },
+    {
+      "id": "rule_konum",
+      "name": "Adres & Konum Bilgisi",
+      "keywords": [
+        "btn_adres",
+        "adres & konum",
+        "adres",
+        "konum",
+        "neredesiniz",
+        "nerdesiniz",
+        "nerede",
+        "nerde",
+        "yeriniz",
+        "neresi",
+        "harita",
+        "yol tarifi",
+        "stüdyo",
+        "studyo"
+      ],
+      "matchType": "contains",
+      "replyText": "📍 Cleopatra Ink Studio Manavgat\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Blok/Kapı No: 104-105-106-107, 07600 Manavgat/Antalya\n\n🗺️ Google Haritalar'da Haritada Görmek ve Yol Tarifi Almak İçin Tıklayın:\nhttps://www.google.com/maps/search/?api=1&query=G%C3%BCndo%C4%9Fdu,+110+Evler+Sitesi,+Manavgat+Antalya",
+      "enabled": true
+    }
+  ],
+  "reservationAnalytics": []
+}

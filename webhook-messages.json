@@ -1,0 +1,2082 @@
+[
+  {
+    "id": "wamid.HBgMOTA1NTUxMjM0NTY3FQIAERgSQjE2QTU4RUExNDExOTU4QzEA",
+    "from": "905551234567",
+    "to": "1259356973928757",
+    "text": "Merhaba fiyat bilgisi alabilir miyim?",
+    "timestamp": 1723680000000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:44:06.332569+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NTUxMjM0NTY3FQIAERgSQTU0NDFDRDgxMjc3QjgxNzM3AA==",
+    "from": "1259356973928757",
+    "to": "905551234567",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨 Size nasıl yardımcı olabiliriz?\n\n- **Dövme Fiyatı**: Boyut ve tasarıma göre belirlenir.\n- **Adres**: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n- **Randevu Hattı**: https://wa.me/905524278949",
+    "timestamp": 1787175847069,
+    "direction": "outgoing",
+    "status": "failed",
+    "created_at": "2026-08-19T21:44:07.169503+00:00"
+  },
+  {
+    "id": "wamid.FINAL_VERIFICATION_TEST_MSG_123",
+    "from": "905559998877",
+    "to": "1259356973928757",
+    "text": "Son Kurulum Kontrol Testi",
+    "timestamp": 1723680000000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:45:40.406363+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEyMUJFQjY1MjRBN0FCQTIyQzIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Evet",
+    "timestamp": 1787175960000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:46:02.180974+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE4NzNERUFEMEI2NzUxNThCRUYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Selam",
+    "timestamp": 1787176087000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:48:09.266312+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE2RThFOUI4RkE3Njc3NEQwRjkA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787176147000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:49:09.428126+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM3RTJBODREQTJGMUFBMEMzQTYwMzE0RUJDQzBDOEQA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Hoi",
+    "timestamp": 1787176278000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:51:19.291001+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSODU5QTI2QjFDOTJDNDIwNTVDAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨 Size nasıl yardımcı olabiliriz?\n\n1️⃣ **Dövme Fiyatı**: Tasarım boyutu ve bölgesine göre belirlenir.\n2️⃣ **Adres & Konum**: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n3️⃣ **Randevu Hattı**: https://wa.me/905524278949",
+    "timestamp": 1787176150219,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:49:10.3108+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNFMzJDNzg0RUM1Qzc3MTU3MzUwQzE0OTBCMTZGMEUA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787176171000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:49:34.583266+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSMEM3OUQ0OUIxRDE4Q0M5OEM0AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787176341967,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:52:22.090928+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSRkZGMjI1OERCNjMyOEEwODMxAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨 Size nasıl yardımcı olabiliriz?\n\n1️⃣ **Dövme Fiyatı**: Tasarım boyutu ve bölgesine göre belirlenir.\n2️⃣ **Adres & Konum**: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n3️⃣ **Randevu Hattı**: https://wa.me/905524278949",
+    "timestamp": 1787176175495,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T21:49:35.640449+00:00"
+  },
+  {
+    "id": "wamid.INTERACTIVE_BUTTON_TEST_123",
+    "from": "905559998877",
+    "to": "1259356973928757",
+    "text": "🎨 Dövme Bilgisi",
+    "timestamp": 1723680000000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:50:56.677192+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NTU5OTk4ODc3FQIAERgSODA1MDk0QjdEMzM4RkQxQzgwAA==",
+    "from": "1259356973928757",
+    "to": "905559998877",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787176257633,
+    "direction": "outgoing",
+    "status": "failed",
+    "created_at": "2026-08-19T21:50:57.694615+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM4QTY5NDkxREI3REIwMUQ4RUQwRkQ1OTk3MzlGNUYA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787176271000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:51:13.447385+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSODQyNjgwRUIzM0QzRkVCMzlDAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya",
+    "timestamp": 1787176337022,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T21:52:17.115186+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSMjY2QURFNzk0NDkxOUU5OUQ5AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787176279937,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T21:51:20.246913+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSMjk2RTEzRjQ3NjVBNDg1MDRCAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787176274139,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:51:14.450237+00:00"
+  },
+  {
+    "id": "wamid.GERMAN_LANG_TEST_123",
+    "from": "4917612345678",
+    "to": "1259356973928757",
+    "text": "Hallo wie viel kostet ein Tattoo?",
+    "timestamp": 1723680000000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:51:55.6795+00:00"
+  },
+  {
+    "id": "wamid.HBgNNDkxNzYxMjM0NTY3OBUCABEYEjJEMDk2RTg4QkNFNkE2RTcwMAA=",
+    "from": "1259356973928757",
+    "to": "4917612345678",
+    "text": "Willkommen bei Cleopatra Ink Studio! 🎨\n\nBitte wählen Sie eine der folgenden Optionen:",
+    "timestamp": 1787176316355,
+    "direction": "outgoing",
+    "status": "failed",
+    "created_at": "2026-08-19T21:51:56.461869+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNGNzQ0MzNEODZGNjNFM0JCMkFGNzJFREQ5MEQwRUEA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Hoi",
+    "timestamp": 1787176331000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:52:12.437482+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUMxMDg3MUU2NTRBMDhDQjFFQjRENUEzNTlFRjZGNTUA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Tattoo Info",
+    "timestamp": 1787176340000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:52:21.313978+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSMThDOTk4MDJBMDA2MjY1NzdBAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Welkom bij Cleopatra Ink Studio! 🎨\n\nKies een van de onderstaande opties:",
+    "timestamp": 1787176333027,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:52:13.318508+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNDRjVCMDZBODE4Rjg1N0Q1RUMwMTJDOTlBOTA3MTMA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "📍 Adres & Locatie",
+    "timestamp": 1787176335000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:52:16.36674+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNBQTAwNDY0MEVCMjgwQzM0QUNFOUZCOTIwODMzQzIA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787176350000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:52:31.954961+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSOEMxMUMxNURCOThFMTVBMEE4AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787176352546,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T21:52:32.836581+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFFQkY1OEU4RDc5NzFDNjBGRTEA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787176368000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:52:49.695065+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSRThFOUY5N0MzMEQ5MTIyMjUxAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787176370414,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:52:50.495422+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE4QkY2RjQ4QkUyOTVBNkZCQUMA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bilgisi",
+    "timestamp": 1787176467000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:54:28.344828+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFENkE0QkJFNEY3NEFFNUY0OTcA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📍 Adres & Konum",
+    "timestamp": 1787176376000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:52:57.574877+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNDJGQTE3M0Q0RDM4QkFFNEExAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya",
+    "timestamp": 1787176378124,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:52:58.206846+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNEI5NjBFMDE4NUUxODNCQzU0AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787176468980,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:54:29.063945+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGMjdEOEVDNUMyN0NCNEZDNUQA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787176477000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:54:38.662683+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQzgzODgwQUFFQkU5RTYzOEIzAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Willkommen bei Cleopatra Ink Studio! 🎨\n\nBitte wählen Sie eine der folgenden Optionen:",
+    "timestamp": 1787176766804,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-19T21:59:27.070759+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNjZFRTZGRDI1RDE0OTQ4QjNDAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787176479167,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:54:39.442359+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFEODM4MDRBMTg2NDc2OEYxREEA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787176495000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:54:56.780308+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSRDczOENEQzExNjBFMkZDREM3AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Willkommen bei Cleopatra Ink Studio! 🎨\n\nBitte wählen Sie eine der folgenden Optionen:",
+    "timestamp": 1787176568306,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:56:08.58042+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNTg2RDlENzk3MjNGMTlFMDk0AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787176497292,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:54:57.37606+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNFOUFCRTlDQkRFRDQ2RDg2MDA4RjlBOEQzNzM4NDIA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787176545000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:55:46.592908+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFBRUUyRjNEQzNBQjE5QkVDNjkA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Tattoo-Info",
+    "timestamp": 1787176572000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:56:13.762407+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQUVFQjBDODA4MUFERTc1ODIwAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787176547199,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T21:55:47.493972+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM1ODlCN0UyNTBBREM3RjREMjZGQjZEOEZCODczMUEA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bilgisi",
+    "timestamp": 1787176554000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:55:55.306954+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSOEVGN0I2RUZCMjQzREYxNUE5AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787176556156,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T21:55:56.271269+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGRjBERDk4RkI3Rjg0OTA5NkQA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787176562000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:56:02.888968+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNkZERkY0MDU2QUQ5OTI4RENEAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Welcome to Cleopatra Ink Studio! 🎨\n\nPlease select an option from the buttons below:",
+    "timestamp": 1787176604061,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:56:44.174464+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMUQ4MDYyRjQ5Q0ZGRTY4NTBEAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787176563401,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:56:03.492447+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE5NzkxNjM2MDM5Nzk0QzZFREYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Hallo",
+    "timestamp": 1787176566000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:56:07.847704+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSRkJFMzk3QjZCMjgyNzExMjM5AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787176574494,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:56:14.632832+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEyMTAwRkRGNzczNjZFRjg2NTgA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📍 Adresse & Ort",
+    "timestamp": 1787176581000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:56:22.913715+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE2N0FDNDMxRDlBQ0Q0NUQzOUEA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Tattoo Info",
+    "timestamp": 1787176609000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:56:50.710288+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQzExQzgyODIzQkI5QkYzNDc4AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya",
+    "timestamp": 1787176583467,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:56:23.559834+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEwNDgwRjE5NTBCQTk5NTJCMEIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📅 Termin buchen",
+    "timestamp": 1787176587000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:56:28.876743+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQTE3QzYwQjU0Mzk1QkZENDk5AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📅 **Cleopatra Ink Studio - Terminvereinbarung**\n\nFür Terminvereinbarungen per WhatsApp:",
+    "timestamp": 1787176589374,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:56:29.67909+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFBRjFBNTg2RkY5RjFFQTc5OUUA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Hello",
+    "timestamp": 1787176602000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:56:43.411793+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMzBFOEY1OURCMzk4MUVDMkFCAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📅 **Cleopatra Ink Studio - Book Appointment**\n\nFor appointment bookings via WhatsApp:",
+    "timestamp": 1787176618060,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:56:58.139517+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMDIzQTJCQUI4QzI5NDg3ODFEAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787176611225,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T21:56:51.502956+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE4Rjc0MzJCMEQ0NDBDNDhGRTIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📅 Book Appointment",
+    "timestamp": 1787176616000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:56:57.668087+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM1MTREQzU2MDdGRDA4OTlGNDdGOTVCQUZEQjNFNjcA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Hallo",
+    "timestamp": 1787176765000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:59:26.194193+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM0MkIyRTc0RkNDNkE2NEJBNjY5OEMyOTMzRTVEOTIA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Tattoo-Info",
+    "timestamp": 1787176769000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T21:59:30.324101+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQ0I3MzM1MUEzQjk5NUFGRjlGAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787183081299,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T23:44:42.006977+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSOTAyRjI2N0M5M0M1MjUzNzQxAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "🎨 **Cleopatra Ink Studio - Tattoo Preisauskunft**\n\nUnsere Tattookosten richten sich nach:\n1. Größe (in cm)\n2. Detaillierungsgrad & Farbe/Blackwork\n3. Körperstelle\n\n💬 Senden Sie uns gerne Ihr Wunschmotiv und die Körperstelle für einen genauen Kostenvoranschlag!",
+    "timestamp": 1787177130483,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T22:05:30.943676+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSRUJDMzc4MjA4MEVEMTQzRDQxAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787176770882,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T21:59:30.966991+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM0RTI0RTM5M0I0MjNFRkZFMDBGQUMzNTQ0Mzk3NjAA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Hallo",
+    "timestamp": 1787176976000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:02:58.501519+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNENzM4RDQ5OTFEMzUyNkVFRUQyNkUwMzdCN0Y4MjcA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "📍 Adresse & Ort",
+    "timestamp": 1787177134000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:05:35.267566+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSMDNDNzhBNjIwNUNBMEQ4QTk3AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Willkommen bei Cleopatra Ink Studio! 🎨\n\nBitte wählen Sie eine der folgenden Optionen:",
+    "timestamp": 1787176979055,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T22:02:59.14804+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUMyQkExRjJDRjg0RjI5NzkyNkI4QzdEQUI5Mzg0NzgA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Tattoo-Info",
+    "timestamp": 1787176980000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:03:02.686519+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSNDEyQkRBQzYxMjA4MjkwQjBCAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787177368148,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-19T22:09:28.426407+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQTVDREIzODRCOTk3MDJDRkJGAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787176983761,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T22:03:03.883843+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUMyQTRCNUY3RUVGMEVGNUQ1QUJDRjVGOTNGNDA0ODcA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Hallo",
+    "timestamp": 1787177124000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:05:25.972325+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSOTc3ODQ3RkZDNURFRjJFMkMwAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adresse: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n\n⏰ Öffnungszeiten: Täglich von 09:00 bis 23:00 Uhr",
+    "timestamp": 1787177135904,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T22:05:36.380881+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUMxNDk4RjRDMDQ0NUQ3NkI3QTBDRTExQTEyODIyOTkA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "📅 Termin buchen",
+    "timestamp": 1787177139000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:05:40.210754+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSRkQ3NUNDNjgxNUU4NzUyQjY5AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Willkommen bei Cleopatra Ink Studio! 🎨\n\nBitte wählen Sie eine der folgenden Optionen:",
+    "timestamp": 1787177126622,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-19T22:05:26.897508+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUMyOTJFRUMyNTE2OEQzM0MyQ0RFOUQ0RTQwQjBCMTIA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Tattoo-Info",
+    "timestamp": 1787177128000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:05:29.895367+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSNkE1RUU0RkQwRDk0N0Q2MDk3AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "📅 **Cleopatra Ink Studio - Terminvereinbarung**\n\nFür Terminvereinbarungen per WhatsApp:",
+    "timestamp": 1787177351501,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T22:09:11.584496+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUMzNzg5OEJCQTQwMzg1OUI0M0YyQzg3QUQ3OUMyODAA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787177362000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:09:23.900098+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSNEE5NTE2QjM3NUU4QkU5RTg5AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "📅 **Cleopatra Ink Studio - Terminvereinbarung**\n\nFür Terminvereinbarungen per WhatsApp:",
+    "timestamp": 1787177140843,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T22:05:40.923903+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM2OTc3QTQyQjk2MEFBMjYxNzhBNjI3MzA2OTZERTAA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Hallo",
+    "timestamp": 1787177344000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:09:05.960178+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE4N0I5Q0ZFODM3NUYwM0Y0NzYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787177390000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:09:52.411619+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSNkEyNTUxQTM0RUE0NEE1MzI3AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Willkommen bei Cleopatra Ink Studio! 🎨\n\nBitte wählen Sie eine der folgenden Optionen:",
+    "timestamp": 1787177346497,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T22:09:06.785467+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM1RDYzN0E3QUIwREI3OTNDNzhCQjM5NjE4RDVDRjgA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "📅 Termin buchen",
+    "timestamp": 1787177349000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:09:10.882739+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQTdEOEVDNjZFOEU2QTkxQTVGAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787177364410,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T22:09:24.682417+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNCQzM0MDZDQ0Q0NURGMzE3RkU2QTcxNkYwMDQ4RDAA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787177366000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:09:27.622818+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMDc4M0QzMUI2M0ZBQzlERkQ3AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787177397586,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T22:09:57.676341+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM3NkVFRjUwQjZCM0FENDE0NDg3N0I4RUYwRTREOUYA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787177516000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:11:57.489598+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQTUzMDQ2MkZFOTY4RTREQTJFAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787177393167,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-19T22:09:53.641876+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGQTlBNDc3QzdDNkRDRjIzMTUA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787177395000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:09:56.670062+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSRjA2NDVBMURCMkI0MzA1RjRFAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787177518146,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-19T22:11:58.233318+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNCNUM3QjZFOEU0MTI1REM4MzZDMUJDMkQ1NDY5MTgA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787177520000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T22:12:01.671959+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSOUQ2NDJGQURBRjNBQzk5QjdGAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787177522252,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-19T22:12:02.538667+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEzNjU3MjUzMDkxQUVFNDFBMDIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787183077000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-19T23:44:40.502669+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE4NDhCOEExRkU1NDUxMTYxMzQA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📍 Adres & Konum",
+    "timestamp": 1786974817000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-20T00:12:19.836386+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSOTUwM0YwODk0OTYwNThGNzc0AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n\n⏰ Çalışma Saatleri: Haftanın her günü 09:00 - 23:00",
+    "timestamp": 1787184740734,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-20T00:12:20.818992+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFEQjhBRDM0NjVFMUE1NDMwOTUA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bilgisi",
+    "timestamp": 1787093301000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-20T02:59:55.344633+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQTUwNEQ2MDUyN0YzMzJCQjFEAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787567725271,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-24T10:35:25.604103+00:00"
+  },
+  {
+    "id": "wamid.HBgMNDQ3OTc0OTA0OTU5FQIAEhgSOUFERTJFNDEyREJFMzAyRkVBAA==",
+    "from": "447974904959",
+    "to": "905343635307",
+    "text": "[UNSUPPORTED]",
+    "timestamp": 1787092907000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-20T04:18:48.795081+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM3NUIwMTY4RjIxNzZBQkFFMDU3NkQxMEJGNkFENTUA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Nerdesiniz",
+    "timestamp": 1786907552000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-20T08:12:02.964426+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkExREI5QTk4MjFCQTk2M0Y3MDcA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1786927589000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-20T09:17:01.581539+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUMzRDlDQkZENDlGODcwOTYyOUJCM0MyQzQ0MkREOTYA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787567729000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T10:35:30.659323+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSN0Q0ODY5NDNDMjRBQTUyMjk1AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787217422672,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-20T09:17:02.749358+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQUFENkI0ODQ4RDhDMDA3NTFGAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787194796232,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-20T02:59:56.530368+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM1QTZDMDBERDZENzA2QURCMTgwRjE2MDA0MERDRkEA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787222974000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-20T10:49:38.703007+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSOUJFNkJCMTczQjUyNzhFMDk0AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787222979645,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-20T10:49:39.923234+00:00"
+  },
+  {
+    "id": "wamid.HBgMNDQ3OTc0OTA0OTU5FQIAEhgSNkNDNDZEQkFDOTkwNEM5QUIxAA==",
+    "from": "447974904959",
+    "to": "905343635307",
+    "text": "[UNSUPPORTED]",
+    "timestamp": 1787091976000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-20T03:52:36.827991+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNDRUVDMDRBNzU3NjkxNzA5RUM1RDBDNTI0M0RGMTMA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787315195000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-21T12:26:39.014978+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE0NkFGRTQ1NEVCMDc2MjRFQTIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787588235000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:17:16.501974+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSOTU1QTg0MTVGMEVDQ0U1QzY0AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787315200141,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-21T12:26:40.235482+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM2MkE3RkUxNDQ1NkU3OUM0QzNBRUJCQkM2MTcyRDQA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bilgisi",
+    "timestamp": 1787567720000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T10:35:24.107728+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSMzQzOEFDODU4QkFBQ0M5NDkxAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787567731732,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-24T10:35:31.857706+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFEQzQzNzE4MjkyRURBQTQ2ODUA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Sa",
+    "timestamp": 1787588222000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:17:06.380142+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMjA2OTg4NzdDMUU0OEQ3QkJDAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787588234737,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:17:15.034659+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSOTY1NTEyQkUyODdEMDY4NEJEAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787588227580,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:17:07.902361+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGQ0ZERUJCRkY3Njc3MEFBMEIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bilgisi",
+    "timestamp": 1787588232000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:17:14.06239+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNjA4MkM0RTE4NjU2MjhBM0MwAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787588240235,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:17:20.528741+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFDM0IxMkM3MUMzNEE1NUQzOUIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787588237000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:17:19.593001+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSRDlDQTVGMUQyMEIwNUNBQUVCAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787588237284,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:17:17.567862+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE5OTcwMEJFNjI4QjI3OTBENTYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📍 Adres & Konum",
+    "timestamp": 1787588248000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:17:29.271954+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNDkzRjI0MjJGMDE1MjYyQ0Q3AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n\n⏰ Çalışma Saatleri: Haftanın her günü 09:00 - 23:00",
+    "timestamp": 1787588249996,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:17:30.290299+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE3MTFCMjQ2RUY5RjdEM0I3M0IA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Merhaba",
+    "timestamp": 1787588289000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:18:10.929221+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSN0IyQjNBRUNGNDMwOEZEQjIzAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787588291570,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:18:11.651573+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEzQ0VFODFCMTJFODI2QkZENjMA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bilgisi",
+    "timestamp": 1787588295000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:18:17.146807+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGRkNDQTI1MjkzRDAyMUJDMjQA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "⚠️ Evet, var",
+    "timestamp": 1788044420000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T23:00:21.65268+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQzJCNUVDRUZGRjI5QTdBQ0RDAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788043222517,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-29T22:40:22.59969+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQjI3MENGNjYwNDYzQkJBQUIzAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink Studio - Dövme Fiyat Bilgisi**\n\nDövme fiyatlarımız tasarımın boyutu (cm), detay seviyesi, renk durumu ve yapılacağı vücut bölgesine göre belirlenmektedir.\n\n💬 Aklınızdaki görseli ve yaptırmak istediğiniz bölgeyi iletirseniz tasarımcılarımız size özel net fiyat bilgisi verecektir!",
+    "timestamp": 1787588298591,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:18:18.894466+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE2NjI0Qzc1NDQzOUJCRkMxOTgA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📅 Rezervasyon",
+    "timestamp": 1787588303000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:18:24.805509+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSOUIwNDgwN0IxNTlFMDZBMzk3AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Merhaba! Cleopatra Ink Studio'ya hoş geldiniz. 🎨\n\nAşağıdaki butonlardan öğrenmek istediğiniz konuyu tek tıkla seçebilirsiniz:",
+    "timestamp": 1787588354037,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:19:14.346932+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQ0E3RkRBQ0NGOTYxNDJGMEVEAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📅 **Cleopatra Ink Studio - Randevu & Rezervasyon**\n\nRandevu almak ve müsait saatleri öğrenmek için direkt WhatsApp hattımıza ulaşabilirsiniz:",
+    "timestamp": 1787588305797,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:18:25.915472+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE3MkFFMkUzMzE4RjNGQzVGNkQA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📍 Adres & Konum",
+    "timestamp": 1787588317000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:18:38.014857+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MzY2NzI3MzkyFQIAEhggQUM2MjBFQTMxREQ5QzJFMTFBRTJCQzI3RkI4QTcwNTIA",
+    "from": "905366727392",
+    "to": "905343635307",
+    "text": "60GB ücretsiz internet aldım! Sen de dene, çok kolay!\nhttps://xhagm.buzz/HVLQfBMDy/tr-tr?0825315336348601015&s=wa&t=1787660744&",
+    "timestamp": 1787660755000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-25T12:26:00.111278+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNTlDMjQzOTM4QjZDMThFNjAxAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n\n⏰ Çalışma Saatleri: Haftanın her günü 09:00 - 23:00",
+    "timestamp": 1787588318656,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:18:38.929437+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEzOUNDM0I0OEMyNjk3NjQzOUYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Hello",
+    "timestamp": 1787588335000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:18:56.905929+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEyNDhCMkFCNzg5NkM4QUZFMTgA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📍 Adres & Konum",
+    "timestamp": 1788042924000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:35:29.13249+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSODQ2NjBBOUUwRTY0MDI1RjM4AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Welcome to Cleopatra Ink Studio! 🎨\n\nPlease select an option from the buttons below:",
+    "timestamp": 1787588337511,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:18:57.810827+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFBNTgwNENDMTE0NUIwMUUwNDQA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Tattoo Info",
+    "timestamp": 1787588341000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:19:02.365071+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMDhGRTU0RDg0MTlBOTY4RTBFAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink Studio - Tattoo Pricing Information**\n\nOur tattoo prices depend on:\n1. Size (in cm or inches)\n2. Detail complexity & color vs blackwork\n3. Placement on the body\n\n💬 Send us your reference image and desired placement, and our team will give you a custom price quote!",
+    "timestamp": 1787588342933,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:19:03.225215+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE5OUZEODM0NzczODQzMTBCNTEA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Hallo",
+    "timestamp": 1787588345000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:19:06.657588+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM5QzM4OEQ2QjkzNUU3RDdCQUYwQTRCMkJDRkYyMDQA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bakımı",
+    "timestamp": 1788043226000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:40:28.246928+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMzgzNjQ3Nzk4QzMxMDlGN0Y4AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Willkommen bei Cleopatra Ink Studio! 🎨\n\nBitte wählen Sie eine der folgenden Optionen:",
+    "timestamp": 1787588347261,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-24T16:19:07.361817+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE3MzRFMjBFNTAyQTlGNjEzQjkA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Hoi",
+    "timestamp": 1787588352000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-24T16:19:13.445269+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSOTIyQjI5MEZBMTdGOEIzOUE4AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n\n⏰ Çalışma Saatleri: Haftanın her günü 09:00 - 23:00",
+    "timestamp": 1788042930130,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T22:35:30.443212+00:00"
+  },
+  {
+    "id": "wamid.HBgTVFIuMjE3MTk5MTkwNjY5ODM0NRUUABIYIEFDNjg3MjgzNEYxRTIwRDI1NjVBQzRBQ0E5NzkwNzhDAA==",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Bakım",
+    "timestamp": 1788043210000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:40:13.855665+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQTlEMDdENzY3M0Y5NzhGQjk5AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788043232750,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-29T22:40:32.86569+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSNjQ4NzI5NjRCNDQ0QUEyNEMzAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788043214745,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T22:40:15.022702+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM2Mzk3NEE0NjYzNjE0MDk5Nzc4MTZEQUU2OTY1QzIA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bakımı",
+    "timestamp": 1788043220000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:40:21.770508+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNBOUZGMUUxQjM5QTNDNjIzMTZBQzQ4MzlCQzQ1N0YA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Bakım",
+    "timestamp": 1788043239000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:40:40.469225+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQjFBREFDMEE2MThFRTlENDM1AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788043229044,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T22:40:29.312345+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUMyQUYxN0YzNDQ3OEIxNjdGNTRGMTlENzUwNEEzMDIA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "💎 Piercing Bakımı",
+    "timestamp": 1788043230000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:40:32.15665+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSQ0Q4Mjk1QkU5MkVDRjQxNjFCAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788043245163,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-29T22:40:45.445816+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSNUZBNjMxRjBBRDc2MzFBNkU1AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788043355917,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-29T22:42:36.006447+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUNCMzYzRUJFN0MwQkNBMDdBMUMzQjY0NkE2OTVBNjUA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "Bakım",
+    "timestamp": 1788043353000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:42:35.215273+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSRjMwMzNENzYwNDk3MTc4MDkyAA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788043241250,
+    "direction": "outgoing",
+    "status": "read",
+    "created_at": "2026-08-29T22:40:41.520929+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM1QkQ1NkZERjI4NkI2NTFGODE0QkFBQ0UzQjJGRkIA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "💎 Piercing Bakımı",
+    "timestamp": 1788043243000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:40:44.579046+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhggQUM5MzRCMjk4Q0IzNDJFNjNENDgxRDJDQjAxMDQxQTgA",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bakımı",
+    "timestamp": 1788043362000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T22:42:43.162633+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAERgSM0UzREM4N0U2NDlGNzBFNDk2AA==",
+    "from": "905343635307",
+    "to": "905455064024",
+    "text": "🎨 **Cleopatra Ink - Dövme Bakım Kılavuzu**\n\n1. **İlk 3-4 Saat:** Stüdyoda takılan koruyucu folyoyu/bandı 3-4 saat sonra nazikçe çıkarın.\n2. **Yıkama:** Bölgeyi ılık su ve kokusuz antibakteriyel sabun ile nazikçe yıkayın, temiz bir kağıt havlu ile tampon yaparak kurulayın (asla sürtmeyin).\n3. **Krem:** Önerilen bakım kremini günde 3-4 defa çok ince bir tabaka halinde sürün.\n4. **Dikkat Edilmesi Gerekenler:** İlk 2 hafta havuza, denize, saunaya girmeyin; doğrudan güneş ışığından koruyun ve oluşan kabukları kesinlikle soymayın.\n\n⚠️ **Yan Etki Belirtileri:**\n- Bölgede aşırı ve giderek artan sıcaklık/kızarıklık\n- İltihaplı/kötü kokulu akıntı\n- Yüksek ateş veya şiddetli zonklama/şişlik\n\n❓ **Soru:** Yukarıdaki yan etki belirtilerinden 1 veya daha fazlasına sahip misiniz?",
+    "timestamp": 1788043363839,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-29T22:42:44.144244+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFBNzY5QTA4MzA2RTJGRjE0RUYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Bakım",
+    "timestamp": 1788044399000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T23:00:05.388932+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMzFBODc0MEM0QzQzRUNDMzlDAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788044406531,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-29T23:00:07.020115+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEzQjUxNDM4NUQ0RjFCMTQ5RTIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bakımı",
+    "timestamp": 1788044409000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T23:00:10.688798+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQjdDNUEyN0E0RDAyRkRGQzNCAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink - Dövme Bakım Kılavuzu**\n\n1. **İlk 3-4 Saat:** Stüdyoda takılan koruyucu folyoyu/bandı 3-4 saat sonra nazikçe çıkarın.\n2. **Yıkama:** Bölgeyi ılık su ve kokusuz antibakteriyel sabun ile nazikçe yıkayın, temiz bir kağıt havlu ile tampon yaparak kurulayın (asla sürtmeyin).\n3. **Krem:** Önerilen bakım kremini günde 3-4 defa çok ince bir tabaka halinde sürün.\n4. **Dikkat Edilmesi Gerekenler:** İlk 2 hafta havuza, denize, saunaya girmeyin; doğrudan güneş ışığından koruyun ve oluşan kabukları kesinlikle soymayın.\n\n⚠️ **Yan Etki Belirtileri:**\n- Bölgede aşırı ve giderek artan sıcaklık/kızarıklık\n- İltihaplı/kötü kokulu akıntı\n- Yüksek ateş veya şiddetli zonklama/şişlik\n\n❓ **Soru:** Yukarıdaki yan etki belirtilerinden 1 veya daha fazlasına sahip misiniz?",
+    "timestamp": 1788044411620,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T23:00:12.0751+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSOTFCMUVCNDQwMzM4MEIzODg4AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "⚠️ **Önemli Uyarı!**\n\nYan etki veya enfeksiyon belirtisi hissettiğinizde stüdyo uzmanlarımızla hemen iletişime geçmeniz gerekmektedir.\n\nLütfen aşağıdaki butona tıklayarak durumunuzu ana hat üzerinden stüdyo uzmanımıza bildirin:",
+    "timestamp": 1788044422367,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T23:00:22.674615+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFCOTA2MDg0NUY4OENFRkM3NzQA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "✅ Hayır, yok",
+    "timestamp": 1788044429000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T23:00:30.508925+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSRTVFODJCMTI5RTJFRjBCMzc4AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "✅ **Harika!**\n\nHerhangi bir olumsuz belirtiniz yoksa bakım adımlarını tarif edildiği şekilde uygulamaya devam edin. İyileşme süreciniz sorunsuz tamamlanacaktır.\n\nBaşka bir konuda yardımcı olabilir miyiz?",
+    "timestamp": 1788044431156,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T23:00:31.239456+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE3NTcwMjQ2QjBCNTA4RkQzMzAA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "💎 Piercing Bakımı",
+    "timestamp": 1788044437000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T23:00:38.966717+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE0NUZCNDBGRDUzQjM3QzI2NjMA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "⚠️ Evet, var",
+    "timestamp": 1788044447000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T23:00:48.350825+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGQTZCMTM0REQ4MTMyMUREQUUA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "✅ Hayır, yok",
+    "timestamp": 1788044461000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T23:01:03.00348+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFEMEYwQTEwNUZEOUJBNDgyNDYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "📍 Adres & Konum",
+    "timestamp": 1788044465000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-29T23:01:07.082038+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMzRFNjdGRDA3NTQ5M0Y3QjZFAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "💎 **Cleopatra Ink - Piercing Bakım Kılavuzu**\n\n1. **Temizlik:** Günde 2 defa steril serum fizyolojik veya tuzlu su çözeltisi ile piercing bölgesini nazikçe temizleyin.\n2. **Dokunma:** Elleriniz tam yıkanmadan piercing takısına kesinlikle dokunmayın ve takıyı çevirmeyin/oynatmayın.\n3. **Koruma:** İlk 3-4 hafta deniz, havuz ve saunadan uzak durun. Kıyafet giyerken takılmamasına dikkat edin.\n4. **Takı Değişimi:** İyileşme tamamlanmadan (ortalama 4-8 hafta) takıyı çıkarmayın veya değiştirmeyin.\n\n⚠️ **Yan Etki Belirtileri:**\n- Bölgede aşırı şişlik, zonklayan ağrı\n- Sarı/yeşil iltihaplı akıntı ve kötü koku\n- Yüksek ateş veya piercing takısının et içine gömülmesi\n\n❓ **Soru:** Yukarıdaki yan etki belirtilerinden 1 veya daha fazlasına sahip misiniz?",
+    "timestamp": 1788044439572,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T23:00:39.651187+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSRDI4ODlEQjM5NDc5QzA1RDZFAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "⚠️ **Önemli Uyarı!**\n\nYan etki veya enfeksiyon belirtisi hissettiğinizde stüdyo uzmanlarımızla hemen iletişime geçmeniz gerekmektedir.\n\nLütfen aşağıdaki butona tıklayarak durumunuzu ana hat üzerinden stüdyo uzmanımıza bildirin:",
+    "timestamp": 1788044449006,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T23:00:49.091546+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNzI5ODcyNUFFNDVFOTAxRkRFAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "✅ **Harika!**\n\nHerhangi bir olumsuz belirtiniz yoksa bakım adımlarını tarif edildiği şekilde uygulamaya devam edin. İyileşme süreciniz sorunsuz tamamlanacaktır.\n\nBaşka bir konuda yardımcı olabilir miyiz?",
+    "timestamp": 1788044463566,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T23:01:03.833686+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSQzdCRDM4RTRBMjdENTA0NEM5AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "📍 **Cleopatra Ink Studio Manavgat**\n\n🏢 Adres: Gündoğdu, 110 Evler Sitesi, Manavgat/Antalya\n\n⏰ Çalışma Saatleri: Haftanın her günü 09:00 - 23:00",
+    "timestamp": 1788044467593,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-29T23:01:07.877646+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEyODQ2QzFFMDEzNjkzMDM0NDMA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Bakım",
+    "timestamp": 1788093758000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T12:42:44.521086+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSRjNDNEJCMjJEOUVEMzIwNDg4AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788093765987,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T12:42:46.345808+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE2OUI2MUFBRUNCNTRDMTJFNkUA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bakımı",
+    "timestamp": 1788093768000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T12:42:50.090276+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSN0NEQ0M5RDI3NkJGMzY5QTlFAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink - Tattoo-Pflegeanleitung**\n\n1. **Erste 3-4 Stunden:** Entfernen Sie die Schutzfolie vorsichtig nach 3-4 Stunden.\n2. **Reinigung:** Waschen Sie das Tattoo sanft mit lauwarmem Wasser und parfümfreier Seife. Mit einem sauberen Papiertuch trocken tupfen (nicht reiben).\n3. **Creme:** Tragen Sie die empfohlene Tattoo-Creme 3-4 Mal täglich hauchdünn auf.\n4. **Wichtig:** Vermeiden Sie in den ersten 2 Wochen Schwimmbad, Meer, Sauna und direkte Sonne. Schorf niemals abkratzen.\n\n⚠️ **Symptome von Nebenwirkungen:**\n- Zunehmende starke Rötung und Überwärmung\n- Eitriger oder riechender Ausfluss\n- Hohes Fieber oder starke pochende Schmerzen/Schwellung\n\n❓ **Frage:** Treffen 1 oder mehrere dieser Symptome auf Sie zu?",
+    "timestamp": 1788103008552,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-30T15:16:48.649537+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSODc5MkM5MkNBQzA3NzdDRUE5AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink - Dövme Bakım Kılavuzu**\n\n1. **İlk 3-4 Saat:** Stüdyoda takılan koruyucu folyoyu/bandı 3-4 saat sonra nazikçe çıkarın.\n2. **Yıkama:** Bölgeyi ılık su ve kokusuz antibakteriyel sabun ile nazikçe yıkayın, temiz bir kağıt havlu ile tampon yaparak kurulayın (asla sürtmeyin).\n3. **Krem:** Önerilen bakım kremini günde 3-4 defa çok ince bir tabaka halinde sürün.\n4. **Dikkat Edilmesi Gerekenler:** İlk 2 hafta havuza, denize, saunaya girmeyin; doğrudan güneş ışığından koruyun ve oluşan kabukları kesinlikle soymayın.\n\n⚠️ **Yan Etki Belirtileri:**\n- Bölgede aşırı ve giderek artan sıcaklık/kızarıklık\n- İltihaplı/kötü kokulu akıntı\n- Yüksek ateş veya şiddetli zonklama/şişlik\n\n❓ **Soru:** Yukarıdaki yan etki belirtilerinden 1 veya daha fazlasına sahip misiniz?",
+    "timestamp": 1788093771028,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T12:42:51.341333+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE1Q0MxMENDNzE1QTQ3RjVGNEMA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "⚠️ Evet, var",
+    "timestamp": 1788093778000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T12:42:59.826384+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGQjAxQzkxRDczNkREMUE4M0YA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "⚠️ Ja, ich habe welc",
+    "timestamp": 1788103013000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:16:54.392056+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMDk0Q0RENEFCQzA1MENBOUE0AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "⚠️ **Önemli Uyarı!**\n\nYan etki veya enfeksiyon belirtisi hissettiğinizde stüdyo uzmanlarımızla hemen iletişime geçmeniz gerekmektedir.\n\nLütfen aşağıdaki butona tıklayarak durumunuzu ana hat üzerinden stüdyo uzmanımıza bildirin:",
+    "timestamp": 1788093780619,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T12:43:00.711039+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE5NDVGRTBDMzE1OUY2MDdGNEIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Pflege",
+    "timestamp": 1788103000000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:16:42.424016+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNzJBRTdGQkFFQ0U3Q0ZERkJFAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Welche Behandlung hatten Sie? Bitte wählen Sie die Option, für die Sie die Pflegeanleitung wünschen:",
+    "timestamp": 1788103003748,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T15:16:43.83343+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE5MjhBODQ5NUYzMkM5RDM0NzAA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Tattoo-Pflege",
+    "timestamp": 1788103006000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:16:47.783877+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSRDA5RkJGQzI0RDFEQUU3RjA2AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink - Tattoo Aftercare Guide**\n\n1. **First 3-4 Hours:** Gently remove the protective wrap after 3-4 hours.\n2. **Washing:** Wash the area gently with lukewarm water and fragrance-free antibacterial soap. Pat dry with a clean paper towel (do not rub).\n3. **Ointment:** Apply a very thin layer of recommended aftercare cream 3-4 times daily.\n4. **Important:** Avoid swimming pools, oceans, saunas, and direct sunlight for the first 2 weeks. Never pick or scratch scabs.\n\n⚠️ **Side Effect Symptoms:**\n- Severe & spreading redness or extreme heat\n- Pus/foul-smelling discharge\n- High fever or intense throbbing pain/swelling\n\n❓ **Question:** Do you have 1 or more of these side effect symptoms?",
+    "timestamp": 1788103083750,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T15:18:04.024624+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE0OTMyMDMxRDkwNzA2NjkwREMA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Aftercare",
+    "timestamp": 1788103097000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:18:18.638186+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMDE2REMyODJGM0U1QzFCREQ2AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "⚠️ **Wichtiger Hinweis!**\n\nWenn Sie Symptome einer Nebenwirkung oder Infektion bemerken, kontaktieren Sie bitte umgehend unser Experten-Team.\n\nKlicken Sie unten, um unserem Studio-Experten Ihre Situation direkt zu melden:",
+    "timestamp": 1788103014986,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T15:16:55.269946+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEzMjk1RTUyN0FERUFEMTU3OTMA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Care",
+    "timestamp": 1788103042000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:17:23.819989+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE4NDAyMUUyMDk1QzgxNzVFNUUA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Care",
+    "timestamp": 1788103060000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:17:42.180126+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE3RkZBNEIyM0E0RDhFODU0MTAA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Tattoo care",
+    "timestamp": 1788103081000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:18:03.137875+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSMjc5NUI1RTc3RjY3QTFDOTdCAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink - Tattoo Aftercare Guide**\n\n1. **First 3-4 Hours:** Gently remove the protective wrap after 3-4 hours.\n2. **Washing:** Wash the area gently with lukewarm water and fragrance-free antibacterial soap. Pat dry with a clean paper towel (do not rub).\n3. **Ointment:** Apply a very thin layer of recommended aftercare cream 3-4 times daily.\n4. **Important:** Avoid swimming pools, oceans, saunas, and direct sunlight for the first 2 weeks. Never pick or scratch scabs.\n\n⚠️ **Side Effect Symptoms:**\n- Severe & spreading redness or extreme heat\n- Pus/foul-smelling discharge\n- High fever or intense throbbing pain/swelling\n\n❓ **Question:** Do you have 1 or more of these side effect symptoms?",
+    "timestamp": 1788103108300,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T15:18:28.385564+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNjcyNzlCODdFQkNBQ0VGMUQxAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "Which procedure did you get? Please select the option you need aftercare instructions for:",
+    "timestamp": 1788103099273,
+    "direction": "outgoing",
+    "status": "sent",
+    "created_at": "2026-08-30T15:18:19.351909+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFCODgwOERGMEVCQUVFQTlGRUIA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Tattoo Aftercare",
+    "timestamp": 1788103106000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:18:27.665558+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGMkVBNTRBN0RGMjg2MUQ4MzkA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "⚠️ Yes, I do",
+    "timestamp": 1788103110000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T15:18:31.850653+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNDQxQzNGMUU2N0U4REI4MDhEAA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "⚠️ **Important Notice!**\n\nIf you are experiencing symptoms of side effects or infection, please contact our studio specialists immediately.\n\nClick the button below to inform our expert about your condition:",
+    "timestamp": 1788103112590,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T15:18:33.035972+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE2MkU5NENCNUZCQTlEQzdCNzMA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Bakım",
+    "timestamp": 1788122386000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T20:39:50.853796+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNDcwNTI4RTU1NTYxMDI4RUU2AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "İşleminiz neydi? Lütfen bakım kılavuzunu almak istediğiniz uygulamayı seçiniz:",
+    "timestamp": 1788122391873,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T20:39:52.179896+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEyMTAwNTY1MTM2RENBMzFBQTUA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "🎨 Dövme Bakımı",
+    "timestamp": 1788122394000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T20:39:55.926783+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNkNEOUU1NDEyOTVEQUU1RDQ0AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "🎨 **Cleopatra Ink - Dövme Bakım Kılavuzu**\n\n1. **İlk 3-4 Saat:** Stüdyoda takılan koruyucu folyoyu/bandı 3-4 saat sonra nazikçe çıkarın.\n2. **Yıkama:** Bölgeyi ılık su ve kokusuz antibakteriyel sabun ile nazikçe yıkayın, temiz bir kağıt havlu ile tampon yaparak kurulayın (asla sürtmeyin).\n3. **Krem:** Önerilen bakım kremini günde 3-4 defa çok ince bir tabaka halinde sürün.\n4. **Dikkat Edilmesi Gerekenler:** İlk 2 hafta havuza, denize, saunaya girmeyin; doğrudan güneş ışığından koruyun ve oluşan kabukları kesinlikle soymayın.\n\n⚠️ **Yan Etki Belirtileri:**\n- Bölgede aşırı ve giderek artan sıcaklık/kızarıklık\n- İltihaplı/kötü kokulu akıntı\n- Yüksek ateş veya şiddetli zonklama/şişlik\n\n❓ **Soru:** Yukarıdaki yan etki belirtilerinden 1 veya daha fazlasına sahip misiniz?",
+    "timestamp": 1788122396539,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T20:39:56.619954+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkEwN0U5NEJGOEFDMUFEMDg2NDYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "⚠️ Evet, var",
+    "timestamp": 1788122401000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-30T20:40:02.953684+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAERgSNkNFQzQ1MEQ0NEE4RjlGRjM3AA==",
+    "from": "905343635307",
+    "to": "905054933081",
+    "text": "⚠️ **Önemli Uyarı!**\n\nYan etki veya enfeksiyon belirtisi hissettiğinizde stüdyo uzmanlarımızla hemen iletişime geçmeniz gerekmektedir.\n\nLütfen aşağıdaki butona tıklayarak durumunuzu ana hat üzerinden stüdyo uzmanımıza bildirin:",
+    "timestamp": 1788122403985,
+    "direction": "outgoing",
+    "status": "delivered",
+    "created_at": "2026-08-30T20:40:04.072495+00:00"
+  },
+  {
+    "id": "out-1788214242764-1",
+    "from": "studio",
+    "to": "905054933081",
+    "senderName": "Stüdyo",
+    "text": "[Şablon: cleopatra_refresh_eligibility_1y] (a, b, c)",
+    "timestamp": 1788214242764,
+    "type": "text",
+    "direction": "outgoing"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFBMTE0MjdBREYwNDNBNDNCNjEA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "Send Photo",
+    "timestamp": 1788214270000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-31T22:11:11.947848+00:00"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkE1OEVEQTkwMzBFMzAyRUUxQkEA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "STOP",
+    "timestamp": 1788214282000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-08-31T22:11:23.599526+00:00"
+  },
+  {
+    "id": "out-1788215694276-302",
+    "from": "studio",
+    "to": "905054933081",
+    "senderName": "Stüdyo",
+    "text": "[Şablon: tattoo_reengagement_tr_redirect] (burak, %25, burak)",
+    "timestamp": 1788215694276,
+    "type": "text",
+    "direction": "outgoing"
+  },
+  {
+    "id": "out-1788216481174-323",
+    "from": "studio",
+    "to": "905455064024",
+    "senderName": "Stüdyo",
+    "text": "[Şablon: cleopatra_special_campaign_25] (adsa, asdsa, adsa, asda, asda)",
+    "timestamp": 1788216481174,
+    "type": "text",
+    "direction": "outgoing"
+  },
+  {
+    "id": "wamid.HBgMOTA1MDU0OTMzMDgxFQIAEhgUMkFGMkQ0NkMyNjIxMzg5REE1NTYA",
+    "from": "905054933081",
+    "to": "905343635307",
+    "text": "İletişim",
+    "timestamp": 1788270866000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-09-01T13:54:30.376628+00:00"
+  },
+  {
+    "id": "out-1788385581268-640",
+    "from": "studio",
+    "to": "905455064024",
+    "senderName": "Stüdyo",
+    "text": "[Şablon: cleopatra_holiday_oktoberfest_25_img] (asda, asda, asda, asd, asd)",
+    "timestamp": 1788385581268,
+    "type": "text",
+    "direction": "outgoing"
+  },
+  {
+    "id": "out-1788385608638-493",
+    "from": "studio",
+    "to": "905054933081",
+    "senderName": "Stüdyo",
+    "text": "[Şablon: cleopatra_holiday_oktoberfest_25_img] (harunum, asda, asda, asd, asd)",
+    "timestamp": 1788385608638,
+    "type": "text",
+    "direction": "outgoing"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhgWM0VCMEQ2MTIwMENEQTNDNkJEQTU2NgA=",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "DUR",
+    "timestamp": 1788386394000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-09-02T21:59:56.794978+00:00"
+  },
+  {
+    "id": "out-1788386545075-897",
+    "from": "studio",
+    "to": "905455064024",
+    "senderName": "Stüdyo",
+    "text": "[Şablon: cleopatra_special_campaign_25_img] (asdas, asdas, asdas, asdas, asdas)",
+    "timestamp": 1788386545075,
+    "type": "text",
+    "direction": "outgoing"
+  },
+  {
+    "id": "out-1788387746371-569",
+    "from": "studio",
+    "to": "905455064024",
+    "senderName": "Stüdyo",
+    "text": "[Şablon: cleopatra_holiday_oktoberfest_25_img] (sdfs, sfds, sdf, sdf, sdfsd)",
+    "timestamp": 1788387746371,
+    "type": "text",
+    "direction": "outgoing"
+  },
+  {
+    "id": "wamid.HBgMOTA1NDU1MDY0MDI0FQIAEhgWM0VCMDk3QzVFNTNEQ0U2NjY2ODNDMwA=",
+    "from": "905455064024",
+    "to": "905343635307",
+    "text": "DUR",
+    "timestamp": 1788387762000,
+    "direction": "incoming",
+    "status": "received",
+    "created_at": "2026-09-02T22:22:43.824026+00:00"
+  },
+  {
+    "id": "out-1788387807903-100",
+    "from": "studio",
+    "to": "905455064024",
+    "senderName": "Stüdyo",
+    "text": "[Şablon: cleopatra_holiday_oktoberfest_25_img] (asdsa, asd, asdas, asda, asda)",
+    "timestamp": 1788387807903,
+    "type": "text",
+    "direction": "outgoing"
+  }
+]

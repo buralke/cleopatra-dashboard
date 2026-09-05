@@ -1,0 +1,23 @@
+# Binaries
+cloudflared.exe
+*.exe
+
+# Logs
+*.log
+cloudflare*.log
+ngrok*.log
+serveo*.log
+pinggy*.log
+tunnel*.log
+lhr.log
+lt.log
+untun.log
+
+# Node & OS
+node_modules/
+.DS_Store
+Thumbs.db
+.temp/
+
+# Active Tunnel Temporary Text
+active_tunnel_url.txt

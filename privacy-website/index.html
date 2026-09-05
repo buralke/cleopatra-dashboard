@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gizlilik Sözleşmesi | Cleopatra Rezervasyon Takipçisi</title>
+  <meta name="description" content="Cleopatra Rezervasyon Takipçisi Chrome Eklentisi Gizlilik Politikası ve KVKK / GDPR Bilgilendirme Metni">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icon.png">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Background Glows -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <img src="icon.png" alt="Cleopatra Logo" class="brand-logo">
+        <div>
+          <span class="brand-title">Cleopatra Ink</span>
+          <span class="brand-subtitle" data-tr="Rezervasyon Takip Eklentisi" data-en="Reservation Tracking Extension">Rezervasyon Takip Eklentisi</span>
+        </div>
+      </a>
+
+      <!-- Controls & Actions -->
+      <div class="nav-controls">
+        <div class="search-wrapper">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Sözleşmede ara..." data-tr="Sözleşmede ara..." data-en="Search policy...">
+        </div>
+
+        <button id="langToggle" class="btn-icon" title="Dil Değiştir / Switch Language">
+          🌐 <span class="lang-label">EN</span>
+        </button>
+
+        <button id="themeToggle" class="btn-icon" title="Tema Değiştir / Toggle Theme">
+          <span class="theme-icon">☀️</span>
+          <span class="btn-label" data-tr="Açık" data-en="Light">Açık</span>
+        </button>
+
+        <button id="printBtn" class="btn-icon" title="Yazdır veya PDF Kaydet">
+          🖨️ <span data-tr="Yazdır" data-en="Print">Yazdır</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-wrapper">
+
+    <!-- Hero Header -->
+    <section class="hero-section">
+      <div class="badge-wrapper">
+        🔒 <span data-tr="Resmi Gizlilik ve Veri Güvenliği Politikası" data-en="Official Privacy & Data Protection Policy">Resmi Gizlilik ve Veri Güvenliği Politikası</span>
+      </div>
+      <h1 class="hero-title" data-tr="Cleopatra Rezervasyon Takipçisi Gizlilik Sözleşmesi" data-en="Cleopatra Reservation Tracker Privacy Policy">
+        Cleopatra Rezervasyon Takipçisi Gizlilik Sözleşmesi
+      </h1>
+      <p class="hero-subtitle" data-tr="Verilerinizin güvenliği ve gizliliği en yüksek önceliğimizdir. Eklentimizin verilerinizi nasıl işlediğini, sakladığını ve koruduğunu şeffaf bir şekilde açıklıyoruz." data-en="Your data security and privacy are our top priorities. We transparently explain how our extension processes, stores, and protects your information.">
+        Verilerinizin güvenliği ve gizliliği en yüksek önceliğimizdir. Eklentimizin verilerinizi nasıl işlediğini, sakladığını ve koruduğunu şeffaf bir şekilde açıklıyoruz.
+      </p>
+
+      <div class="meta-info">
+        <div class="meta-item">
+          📅 <span data-tr="Son Güncelleme: 5 Ağustos 2026" data-en="Last Updated: August 5, 2026">Son Güncelleme: 5 Ağustos 2026</span>
+        </div>
+        <div class="meta-item">
+          📌 <span data-tr="Sürüm: v1.0" data-en="Version: v1.0">Sürüm: v1.0</span>
+        </div>
+        <div class="meta-item">
+          🛡️ <span data-tr="KVKK & GDPR Uyumlu" data-en="KVKK & GDPR Compliant">KVKK & GDPR Uyumlu</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Principles Summary Cards -->
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-icon">🛡️</div>
+        <h3 class="summary-title" data-tr="Veri Minimalizmi" data-en="Data Minimization">Veri Minimalizmi</h3>
+        <p class="summary-desc" data-tr="Sadece eklentinin rezervasyon takibi yapabilmesi için zorunlu olan teknik veriler işlenir." data-en="Only technical data essential for reservation tracking functionality is processed.">
+          Sadece eklentinin rezervasyon takibi yapabilmesi için zorunlu olan teknik veriler işlenir.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-icon">💾</div>
+        <h3 class="summary-title" data-tr="Yerel Depolama" data-en="Local Storage">Yerel Depolama</h3>
+        <p class="summary-desc" data-tr="Oturum bilgileri ve tercihleriniz tarayıcınızın güvenli Chrome Storage alanında saklanır." data-en="Session tokens and preferences are stored securely in your browser's Chrome Storage.">
+          Oturum bilgileri ve tercihleriniz tarayıcınızın güvenli Chrome Storage alanında saklanır.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-icon">🔐</div>
+        <h3 class="summary-title" data-tr="Güvenli Senkronizasyon" data-en="Secure Sync">Güvenli Senkronizasyon</h3>
+        <p class="summary-desc" data-tr="Sunucu haberleşmeleri SSL/TLS şifrelemesi ile Supabase altyapısı üzerinden gerçekleşir." data-en="Server communications are encrypted via SSL/TLS over secure Supabase infrastructure.">
+          Sunucu haberleşmeleri SSL/TLS şifrelemesi ile Supabase altyapısı üzerinden gerçekleşir.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-icon">🚫</div>
+        <h3 class="summary-title" data-tr="Üçüncü Tarafa Satılmaz" data-en="No Data Selling">Üçüncü Tarafa Satılmaz</h3>
+        <p class="summary-desc" data-tr="Kullanıcı verileri hiçbir şart altında reklam verenlere veya 3. kişilere aktarılmaz." data-en="User data is never sold or shared with advertisers or third-party marketers under any circumstances.">
+          Kullanıcı verileri hiçbir şart altında reklam verenlere veya 3. kişilere aktarılmaz.
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Content Layout (Sidebar + Body) -->
+    <div class="content-layout">
+
+      <!-- Sticky Table of Contents Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-title" data-tr="İçindekiler" data-en="Table of Contents">İçindekiler</div>
+        <ul class="toc-list">
+          <li>
+            <a href="#section-1" class="toc-link active">
+              <span class="toc-num">01.</span>
+              <span data-tr="Genel Bakış" data-en="Overview">Genel Bakış</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-2" class="toc-link">
+              <span class="toc-num">02.</span>
+              <span data-tr="Toplanan Veriler" data-en="Collected Data">Toplanan Veriler</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-3" class="toc-link">
+              <span class="toc-num">03.</span>
+              <span data-tr="Chrome Storage Kullanımı" data-en="Chrome Storage Usage">Chrome Storage Kullanımı</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-4" class="toc-link">
+              <span class="toc-num">04.</span>
+              <span data-tr="Supabase & İletişim" data-en="Supabase & Network">Supabase & İletişim</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-5" class="toc-link">
+              <span class="toc-num">05.</span>
+              <span data-tr="Eklenti İzinleri" data-en="Permissions">Eklenti İzinleri</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-6" class="toc-link">
+              <span class="toc-num">06.</span>
+              <span data-tr="Veri Güvenliği" data-en="Data Security">Veri Güvenliği</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-7" class="toc-link">
+              <span class="toc-num">07.</span>
+              <span data-tr="Kullanıcı Hakları (KVKK/GDPR)" data-en="User Rights">Kullanıcı Hakları (KVKK/GDPR)</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-8" class="toc-link">
+              <span class="toc-num">08.</span>
+              <span data-tr="İletişim & Değişiklikler" data-en="Contact & Updates">İletişim & Değişiklikler</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Policy Content Body -->
+      <article class="policy-body">
+
+        <!-- Section 1 -->
+        <section id="section-1" class="policy-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-number">01.</span>
+              <span data-tr="Genel Bakış ve Kapsam" data-en="Overview and Scope">Genel Bakış ve Kapsam</span>
+            </h2>
+            <button class="copy-anchor-btn" title="Bölüm Bağlantısını Kopyala">🔗</button>
+          </div>
+          <div class="policy-content">
+            <div data-lang="tr">
+              <p>Bu Gizlilik Sözleşmesi, <strong>Cleopatra Rezervasyon Takipçisi</strong> Chrome Eklentisi ("Eklenti") tarafından sağlanan hizmetlerin kullanımı sırasında kişisel ve teknik verilerin toplanması, işlenmesi ve saklanması esaslarını düzenlemektedir.</p>
+              <p>Eklenti, Cleopatra Ink portalı (<code>t.cleopatraink.com</code>) kullanıcılarının rezervasyon durumlarını anlık takip etmelerine, oturum sürekliliğini sağlamalarına ve bildirim almalarına yardımcı olmak amacıyla tasarlanmış yardımcı bir tarayıcı aracıdır.</p>
+              <div class="policy-box">
+                <h4>💡 Temel Taahhüdümüz</h4>
+                <p>Eklentimiz gizliliğinize tam saygı gösterir. Kişisel kimlik verileriniz, ödeme bilgileriniz veya tarama geçmişiniz kesinlikle izlenmez, toplanmaz veya üçüncü taraflara satılmaz.</p>
+              </div>
+            </div>
+
+            <div data-lang="en" style="display:none;">
+              <p>This Privacy Policy governs the terms regarding the collection, processing, and retention of personal and technical data during the use of the <strong>Cleopatra Reservation Tracker</strong> Chrome Extension ("Extension").</p>
+              <p>The Extension is an assistant browser tool designed to help users of the Cleopatra Ink portal (<code>t.cleopatraink.com</code>) track real-time reservation statuses, preserve active session persistence, and receive instant notifications.</p>
+              <div class="policy-box">
+                <h4>💡 Our Core Commitment</h4>
+                <p>Our Extension strictly respects your privacy. Your personal identity information, payment details, or general browsing history are never tracked, collected, or sold to third parties.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="section-2" class="policy-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-number">02.</span>
+              <span data-tr="Toplanan Veriler ve Kullanım Amaçları" data-en="Collected Data & Purposes">Toplanan Veriler ve Kullanım Amaçları</span>
+            </h2>
+            <button class="copy-anchor-btn" title="Bölüm Bağlantısını Kopyala">🔗</button>
+          </div>
+          <div class="policy-content">
+            <div data-lang="tr">
+              <p>Eklenti, sadece işlevselliğin yürütülebilmesi adına sınırlı ve teknik nitelikteki verileri işler:</p>
+              <ul>
+                <li><strong>Oturum Bilgileri (Session Tokens):</strong> Cleopatra Ink portalındaki aktif oturumunuzun kapanmaması ve arka planda rezervasyon kontrollerinin yapılabilmesi için gereken oturum doğrulama anahtarları.</li>
+                <li><strong>Rezervasyon Takip Verileri:</strong> Takibe aldığınız rezervasyon numaraları, durum değişiklikleri ve bildirim geçmişi logları.</li>
+                <li><strong>Kullanıcı Tercihleri:</strong> Bildirim ses ayarları, kontrol aralığı (alarm) tercihleri ve arayüz tema ayarlarınız.</li>
+              </ul>
+              <div class="policy-box policy-box-info">
+                <h4>🎯 Veri Kullanım Amacı</h4>
+                <p>İşlenen veriler yalnızca portal oturumunuzu canlı tutmak, rezervasyon durum güncellemelerini anında size bildirmek ve eklenti ayarlarınızı hatırlamak amacıyla kullanılır.</p>
+              </div>
+            </div>
+
+            <div data-lang="en" style="display:none;">
+              <p>The Extension processes limited and purely technical data necessary to provide its features:</p>
+              <ul>
+                <li><strong>Session Tokens:</strong> Authentication tokens required to keep your Cleopatra Ink portal session active and run background reservation checks.</li>
+                <li><strong>Reservation Tracking Data:</strong> Tracked reservation IDs, status changes, and notification logs.</li>
+                <li><strong>User Preferences:</strong> Notification sound configurations, alarm check interval settings, and interface theme choices.</li>
+              </ul>
+              <div class="policy-box policy-box-info">
+                <h4>🎯 Purpose of Data Processing</h4>
+                <p>Processed data is used solely to maintain your portal session, dispatch real-time status alerts, and persist your extension configurations.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="section-3" class="policy-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-number">03.</span>
+              <span data-tr="Chrome Yerel Depolama (chrome.storage.local)" data-en="Chrome Storage Usage">Chrome Yerel Depolama (chrome.storage.local)</span>
+            </h2>
+            <button class="copy-anchor-btn" title="Bölüm Bağlantısını Kopyala">🔗</button>
+          </div>
+          <div class="policy-content">
+            <div data-lang="tr">
+              <p>Eklenti, verilerinizi güvenli bir şekilde saklamak için Google Chrome'un <code>chrome.storage.local</code> API'sini kullanmaktadır.</p>
+              <p>Bu depolama alanı tamamen sizin cihazınıza özeldir ve diğer web siteleri veya yetkisiz eklentiler tarafından erişilemez. Tarayıcı önbelleğinizi temizlediğinizde veya eklentiyi kaldırdığınızda bu veriler cihazınızdan tamamen silinir.</p>
+            </div>
+
+            <div data-lang="en" style="display:none;">
+              <p>The Extension uses Google Chrome's <code>chrome.storage.local</code> API to store your settings and operational state securely.</p>
+              <p>This storage space resides locally on your device and cannot be accessed by other websites or unauthorized extensions. Clearing your browser cache or uninstalling the extension permanently wipes this data from your device.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="section-4" class="policy-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-number">04.</span>
+              <span data-tr="Supabase Entegrasyonu ve Sunucu İletişimi" data-en="Supabase Integration & Server Traffic">Supabase Entegrasyonu ve Sunucu İletişimi</span>
+            </h2>
+            <button class="copy-anchor-btn" title="Bölüm Bağlantısını Kopyala">🔗</button>
+          </div>
+          <div class="policy-content">
+            <div data-lang="tr">
+              <p>Eklentimiz, arka plan rezervasyon senkronizasyonunu ve teknik durum kayıtlarını güvenli bir şekilde yürütmek adına <strong>Supabase</strong> (<code>*.supabase.co</code>) veritabanı altyapısını kullanmaktadır.</p>
+              <p>Sunucu ile yapılan tüm veri alışverişleri 256-bit SSL/TLS HTTPS uçtan uca şifrelenmiş kanallar üzerinden gerçekleştirilir. Sunucuda saklanan kayıtlar yalnızca teknik oturum kimliği seviyesindedir.</p>
+            </div>
+
+            <div data-lang="en" style="display:none;">
+              <p>Our Extension utilizes <strong>Supabase</strong> (<code>*.supabase.co</code>) cloud infrastructure to securely handle background reservation sync and technical error logs.</p>
+              <p>All data exchanged between the Extension and server endpoints is transmitted over 256-bit SSL/TLS HTTPS encrypted channels. Records saved on the server are strictly restricted to technical session scope.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="section-5" class="policy-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-number">05.</span>
+              <span data-tr="Tarayıcı İzinleri (Permissions)" data-en="Extension Permissions">Tarayıcı İzinleri (Permissions)</span>
+            </h2>
+            <button class="copy-anchor-btn" title="Bölüm Bağlantısını Kopyala">🔗</button>
+          </div>
+          <div class="policy-content">
+            <div data-lang="tr">
+              <p>Eklentinin çalışabilmesi için Chrome Manifest v3 standartlarına uygun olarak aşağıdaki izinler talep edilir:</p>
+              <ul>
+                <li><strong><code>storage</code>:</strong> Kullanıcı tercihlerini ve rezervasyon takip listesini yerelde saklamak için.</li>
+                <li><strong><code>alarms</code>:</strong> Arka planda belirlediğiniz dakikada bir rezervasyon kontrolünü tetiklemek için.</li>
+                <li><strong><code>host_permissions (t.cleopatraink.com/*)</code>:</strong> Cleopatra Ink portalındaki rezervasyon verilerini sorgulamak ve oturumu açık tutmak için.</li>
+                <li><strong><code>host_permissions (*.supabase.co/*)</code>:</strong> Güvenli senkronizasyon sunucusuna erişim sağlamak için.</li>
+              </ul>
+            </div>
+
+            <div data-lang="en" style="display:none;">
+              <p>To operate effectively, the Extension requests the following strict Chrome Manifest v3 permissions:</p>
+              <ul>
+                <li><strong><code>storage</code>:</strong> To save user configurations and tracked items locally.</li>
+                <li><strong><code>alarms</code>:</strong> To periodically trigger background reservation check alarms.</li>
+                <li><strong><code>host_permissions (t.cleopatraink.com/*)</code>:</strong> To query reservation status and keep user session active on the portal.</li>
+                <li><strong><code>host_permissions (*.supabase.co/*)</code>:</strong> To connect with the secure database sync endpoint.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="section-6" class="policy-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-number">06.</span>
+              <span data-tr="Veri Güvenliği ve Koruması" data-en="Data Security Standard">Veri Güvenliği ve Koruması</span>
+            </h2>
+            <button class="copy-anchor-btn" title="Bölüm Bağlantısını Kopyala">🔗</button>
+          </div>
+          <div class="policy-content">
+            <div data-lang="tr">
+              <p>Verilerinizin güvenliğini sağlamak için endüstri standardı güvenlik önlemleri uygulanmaktadır:</p>
+              <ul>
+                <li><strong>Content Security Policy (CSP):</strong> Eklenti kodları harici güvenliği doğrulanmamış kodların (eval/inline scripts) çalıştırılmasını engelleyen katı CSP kuralları ile korunur.</li>
+                <li><strong>Sadece İlgili Domain Koruması:</strong> Eklenti yalnızca yetkilendirildiği <code>t.cleopatraink.com</code> adresinde aktifleşir, ziyaret ettiğiniz diğer web sitelerine kesinlikle müdahale etmez.</li>
+              </ul>
+            </div>
+
+            <div data-lang="en" style="display:none;">
+              <p>Industry-standard security enforcement is active to protect your operational data:</p>
+              <ul>
+                <li><strong>Content Security Policy (CSP):</strong> The extension codebase strictly enforces Manifest v3 CSP rules blocking inline script injection or unverified external code executions.</li>
+                <li><strong>Scoped Domain Execution:</strong> The extension executes only within its assigned scope of <code>t.cleopatraink.com</code> and never accesses or modifies any other websites you visit.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="section-7" class="policy-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-number">07.</span>
+              <span data-tr="Kullanıcı Hakları (KVKK & GDPR)" data-en="User Rights (KVKK & GDPR)">Kullanıcı Hakları (KVKK & GDPR)</span>
+            </h2>
+            <button class="copy-anchor-btn" title="Bölüm Bağlantısını Kopyala">🔗</button>
+          </div>
+          <div class="policy-content">
+            <div data-lang="tr">
+              <p>6698 sayılı KVKK (Kişisel Verilerin Korunması Kanunu) ve GDPR kapsamında aşağıdaki haklara sahipsiniz:</p>
+              <ul>
+                <li><strong>Verileri Silme Hakkı:</strong> Eklenti ayarlarından "Verileri Sıfırla" butonuna tıklayarak veya eklentiyi silerek tüm yerel verilerinizi anında yok edebilirsiniz.</li>
+                <li><strong>Veri Erişimi ve Bilgi Alma:</strong> Saklanan teknik kayıtlarınız hakkında bilgi talep etmek için bizimle iletişime geçebilirsiniz.</li>
+              </ul>
+            </div>
+
+            <div data-lang="en" style="display:none;">
+              <p>Under GDPR and applicable Data Protection laws, you reserve full ownership over your data:</p>
+              <ul>
+                <li><strong>Right to Erasure (To be Forgotten):</strong> You can wipe all stored data instantly by using the "Reset Data" option in the extension or simply removing the extension from Chrome.</li>
+                <li><strong>Right of Access:</strong> You may request information regarding any technical records associated with your session logs by contacting support.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="section-8" class="policy-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-number">08.</span>
+              <span data-tr="Değişiklikler ve İletişim" data-en="Policy Changes & Contact">Değişiklikler ve İletişim</span>
+            </h2>
+            <button class="copy-anchor-btn" title="Bölüm Bağlantısını Kopyala">🔗</button>
+          </div>
+          <div class="policy-content">
+            <div data-lang="tr">
+              <p>Bu Gizlilik Sözleşmesi, eklentiye yeni özellikler eklendikçe veya yasal gereksinimler doğrultusunda güncellenebilir. Güncel sözleşme her zaman bu web sayfasında yayınlanır.</p>
+              <p>Gizlilik politikamız veya eklenti kullanımı ile ilgili sorularınız için bizimle iletişime geçebilirsiniz:</p>
+              <div class="policy-box">
+                <h4>✉️ İletişim Bilgileri</h4>
+                <p><strong>E-posta:</strong> privacy@cleopatraink.com</p>
+                <p><strong>Web Sitesi:</strong> <a href="https://t.cleopatraink.com" target="_blank" rel="noopener" style="color: var(--accent-gold);">https://t.cleopatraink.com</a></p>
+              </div>
+            </div>
+
+            <div data-lang="en" style="display:none;">
+              <p>This Privacy Policy may be updated periodically to reflect changes in extension functionality or legal compliance. The latest version will always be accessible on this page.</p>
+              <p>If you have any questions or privacy inquiries regarding our Extension, please reach out to us:</p>
+              <div class="policy-box">
+                <h4>✉️ Contact Details</h4>
+                <p><strong>Email:</strong> privacy@cleopatraink.com</p>
+                <p><strong>Website:</strong> <a href="https://t.cleopatraink.com" target="_blank" rel="noopener" style="color: var(--accent-gold);">https://t.cleopatraink.com</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="#section-1" class="footer-link" data-tr="Gizlilik Politikası" data-en="Privacy Policy">Gizlilik Politikası</a>
+        <a href="https://t.cleopatraink.com" target="_blank" rel="noopener" class="footer-link" data-tr="Cleopatra Portal" data-en="Cleopatra Portal">Cleopatra Portal</a>
+        <a href="mailto:privacy@cleopatraink.com" class="footer-link" data-tr="Destek & İletişim" data-en="Support & Contact">Destek & İletişim</a>
+      </div>
+      <p>© 2026 Cleopatra Ink. Tüm hakları saklıdır. / All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTop" class="back-to-top" title="Yukarı Çık / Back to Top">
+    ▲
+  </button>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast-notification">
+    ℹ️ <span class="toast-msg">Bildirim</span>
+  </div>
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

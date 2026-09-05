@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cleopatra Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: #0B0E14;
+      font-family: 'Inter', sans-serif;
+      width: 480px;
+      margin: 0; padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* ── LIQUID GLASS MAIN CONTAINER ── */
+    .app-viewport {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      backdrop-filter: blur(28px) saturate(210%);
+      -webkit-backdrop-filter: blur(28px) saturate(210%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    /* CUSTOM SLEEK SCROLLBARS */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, rgba(251,162,0,0.5), rgba(19,168,158,0.5));
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(251,162,0,0.8); }
+
+    /* ── ANIMATED BACKGROUND ── */
+    .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(75px); opacity: 0.25; animation: drift 8s ease-in-out infinite alternate; }
+    .orb-1 { width: 280px; height: 280px; background: #FBA200; top: -90px; left: -70px; animation-delay: 0s; }
+    .orb-2 { width: 220px; height: 220px; background: #13A89E; bottom: -70px; right: -50px; animation-delay: -3s; }
+    .orb-3 { width: 160px; height: 160px; background: #FCB430; top: 35%; left: 25%; animation-delay: -5s; }
+    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(25px,15px) scale(1.08); } }
+
+    /* ── SCREEN LOGIC ── */
+    .screen { display: none; position: relative; z-index: 1; }
+
+    /* ══════════════════════════════════════
+       LOGIN SCREEN
+    ══════════════════════════════════════ */
+    #login-screen {
+      min-height: 400px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 32px 24px;
+    }
+
+    .brand { text-align: center; margin-bottom: 28px; }
+    .brand-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, #FBA200, #FCB430);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px; font-size: 24px;
+      box-shadow: 0 0 28px rgba(251,162,0,0.45);
+      color: #000000;
+    }
+    .brand h1 { font-size: 1.2rem; font-weight: 700; color: #ffffff; letter-spacing: -0.02em; }
+    .brand p  { font-size: 0.75rem; color: #939799; margin-top: 3px; }
+
+    .glass-card {
+      width: 100%;
+      background: rgba(20,24,33,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px; padding: 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .login-form { display: flex; flex-direction: column; gap: 13px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    label { font-size: 0.68rem; font-weight: 600; color: #939799; letter-spacing: 0.07em; text-transform: uppercase; }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"],
+    input[type="date"] {
+      width: 100%; padding: 11px 14px;
+      background: rgba(20,24,33,0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px; color: #ffffff;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      outline: none; transition: all 0.2s ease;
+      color-scheme: dark; cursor: pointer;
+    }
+    input[type="date"]:hover {
+      border-color: rgba(251,162,0,0.5);
+      background: rgba(20,24,33,0.9);
+    }
+    input[type="date"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="text"]:focus {
+      border-color: #FBA200;
+      box-shadow: 0 0 0 3px rgba(251,162,0,0.2);
+    }
+    .btn-primary {
+      width: 100%; padding: 12px;
+      background: linear-gradient(135deg, #FBA200, #FCB430);
+      color: #000000; border: none; border-radius: 14px;
+      font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.9rem;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(251,162,0,0.4);
+      margin-top: 2px;
+    }
+    .btn-primary:hover { opacity: 0.95; box-shadow: 0 6px 22px rgba(251,162,0,0.5); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+    /* ══════════════════════════════════════
+       DASHBOARD SCREEN
+    ══════════════════════════════════════ */
+    #dashboard-screen { padding: 12px; }
+
+    /* TOPBAR */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(20,24,33,0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px; padding: 12px 16px; margin-bottom: 10px;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .topbar-info h2 { font-size: 0.88rem; font-weight: 700; color: #ffffff; letter-spacing: -0.01em; }
+    .sub-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 3px; font-size: 0.67rem; font-weight: 500;
+      color: #FBA200; background: rgba(251,162,0,0.12);
+      border: 1px solid rgba(251,162,0,0.25);
+      border-radius: 20px; padding: 2px 8px;
+    }
+    .sub-badge.warning { color: #fbbf24; background: rgba(251,191,36,0.09); border-color: rgba(251,191,36,0.22); }
+    .sub-badge.expired  { color: #f87171; background: rgba(248,113,113,0.09); border-color: rgba(248,113,113,0.22); }
+
+    .btn-logout {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: #939799; padding: 6px 13px; border-radius: 10px;
+      font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 500;
+      cursor: pointer; transition: background 0.2s, color 0.2s; white-space: nowrap;
+    }
+    .btn-logout:hover { background: rgba(255,255,255,0.1); color: #ffffff; }
+
+    /* ── TAB NAVIGATION ── */
+    .nav-tabs {
+      display: flex; gap: 6px; margin-bottom: 12px;
+      background: rgba(20,24,33,0.6); padding: 4px;
+      border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .tab-btn {
+      flex: 1; padding: 8px 10px; border: none; background: transparent;
+      color: #939799; font-family: 'Inter', sans-serif; font-size: 0.76rem;
+      font-weight: 600; border-radius: 10px; cursor: pointer;
+      transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .tab-btn:hover { color: #ffffff; background: rgba(255,255,255,0.04); }
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(251,162,0,0.25), rgba(251,162,0,0.12));
+      color: #FBA200; border: 1px solid rgba(251,162,0,0.4);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    /* FILTER PANEL */
+    .filter-panel {
+      background: linear-gradient(145deg, rgba(20,24,33,0.85), rgba(20,24,33,0.65));
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(251,162,0,0.25);
+      border-radius: 20px; padding: 18px; margin-bottom: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+      position: relative; overflow: visible;
+    }
+    .filter-panel::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(251,162,0,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .date-row { display: flex; gap: 12px; margin-bottom: 14px; position: relative; z-index: 1; }
+    .date-row .form-group { flex: 1; }
+    .date-row label {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 0.68rem; font-weight: 700; color: #FBA200;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;
+    }
+
+    /* ALERTS */
+    .alert {
+      padding: 10px 14px; border-radius: 12px; font-size: 0.8rem;
+      line-height: 1.4; margin-bottom: 8px; display: none;
+    }
+    .alert-error   { background: rgba(239,68,68,0.09); border: 1px solid rgba(239,68,68,0.22); color: #fca5a5; }
+    .alert-success { background: rgba(34,197,94,0.09); border: 1px solid rgba(34,197,94,0.22); color: #86efac; }
+
+    /* LOADING */
+    #loading { display: none; text-align: center; padding: 18px; color: #475569; font-size: 0.78rem; }
+    .spinner {
+      display: inline-block; width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.08);
+      border-top-color: #6366f1; border-radius: 50%;
+      animation: spin 0.7s linear infinite; margin-right: 6px; vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* RESULTS */
+    .result-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 6px; padding: 0 2px;
+      font-size: 0.7rem; color: #475569;
+    }
+    #results { max-height: 310px; overflow-y: auto; padding-right: 3px; }
+    #results::-webkit-scrollbar { width: 3px; }
+    #results::-webkit-scrollbar-track { background: transparent; }
+    #results::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+    .res-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 12px 14px;
+      margin-bottom: 7px;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    }
+    .res-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.14);
+      transform: translateY(-1px);
+    }
+    .res-card-top {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 5px;
+    }
+    .res-card-top strong { font-size: 0.83rem; font-weight: 600; color: #e2e8f0; }
+    .badge-active {
+      font-size: 0.65rem; font-weight: 600;
+      background: rgba(110,231,183,0.1); color: #6ee7b7;
+      border: 1px solid rgba(110,231,183,0.2);
+      padding: 1px 7px; border-radius: 9999px;
+    }
+    .res-card-detail {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      font-size: 0.72rem; color: #475569;
+    }
+
+    /* ── ACTION BAR & SEARCH ── */
+    .action-bar {
+      display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px;
+      background: rgba(255,255,255,0.04); padding: 12px; border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .search-box { position: relative; width: 100%; }
+    .search-box input {
+      width: 100%; padding: 8px 12px 8px 34px; font-size: 0.8rem;
+      background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; color: #f8fafc; outline: none;
+    }
+    .search-box .search-icon {
+      position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+      font-size: 0.8rem; color: #64748b; pointer-events: none;
+    }
+
+    .bulk-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; font-size: 0.75rem; color: #94a3b8;
+    }
+    .select-all-wrap { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+    .bulk-actions { display: flex; gap: 6px; }
+
+    .btn-sm {
+      padding: 6px 10px; font-size: 0.72rem; font-weight: 600; border-radius: 8px;
+      border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-danger { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+    .btn-danger:hover { background: rgba(239,68,68,0.3); }
+    .btn-success { background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+    .btn-success:hover { background: rgba(34,197,94,0.3); }
+    .btn-secondary { background: rgba(255,255,255,0.08); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.12); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+
+    /* ── CHECKBOX CUSTOM ── */
+    input[type="checkbox"] {
+      accent-color: #FBA200; width: 15px; height: 15px; cursor: pointer;
+    }
+
+    /* ── MANAGEMENT LIST CARDS ── */
+    .manage-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 10px 12px; margin-bottom: 7px;
+      display: flex; gap: 10px; align-items: flex-start; transition: background 0.15s;
+    }
+    .manage-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); }
+    .manage-card.selected { background: rgba(251,162,0,0.12); border-color: rgba(251,162,0,0.35); }
+
+    .manage-card-body { flex: 1; min-width: 0; }
+    .manage-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .manage-card-title { font-size: 0.82rem; font-weight: 600; color: #f1f5f9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .manage-card-actions { display: flex; gap: 4px; }
+    .icon-btn {
+      background: transparent; border: none; color: #64748b; cursor: pointer;
+      padding: 3px 5px; border-radius: 6px; font-size: 0.8rem; transition: color 0.15s, background 0.15s;
+    }
+    .icon-btn:hover { color: #f1f5f9; background: rgba(255,255,255,0.1); }
+    .icon-btn.delete-btn:hover { color: #f87171; background: rgba(239,68,68,0.15); }
+
+    /* ── MODALS & DRAWERS ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(11,14,20,0.8); backdrop-filter: blur(8px);
+      z-index: 100; display: none; align-items: center; justify-content: center; padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: #141822; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; width: 100%; max-width: 400px; padding: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6); max-height: 90vh; overflow-y: auto;
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .modal-header h3 { font-size: 1rem; font-weight: 700; color: #f8fafc; }
+    .close-btn { background: transparent; border: none; color: #64748b; font-size: 1.2rem; cursor: pointer; }
+    .close-btn:hover { color: #fff; }
+
+    .tag-help { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; margin-bottom: 10px; }
+    .tag-chip {
+      background: rgba(19,168,158,0.18); color: #D0EDEB; border: 1px solid rgba(19,168,158,0.35);
+      border-radius: 6px; padding: 2px 6px; font-size: 0.68rem; cursor: pointer; user-select: none;
+    }
+    .tag-chip:hover { background: rgba(19,168,158,0.35); }
+
+    textarea {
+      width: 100%; padding: 10px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+      color: #f8fafc; font-family: 'Inter', sans-serif; font-size: 0.82rem;
+      resize: vertical; min-height: 80px; outline: none;
+    }
+    textarea:focus { border-color: rgba(251,162,0,0.6); }
+
+    .msg-preview-card {
+      background: rgba(0,0,0,0.3); border: 1px dashed rgba(255,255,255,0.15);
+      border-radius: 10px; padding: 10px; margin-top: 10px; font-size: 0.76rem; color: #cbd5e1;
+      max-height: 120px; overflow-y: auto; white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="app-viewport">
+
+  <!-- ══════════════ LOGIN ══════════════ -->
+  <div id="login-screen" class="screen">
+    <div class="brand">
+      <div class="brand-icon">🗓</div>
+      <h1>Cleopatra Panel</h1>
+      <p>Rezervasyon Takip Sistemi</p>
+    </div>
+    <div class="glass-card">
+      <form class="login-form" id="login-form" autocomplete="on">
+        <div class="form-group">
+          <label for="email">E-posta</label>
+          <input type="email" id="email" placeholder="kullanici@ornek.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Şifre</label>
+          <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <div id="login-error" class="alert alert-error"></div>
+        <button type="submit" class="btn-primary" id="login-btn">Giriş Yap</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════ DASHBOARD ══════════════ -->
+  <div id="dashboard-screen" class="screen">
+    <div class="topbar">
+      <div class="topbar-info">
+        <h2>Cleopatra Dashboard</h2>
+        <div class="sub-badge" id="sub-info-text">Yükleniyor...</div>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center;">
+        <button class="btn-logout" id="open-dashboard-btn" style="background: rgba(251,162,0,0.18); border-color: rgba(251,162,0,0.35); color: #FBA200;">🖥️ Full Dashboard</button>
+        <button class="btn-logout" id="logout-btn">Çıkış</button>
+      </div>
+    </div>
+
+    <!-- NAVIGATION TABS -->
+    <div class="nav-tabs">
+      <button class="tab-btn active" id="tab-cleopatra-btn">🔄 Cleopatra Sync</button>
+      <button class="tab-btn" id="tab-supabase-btn">💬 Mesaj & Bilgilendirme</button>
+    </div>
+
+    <!-- TAB 1: CLEOPATRA SYNC VIEW -->
+    <div id="view-cleopatra">
+      <div class="filter-panel">
+        <div class="date-row">
+          <div class="form-group">
+            <label for="start-date"><span>📅</span> Başlangıç Tarihi</label>
+            <input type="date" id="start-date" class="stylish-date-input">
+          </div>
+          <div class="form-group">
+            <label for="end-date"><span>🏁</span> Bitiş Tarihi</label>
+            <input type="date" id="end-date" class="stylish-date-input">
+          </div>
+        </div>
+        <button class="btn-primary" id="fetch-btn">Rezervasyonları Getir & Senkronize Et</button>
+      </div>
+
+      <div id="loading"><span class="spinner"></span>Veriler yükleniyor...</div>
+      <div id="error-msg" class="alert alert-error"></div>
+      <div id="save-msg" class="alert alert-success"></div>
+
+      <div id="results-wrap" style="display:none;">
+        <div class="result-header">
+          <span id="result-summary"></span>
+        </div>
+        <div id="results"></div>
+      </div>
+    </div>
+
+    <!-- TAB 2: SUPABASE MANAGEMENT VIEW -->
+    <div id="view-supabase" style="display:none;">
+      <div class="action-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="supabase-search" placeholder="İsim, telefon veya rez no ile ara...">
+        </div>
+        <div class="bulk-toolbar">
+          <label class="select-all-wrap">
+            <input type="checkbox" id="select-all-cb">
+            <span>Tümünü Seç</span>
+          </label>
+          <div class="bulk-actions">
+            <button class="btn-sm btn-success" id="btn-bulk-msg" disabled>💬 Mesaj Gönder (<span id="selected-count">0</span>)</button>
+            <button class="btn-sm btn-danger" id="btn-bulk-delete" disabled>🗑️ Sil</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="supabase-loading" style="display:none;" class="alert">
+        <span class="spinner"></span> Supabase kayıtları yükleniyor...
+      </div>
+      <div id="supabase-alert" class="alert"></div>
+
+      <div id="supabase-list" style="max-height: 290px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ MODALS ══════════════ -->
+
+  <!-- EDIT MODAL -->
+  <div id="edit-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Rezervasyon Düzenle</h3>
+        <button class="close-btn" id="close-edit-modal">&times;</button>
+      </div>
+      <form id="edit-form" class="login-form">
+        <input type="hidden" id="edit-id">
+        <div class="form-group">
+          <label>Rezervasyon No</label>
+          <input type="text" id="edit-res-no" readonly style="opacity: 0.6; cursor: not-allowed;">
+        </div>
+        <div class="form-group">
+          <label>Müşteri Ad Soyad</label>
+          <input type="text" id="edit-name" required>
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="text" id="edit-phone" required>
+        </div>
+        <div class="form-group">
+          <label>Tarih</label>
+          <input type="text" id="edit-date" required>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 10px;">
+          <button type="button" class="btn-primary btn-secondary" id="cancel-edit-btn">İptal</button>
+          <button type="submit" class="btn-primary" id="save-edit-btn">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- BULK MESSAGE MODAL -->
+  <div id="msg-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Toplu Mesaj Gönder (<span id="msg-target-count">0</span> Kişi)</h3>
+        <button class="close-btn" id="close-msg-modal">&times;</button>
+      </div>
+      <div class="form-group">
+        <label>Mesaj Şablonu</label>
+        <div class="tag-help">
+          <span class="tag-chip" data-tag="{MusteriAdi}">{MusteriAdi}</span>
+          <span class="tag-chip" data-tag="{Telefon}">{Telefon}</span>
+          <span class="tag-chip" data-tag="{Tarih}">{Tarih}</span>
+          <span class="tag-chip" data-tag="{RezervasyonNo}">{RezervasyonNo}</span>
+        </div>
+        <textarea id="msg-template-input" placeholder="Merhaba {MusteriAdi}, {Tarih} tarihindeki {RezervasyonNo} numaralı rezervasyonunuz hakkında..."></textarea>
+      </div>
+
+      <div class="form-group" style="margin-top: 8px;">
+        <label>Canlı Önizleme (İlk Seçilen Alıcı)</label>
+        <div class="msg-preview-card" id="msg-preview">Şablon yazın...</div>
+      </div>
+
+      <div style="display: flex; gap: 8px; margin-top: 14px;">
+        <button type="button" class="btn-primary btn-secondary" id="copy-msg-btn">📋 Metni Kopyala</button>
+        <button type="button" class="btn-primary btn-success" id="send-whatsapp-btn" style="border-radius:14px;">💬 WhatsApp Başlat</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRM & ALERT MODAL -->
+  <div id="confirm-modal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 360px;">
+      <div class="modal-header">
+        <h3 id="confirm-modal-title">Onay</h3>
+        <button class="close-btn" id="close-confirm-modal">&times;</button>
+      </div>
+      <p id="confirm-modal-body" style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 18px; line-height: 1.5;"></p>
+      <div style="display: flex; gap: 8px; justify-content: flex-end;">
+        <button type="button" class="btn-primary btn-secondary" id="confirm-cancel-btn">İptal</button>
+        <button type="button" class="btn-primary btn-danger" id="confirm-ok-btn">Tamam</button>
+      </div>
+    </div>
+  </div>
+
+  </div> <!-- /app-viewport -->
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; flex-direction: column; gap: 8px; pointer-events: none; width: 90%; max-width: 380px;"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

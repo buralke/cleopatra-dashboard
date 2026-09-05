@@ -1,0 +1,184 @@
+================================================================================
+          CLEOPATRA STUDIO - META WHATSAPP INTEGRATION TECHNICAL DOSSIER
+================================================================================
+Oluşturulma Tarihi: 2026-08-14
+Proje Konumu: c:\Users\burak\Desktop\chromeEklentisi
+
+Bu dosya, uygulamada Meta (WhatsApp Cloud API / Graph API / Webhook) ile ilgili
+kullanılan tüm yapılandırmaları, erişim anahtarlarını, API endpoint'lerini,
+şablon çekme ve mesaj tetikleme mekanizmalarını ve Webhook sunucu mimarisini içerir.
+
+================================================================================
+1. META ERİŞİM BİLGİLERİ VE YAPILANDIRMA PARAMETRELERİ (CREDENTIALS & CONFIG)
+================================================================================
+
+[Meta Graph API Versiyonu]
+  - Base URL: https://graph.facebook.com/v20.0
+
+[WhatsApp Cloud API Telefon Numarası Kimliği (Phone Number ID)]
+  - Phone ID: 1259356973928757
+  - Tanımlandığı Yer: dashboard.html (id="metaPhoneId") / LocalStorage ("meta_phone_id")
+
+[WhatsApp İş Hesabı Kimliği (WABA ID)]
+  - WABA ID: 27800533569587222
+  - Tanımlandığı Yer: dashboard.html (id="metaWabaId") / LocalStorage ("meta_waba_id")
+
+[Meta Graph API Erişim Anahtarı (Access Token)]
+  - Access Token: EAAO4OmZBwpzsBSGfHh9ozCJOJuu8XjDwfiWqPIKzyj3yHkgdd43JykeBiZCoZAvQBFEbrbcoLcxs82PZAELYKo8iLT5OFuboIWd4Q0swS5aSDfYJjk7EW8SeHeHaVYdvEOsMqJCHJo87MuFZAZBIZCIZBTW2pQDJAIniAmNyFWWZAOlZBD4jWLgDgV8JFkBjaUwdTu4QZDZD
+  - Tanımlandığı Yer: dashboard.html (id="metaToken") / LocalStorage ("meta_access_token")
+
+[Webhook Sunucu URL ve Doğrulama Anahtarları]
+  - Webhook Sunucu URL: http://localhost:3000
+  - Webhook Verify Token (Sistem): cleopatra_wh_9f8a7c6b5a4d3e2f1a0b9c8d7e6f5a4b
+  - Webhook Verify Token (Alternatif/Varsayılan): my_secure_token_123
+  - Callback URL Formatı (Meta Console): https://<tunnel-url>.ngrok-free.app/webhook
+
+================================================================================
+2. MESAJ ŞABLONLARINI META'DAN ÇEKME SİSTEMİ (TEMPLATE FETCHING SYSTEM)
+================================================================================
+
+[Fonksiyon Tanımı]
+  - JavaScript Dosyası: dashboard.js
+  - Fonksiyon Adı: fetchMetaTemplatesFromApi()
+
+[API İsteği Yapısı]
+  - HTTP Yöntemi: GET
+  - Endpoint: https://graph.facebook.com/v20.0/{WABA_ID}/message_templates?limit=100
+  - Örnek Gerçek URL: https://graph.facebook.com/v20.0/27800533569587222/message_templates?limit=100
+  - Request Headers:
+      Authorization: Bearer {ACCESS_TOKEN}
+      Content-Type: application/json
+
+[Çalışma Mantığı & Veri İşleme]
+  1. Ayarlar sekmesindeki `metaWabaId` ve `metaToken` değerleri okunur.
+  2. Meta Graph API'ye GET isteği atılır.
+  3. Gelen JSON yanıtında `data` dizisi taranarak her şablonun:
+     - Şablon Adı (`tmpl.name`)
+     - Dili (`tmpl.language`)
+     - Kategorisi (`tmpl.category` -> MARKETING, UTILITY, AUTHENTICATION)
+     - Onay Durumu (`tmpl.status` -> APPROVED, REJECTED, PENDING)
+     - Şablon Gövde Metni (`components[type='BODY'].text`) ayıklanır.
+  4. Şablon içindeki `{{1}}`, `{{2}}` gibi değişkenler Regex ile tespit edilerek dinamik parametre sayısı hesaplanır.
+  5. Dashboard üzerindeki şablon seçim menülerine (`#bulkTemplateSelect` ve `#quickTmplSelect`) otomatik eklenir.
+
+================================================================================
+3. MESAJ TETİKLEME VE GÖNDERME SİSTEMİ (MESSAGE TRIGGERING SYSTEM)
+================================================================================
+
+--------------------------------------------------------------------------------
+A) DİREKT METİN MESAJI GÖNDERME (Direct Text Message)
+--------------------------------------------------------------------------------
+[Fonksiyon]: sendDirectWhatsAppTextMessage(phone, text) - dashboard.js
+[HTTP Yöntemi]: POST
+[Endpoint]: https://graph.facebook.com/v20.0/{PHONE_ID}/messages
+[Request Headers]:
+  Authorization: Bearer {ACCESS_TOKEN}
+  Content-Type: application/json
+[JSON Payload]:
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "905455064024",
+  "type": "text",
+  "text": {
+    "preview_url": false,
+    "body": "Merhaba, randevunuz onaylandı."
+  }
+}
+
+--------------------------------------------------------------------------------
+B) DİREKT ŞABLON MESAJI GÖNDERME (Direct Template Message)
+--------------------------------------------------------------------------------
+[Fonksiyon]: sendDirectWhatsAppTemplateMessage(phone, templateName, langCode, parameters) - dashboard.js
+[HTTP Yöntemi]: POST
+[Endpoint]: https://graph.facebook.com/v20.0/{PHONE_ID}/messages
+[Request Headers]:
+  Authorization: Bearer {ACCESS_TOKEN}
+  Content-Type: application/json
+[JSON Payload Örneği (Stüdyo Reaktivasyon Şablonu)]:
+{
+  "messaging_product": "whatsapp",
+  "to": "905455064024",
+  "type": "template",
+  "template": {
+    "name": "tattoo_reengagement_tr_redirect",
+    "language": {
+      "code": "tr"
+    },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          { "type": "text", "text": "Burak" },
+          { "type": "text", "text": "%20" },
+          { "type": "text", "text": "Cleopatra Studio" }
+        ]
+      }
+    ]
+  }
+}
+
+--------------------------------------------------------------------------------
+C) SUNUCU PROXY GÖNDERİM ENDPOINT'İ (Webhook Server Proxy)
+--------------------------------------------------------------------------------
+[Dosya]: webhook-server.js
+[HTTP Yöntemi]: POST
+[Local Endpoint]: http://localhost:3000/api/send
+[Gövde (Body)]:
+{
+  "phoneId": "1259356973928757",
+  "token": "EAAO4OmZB...",
+  "to": "905455064024",
+  "text": "Mesaj Metni",
+  "template": { ... } // opsiyonel
+}
+Bu endpoint, istemci tarafındaki CORS engellerini aşmak veya sunucu tarafında
+gönderimleri merkezi olarak yönetmek için Meta API'ye proxy isteği atar.
+
+================================================================================
+4. WEBHOOK MİMARİSİ VE OLAY DİNLEYİCİ SİSTEM (WEBHOOK INFRASTRUCTURE)
+================================================================================
+
+[Sunucu Dosyası]: webhook-server.js (Saf Node.js HTTP Sunucusu, Port 3000)
+[Veritabanı Dosyası]: webhook-messages.json (Son 500 mesajı kalıcı tutar)
+
+--------------------------------------------------------------------------------
+A) WEBHOOK DOĞRULAMA (WEBHOOK VERIFICATION - GET /webhook)
+--------------------------------------------------------------------------------
+Meta Developer Console'da Callback URL kaydedilirken Meta sunucusu bu adrese GET atar:
+- GET /webhook?hub.mode=subscribe&hub.verify_token=cleopatra_wh_9f8a7c6b5a4d3e2f1a0b9c8d7e6f5a4b&hub.challenge=1158201484
+- Sunucu `hub.verify_token` değerini kontrol eder. Doğru ise HTTP 200 ile `hub.challenge` string'ini aynen döner.
+
+--------------------------------------------------------------------------------
+B) GELEN OLAYLARI İŞLEME (INCOMING WEBHOOK EVENT HANDLER - POST /webhook)
+--------------------------------------------------------------------------------
+Meta sunucuları WhatsApp event'lerini bu endpoint'e POST eder:
+1. Gelen Müşteri Mesajı (`value.messages`):
+   - Müşterinin telefon numarası (`msg.from`), profil adı (`contacts[].profile.name`), mesaj metni (`msg.text.body`), mesaj ID'si ve zamanı alınır.
+   - Yerel mesaj dizisine eklenir ve `webhook-messages.json` dosyasına kaydedilir.
+2. Mesaj Durum Güncellemeleri (`value.statuses`):
+   - Mesajın iletim durumu (`sent`, `delivered`, `read`, `failed`) güncellenir.
+
+--------------------------------------------------------------------------------
+C) DASHBOARD ENTEGRASYON İÇİN SUNUCU ENDPOINT'LERİ
+--------------------------------------------------------------------------------
+- GET  /api/messages?phone=...&since=...  -> Kayıtlı mesajları ve durumlarını Dashboard'a döner.
+- POST /api/record_outgoing               -> Dashboard'dan gönderilen mesajı sunucu veritabanına kaydeder.
+- POST /api/simulate_incoming             -> Test amaçlı sahte gelen mesaj oluşturur.
+- GET  /api/health                        -> Sunucu sağlık durumunu verir.
+- GET  /debug                             -> Görsel Webhook canlı test & kontrol panelini sunar.
+
+================================================================================
+5. PROJE DOSYALARI LİSTESİ VE GÖREVLERİ
+================================================================================
+1. `dashboard.html`       : Meta Phone ID, WABA ID, Access Token ve Webhook ayarlarının girildiği ana arayüz.
+2. `dashboard.js`         : Meta API'ye mesaj şablonu çekme (fetchMetaTemplatesFromApi) ve direkt mesaj gönderme (sendDirectWhatsApp...) fonksiyonlarını içerir.
+3. `webhook-server.js`    : Meta'dan gelen Webhook çağrılarını dinleyen, doğrulayan ve mesajlaşma geçmişini yöneten Node.js sunucusu.
+4. `WEBHOOK_SETUP_GUIDE.md`: Webhook ve Meta Developer Console kurulum adımlarını içeren rehber kılavuz.
+5. `webhook_check.js`     : Sunucu, ngrok tüneli ve Meta POST isteklerinin aktifliğini kontrol eden test betiği.
+6. `payload.json`         : Meta WhatsApp Cloud API şablon mesajı gönderimi için örnek JSON gövdesi.
+7. `webhook-messages.json`: Webhook tarafından yakalanan gelen/giden mesajların saklandığı veritabanı.
+
+================================================================================
+                  DOSYA SONU / END OF FILE
+================================================================================

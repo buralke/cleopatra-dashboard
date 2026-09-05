@@ -1,0 +1,22 @@
+{
+  "name": "cleopatra-reactivation-hub",
+  "version": "1.0.0",
+  "description": "Cleopatra Studio WhatsApp Webhook & Reactivation Dashboard Server",
+  "main": "webhook-server.js",
+  "scripts": {
+    "start": "node webhook-server.js",
+    "dev": "node webhook-server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "whatsapp",
+    "meta-cloud-api",
+    "webhook",
+    "cleopatra",
+    "dashboard"
+  ],
+  "author": "Cleopatra Studio",
+  "license": "ISC"
+}

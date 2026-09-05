@@ -1,0 +1,179 @@
+================================================================================
+         CLEOPATRA STUDIO - SUPABASE DATABASE INTEGRATION DOSSIER
+================================================================================
+Oluşturulma Tarihi: 2026-08-14
+Proje Konumu: c:\Users\burak\Desktop\chromeEklentisi
+
+Bu dökümantasyon, Cleopatra Studio platformunun Supabase bulut veritabanı 
+altyapısı ile kurduğu tüm bağlantı bilgilerini, erişim anahtarlarını, 
+veritabanı tablolarını, REST API metodlarını, kimlik doğrulama mimarisini 
+ve kod katmanlarındaki kullanım detaylarını içermektedir.
+
+================================================================================
+1. SUPABASE ERİŞİM VE BAĞLANTI BİLGİLERİ (CREDENTIALS & ENDPOINTS)
+================================================================================
+
+[Supabase Proje URL'si (Project URL)]
+  - URL: https://qtccvlqegrhkewxrnazp.supabase.co
+
+[Supabase Anonim API Anahtarı (Anon / Publishable Key)]
+  - API Key: sb_publishable_PtpHnY0rQ3eVToJiNxzkdA_tnQ8hEZS
+  - Kullanım Amacı: İstemci tarafı (Chrome Eklentisi & Dashboard) PostgREST ve Auth isteklerinde apikey header'ı olarak iletilir.
+
+[Auth Endpoint'leri (Kimlik Doğrulama Servisi)]
+  - Giriş Yapma (Password Grant): 
+      POST https://qtccvlqegrhkewxrnazp.supabase.co/auth/v1/token?grant_type=password
+  - Oturum Yenileme (Refresh Token): 
+      POST https://qtccvlqegrhkewxrnazp.supabase.co/auth/v1/token?grant_type=refresh_token
+
+[REST Database Endpoint Base URL (PostgREST API)]
+  - Base URL: https://qtccvlqegrhkewxrnazp.supabase.co/rest/v1/
+
+[Chrome Extension Manifest İzinleri]
+  - Host Permission: "https://*.supabase.co/*" (manifest.json dosyası içerisinde tanımlı)
+
+================================================================================
+2. VERİTABANI TABLOLARI VE ŞEMA YAPISI (DATABASE TABLES & SCHEMA)
+================================================================================
+
+Proje genelinde Supabase üzerinde tanımlı/kullanılan temel tablolar ve alanlar:
+
+--------------------------------------------------------------------------------
+A) `reservations` TABLOSU (Ana Rezervasyon Veritabanı)
+--------------------------------------------------------------------------------
+- Birincil Anahtar / Konflikt Alanı: `ReservationNumber` (Unique)
+- Alanlar:
+  * `ReservationNumber`   (TEXT)    : Benzersiz rezervasyon numarası (Örn: RES-101)
+  * `CustomerNameSurname` (TEXT)    : Müşteri Adı ve Soyadı
+  * `Phone`               (TEXT)    : Müşteri telefon numarası (E.164 formatında)
+  * `StartDate`           (DATETIME): Rezervasyon / İşlem başlangıç tarihi
+  * `Deposit`             (NUMERIC) : Alınan kapora tutarı ($)
+  * `Price`               (NUMERIC) : Toplam işlem tutarı ($)
+  * `user_id`             (UUID)    : Rezervasyonu kaydeden yetkili kullanıcının ID'si
+
+--------------------------------------------------------------------------------
+B) `profiles` TABLOSU (Kullanıcı & Lisans Kontrol Tablosu)
+--------------------------------------------------------------------------------
+- Kullanıcı yetkilendirme ve lisans süresi denetimi için kullanılır.
+- Alanlar:
+  * `id`                    (UUID)   : Kullanıcı ID'si (auth.users tablosu ile ilişkili)
+  * `is_active`             (BOOLEAN): Hesabın aktiflik durumu (true/false)
+  * `subscription_end_date` (DATE)   : Abonelik / Lisans bitiş tarihi
+
+--------------------------------------------------------------------------------
+C) `messages` TABLOSU (Mesaj Geçmişi Veritabanı)
+--------------------------------------------------------------------------------
+- WhatsApp üzerinden gönderilen/alınan reaktivasyon mesajlarının kaydı.
+- Alanlar:
+  * `id`        (TEXT)     : Mesaj benzersiz ID'si
+  * `from`      (TEXT)     : Gönderen telefon numarası / sistem adı
+  * `to`        (TEXT)     : Alıcı telefon numarası
+  * `text`      (TEXT)     : Mesaj içeriği
+  * `timestamp` (BIGINT)   : Mesaj gönderim zaman damgası (ms)
+  * `direction` (TEXT)     : Mesaj yönü ('incoming' | 'outgoing')
+  * `status`    (TEXT)     : İletim durumu ('sent' | 'delivered' | 'read' | 'failed')
+
+--------------------------------------------------------------------------------
+D) DİĞER DİNAMİK TABLOLAR
+--------------------------------------------------------------------------------
+- `appointments` : Stüdyo randevu detayları (date, client, artist, placement, deposit)
+- `campaigns`    : Aktif reaktivasyon kampanyaları ve istatistikleri
+- `franchises`   : Cleopatra şube / franchise bilgileri
+
+================================================================================
+3. KİMLİK DOĞRULAMA VE OTURUM YÖNETİMİ (AUTHENTICATION & SESSIONS)
+================================================================================
+
+1. Oturum Kaydı (`cleopatra_session`):
+   - Kullanıcı Supabase Auth ile giriş yaptıktan sonra alınan `access_token`, `refresh_token` ve `expires_at` değerleri `chrome.storage.local` üzerinde saklanır.
+   - İkincil yedek alan olarak `localStorage.getItem('supabase_access_token')` kullanılır.
+
+2. Oturum Bitiş Kontrolü & Otomatik Yenileme (Token Refresh):
+   - Istek atılmadan önce token süresi kontrol edilir.
+   - Eğer token'ın bitmesine 60 saniyeden az kalmışsa, `SupabaseService.refreshToken()` metodu çağrılarak yeni `access_token` alınır.
+
+3. Abonelik Denetimi (`checkSubscription`):
+   - Giriş sonrası `profiles` tablosundan `is_active` ve `subscription_end_date` sorgulanır.
+   - Hesabı pasif olan veya lisans süresi dolan kullanıcıların eklentiyi kullanması engellenir.
+
+================================================================================
+4. REST API VE VERİ İŞLEME METODLARI (CRUD OPERATIONS)
+================================================================================
+
+Tüm Supabase veritabanı işlemleri PostgREST standart HTTP metodları ile yürütülür:
+
+--------------------------------------------------------------------------------
+A) REZERVASYON YÜKLEME VE GÜNCELLEME (UPSERT - POST)
+--------------------------------------------------------------------------------
+[Endpoint]: POST https://qtccvlqegrhkewxrnazp.supabase.co/rest/v1/reservations?on_conflict=ReservationNumber
+[Headers]:
+  apikey: sb_publishable_PtpHnY0rQ3eVToJiNxzkdA_tnQ8hEZS
+  Authorization: Bearer {ACCESS_TOKEN}
+  Content-Type: application/json
+  Prefer: resolution=merge-duplicates,return=representation
+[Açıklama]: Var olan rezervasyon numarasını günceller, yoksa yeni kayıt ekler.
+
+--------------------------------------------------------------------------------
+B) TÜM REZERVASYONLARI VE TABLOLARI ÇEKME (READ - GET)
+--------------------------------------------------------------------------------
+[Endpoint]: GET https://qtccvlqegrhkewxrnazp.supabase.co/rest/v1/{tableName}?select=*
+[Headers]:
+  apikey: sb_publishable_PtpHnY0rQ3eVToJiNxzkdA_tnQ8hEZS
+  Authorization: Bearer {ACCESS_TOKEN} veya {SUPABASE_ANON_KEY}
+  Content-Type: application/json
+[Açıklama]: Dashboard ve Popup ekranları için canlı veriyi çeker.
+
+--------------------------------------------------------------------------------
+C) REZERVASYON SİLME (DELETE)
+--------------------------------------------------------------------------------
+- Tekli Silme: 
+    DELETE https://qtccvlqegrhkewxrnazp.supabase.co/rest/v1/reservations?ReservationNumber=eq.{RESERVATION_NO}
+- Toplu Silme: 
+    DELETE https://qtccvlqegrhkewxrnazp.supabase.co/rest/v1/reservations?ReservationNumber=in.("RES-101","RES-102")
+
+--------------------------------------------------------------------------------
+D) REZERVASYON GÜNCELLEME (PATCH)
+--------------------------------------------------------------------------------
+[Endpoint]: PATCH https://qtccvlqegrhkewxrnazp.supabase.co/rest/v1/reservations?ReservationNumber=eq.{RESERVATION_NO}
+[Headers]:
+  apikey: sb_publishable_PtpHnY0rQ3eVToJiNxzkdA_tnQ8hEZS
+  Authorization: Bearer {ACCESS_TOKEN}
+  Content-Type: application/json
+  Prefer: return=minimal
+
+================================================================================
+5. GÜVENLİK VE HEADER YAPILANDIRMASI
+================================================================================
+
+1. API İsteği Zorunlu Header'ları:
+   - `apikey`: Supabase Anonim Anahtarı (`sb_publishable_...`)
+   - `Authorization`: `Bearer {access_token}` (Oturum açmış kullanıcı) veya `Bearer {anon_key}`
+   - `Content-Type`: `application/json`
+
+2. İstemci Tarafı XSS Koruması & PostgREST Safe Filter Encoding:
+   - `SecurityUtils.escapeHTML()` ile veritabanından gelen veriler sanitize edilir.
+   - `SecurityUtils.encodePostgrestParam()` ile PostgREST sorgu filtreleri URI-encode edilir.
+
+================================================================================
+6. PROJE İÇERİSİNDEKİ DOSYA VE KOD HARİTASI
+================================================================================
+
+1. `dashboard-db.js`:
+   - `DB_CONFIG` nesnesi altında Supabase URL ve Anon Key tanımlıdır.
+   - `fetchLiveTable()`: Dinamik çoklu tablo sorgu motoru.
+   - `getDashboardData()`: Supabase verilerini canlı KPI ve tablolara dönüştüren metod.
+   - `createReservation()`: Yeni kayıt ekleme metodu.
+
+2. `popup.js`:
+   - `CONFIG` altında Supabase bağlantı anahtarları yer alır.
+   - `SupabaseService`: Login, refreshToken, checkSubscription, upsertReservations, fetchAllReservations, deleteSingleReservation, deleteBulkReservations, updateReservation metodlarını barındırır.
+
+3. `dashboard.html`:
+   - Sistem ve Veritabanı Yapılandırması bölümünde Supabase Proje URL'si ve Anonim Key görsel olarak sunulur.
+
+4. `manifest.json`:
+   - Chrome eklentisinin Supabase sunucuları ile iletişim kurabilmesi için `https://*.supabase.co/*` izni tanımlıdır.
+
+================================================================================
+                  DOSYA SONU / END OF FILE
+================================================================================
