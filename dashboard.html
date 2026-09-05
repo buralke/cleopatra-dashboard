@@ -11,11 +11,16 @@
 <body>
   <div class="app-container">
     
+    <!-- Sidebar Backdrop Overlay for Mobile -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
     <!-- Left Navigation Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="appSidebar">
       <div>
         <div class="brand-header">
+          <div class="brand-logo">C</div>
           <span class="brand-name" data-i18n="brandName">Cleopatra Gündoğdu</span>
+          <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Menüyü Kapat">✕</button>
         </div>
 
         <nav>
@@ -90,9 +95,16 @@
       
       <!-- Header Bar -->
       <header class="top-header">
-        <div>
-          <h1 class="greeting-title" id="pageTitle">İyi Akşamlar, Stüdyo Yöneticisi 👋</h1>
-          <p class="greeting-subtitle" id="pageSubtitle">Koltuklarınızı dolu tutun. Pasif müşterilerinizi yeniden aktifleştirin.</p>
+        <div class="header-left">
+          <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menüyü Aç">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+          <div class="header-title-box">
+            <h1 class="greeting-title" id="pageTitle">İyi Akşamlar, Stüdyo Yöneticisi 👋</h1>
+            <p class="greeting-subtitle" id="pageSubtitle">Koltuklarınızı dolu tutun. Pasif müşterilerinizi yeniden aktifleştirin.</p>
+          </div>
         </div>
 
         <div class="header-actions">
@@ -278,6 +290,9 @@
             <div class="wa-chat-main">
               <!-- WhatsApp Web Header -->
               <div class="wa-header">
+                <button type="button" class="wa-back-btn" id="waBackToListBtn" title="Sohbet Listesine Dön">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
                 <div class="wa-header-user">
                   <div class="wa-avatar" id="activeChatAvatar">CD</div>
                   <div class="wa-user-info">
@@ -1279,6 +1294,34 @@
       </form>
     </div>
   </div>
+
+  <!-- Mobile Bottom Floating Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav">
+    <a href="#dashboard" class="mobile-nav-item active" data-tab="dashboard">
+      <span class="mobile-nav-icon">📊</span>
+      <span class="mobile-nav-label" data-i18n="navDashboard">Panel</span>
+    </a>
+    <a href="#customers" class="mobile-nav-item" data-tab="customers">
+      <span class="mobile-nav-icon">👥</span>
+      <span class="mobile-nav-label" data-i18n="navCustomers">Müşteriler</span>
+    </a>
+    <a href="#appointments" class="mobile-nav-item" data-tab="appointments">
+      <span class="mobile-nav-icon">📅</span>
+      <span class="mobile-nav-label" data-i18n="navAppointments">Randevular</span>
+    </a>
+    <a href="#bot-rules" class="mobile-nav-item" data-tab="bot-rules">
+      <span class="mobile-nav-icon">🤖</span>
+      <span class="mobile-nav-label">Oto-Yanıt</span>
+    </a>
+    <a href="#template-aliases" class="mobile-nav-item" data-tab="template-aliases">
+      <span class="mobile-nav-icon">🏷️</span>
+      <span class="mobile-nav-label">Şablonlar</span>
+    </a>
+    <button type="button" class="mobile-nav-item mobile-nav-more" id="mobileNavMoreBtn" aria-label="Tüm Menüyü Aç">
+      <span class="mobile-nav-icon">☰</span>
+      <span class="mobile-nav-label">Menü</span>
+    </button>
+  </nav>
 
   <script src="dashboard-db.js"></script>
   <script src="dashboard.js"></script>

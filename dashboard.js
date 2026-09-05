@@ -587,14 +587,46 @@ function translatePage() {
  */
 function setupNavigation() {
   const navItems = document.querySelectorAll('#sidebarNav .nav-item');
+  const mobileNavItems = document.querySelectorAll('#mobileBottomNav .mobile-nav-item');
   const tabViews = document.querySelectorAll('.tab-view');
+  const sidebar = document.getElementById('appSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+  const mobileNavMoreBtn = document.getElementById('mobileNavMoreBtn');
+
+  const openMobileSidebar = () => {
+    if (sidebar) sidebar.classList.add('open');
+    if (backdrop) backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeMobileSidebar = () => {
+    if (sidebar) sidebar.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileSidebar);
+  if (mobileNavMoreBtn) mobileNavMoreBtn.addEventListener('click', openMobileSidebar);
+  if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeMobileSidebar);
+  if (backdrop) backdrop.addEventListener('click', closeMobileSidebar);
 
   const switchTab = (tabName) => {
     if (!tabName) tabName = 'dashboard';
     tabName = tabName.toLowerCase().replace('#', '');
 
-    // Update active nav state
+    // Update active nav state in sidebar
     navItems.forEach(item => {
+      if (item.getAttribute('data-tab') === tabName) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Update active nav state in mobile bottom bar
+    mobileNavItems.forEach(item => {
       if (item.getAttribute('data-tab') === tabName) {
         item.classList.add('active');
       } else {
@@ -616,6 +648,11 @@ function setupNavigation() {
 
     if (tabName === 'template-aliases') {
       renderTemplateAliasCards();
+    }
+
+    // Auto-close mobile drawer
+    if (window.innerWidth <= 1024) {
+      closeMobileSidebar();
     }
   };
 
@@ -1022,6 +1059,10 @@ function renderChatConversations(conversations) {
         activeChatId = id;
         const conv = conversations.find(c => c.id === id);
         if (conv) conv.unread = 0; // Mark read
+        const waCard = document.querySelector('.wa-chat-card');
+        if (waCard) {
+          waCard.classList.add('wa-mobile-active');
+        }
         renderChatConversations(conversations);
         renderActiveChatWindow(conversations);
       }
@@ -1041,6 +1082,9 @@ function renderActiveChatWindow(conversations) {
     mainArea.innerHTML = `
       <!-- ═══ CHAT HEADER ═══ -->
       <div class="wa-header" style="padding: 10px 16px; gap: 10px;">
+        <button type="button" class="wa-back-btn" id="waBackToListBtn" title="Sohbet Listesine Dön">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
         <div class="wa-header-user">
           <div class="wa-avatar" id="activeChatAvatar" style="cursor:pointer;" title="Müşteri Profili">WA</div>
           <div class="wa-user-info">
@@ -1573,6 +1617,17 @@ function setupChatHandlers() {
 
   const startNewChatBtn = document.getElementById('startNewChatBtn');
   const openBulkHeaderBtn = document.getElementById('openBulkFromChatHeaderBtn');
+
+  // Handle mobile Back button to return to chat list
+  document.addEventListener('click', (e) => {
+    const backBtn = e.target.closest('#waBackToListBtn, .wa-back-btn');
+    if (backBtn) {
+      const waCard = document.querySelector('.wa-chat-card');
+      if (waCard) {
+        waCard.classList.remove('wa-mobile-active');
+      }
+    }
+  });
 
   if (openBulkHeaderBtn) {
     openBulkHeaderBtn.addEventListener('click', () => {
