@@ -4,7 +4,7 @@
  */
 
 const selectedCustomerIds = new Set();
-let bulkSendMode = 'text';
+let bulkSendMode = 'template';
 let isBulkDispatching = false;
 
 const TRANSLATIONS = {
@@ -2364,9 +2364,7 @@ window.openSingleCustomerWhatsApp = function(id, phone, name) {
   selectedCustomerIds.add(id);
   renderCustomersTable(globalData ? globalData.customers : []);
   openModal('bulkMessageModal');
-  selectBulkMode('table');
-  const btnTemplate = document.getElementById('btnModeTemplate');
-  if (btnTemplate) btnTemplate.click();
+  bulkSendMode = 'template';
   updateBulkRecipientUI();
   updateLiveWhatsAppPreview();
 };
@@ -2439,9 +2437,7 @@ function setupBulkMessagingEventListeners() {
   if (openBtn) {
     openBtn.addEventListener('click', () => {
       openModal('bulkMessageModal');
-      selectBulkMode('table');
-      const btnTemplate = document.getElementById('btnModeTemplate');
-      if (btnTemplate) btnTemplate.click();
+      bulkSendMode = 'template';
       updateBulkRecipientUI();
       updateLiveWhatsAppPreview();
     });
@@ -2834,6 +2830,7 @@ function onTemplateDropdownChange() {
   if (nameInput) nameInput.value = tmplName;
   if (langInput) langInput.value = lang;
   selectedTemplateBody = body;
+  bulkSendMode = 'template';
 
   // 1. Build interactive inline inputs in WhatsApp bubble
   if (previewBubble) {
