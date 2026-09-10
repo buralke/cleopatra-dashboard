@@ -32,6 +32,7 @@ async function pingSession() {
       headers: {
         'Accept': 'application/json'
       },
+      credentials: 'include',
       signal: controller.signal
     });
 

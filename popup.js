@@ -524,23 +524,73 @@ document.addEventListener('DOMContentLoaded', async () => {
       const encodedEnd = encodeURIComponent(endDate);
       const targetUrl = `${CONFIG.CLEOPATRA_BASE_URL}/Reservations/Reservations_Read?BranchId=0&StartDate=${encodedStart}&EndDate=${encodedEnd}&sort=&page=1&pageSize=1000&group=&filter=`;
 
-      const response = await fetch(targetUrl, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json, text/javascript, */*; q=0.01',
-          'X-Requested-With': 'XMLHttpRequest'
-        }
-      });
+      let response;
+      let responseText = '';
+      let isHtml = false;
 
-      if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          throw new Error('Cleopatra oturumu sona erdi. Lütfen t.cleopatraink.com portalından tekrar giriş yapın.');
-        }
-        throw new Error(`Cleopatra API Yanıt Hatası (${response.status})`);
+      try {
+        response = await fetch(targetUrl, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json, text/javascript, */*; q=0.01',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          credentials: 'include'
+        });
+
+        responseText = await response.text();
+        const contentType = response.headers.get('content-type') || '';
+        isHtml = response.redirected || responseText.trim().startsWith('<') || responseText.includes('<!DOCTYPE') || contentType.includes('text/html');
+      } catch (getErr) {
+        console.warn('[CleopatraService] GET request failed:', getErr);
+        isHtml = true;
       }
 
-      const rawData = await response.json();
-      return rawData.Data || [];
+      // Fallback: If GET returned HTML or failed, try POST with form body
+      if (isHtml || !response || !response.ok) {
+        try {
+          const postResponse = await fetch(`${CONFIG.CLEOPATRA_BASE_URL}/Reservations/Reservations_Read`, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json, text/javascript, */*; q=0.01',
+              'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+              'X-Requested-With': 'XMLHttpRequest'
+            },
+            credentials: 'include',
+            body: `BranchId=0&StartDate=${encodedStart}&EndDate=${encodedEnd}&sort=&page=1&pageSize=1000&group=&filter=`
+          });
+
+          if (postResponse.ok) {
+            const postText = await postResponse.text();
+            const postContentType = postResponse.headers.get('content-type') || '';
+            if (!postText.trim().startsWith('<') && !postText.includes('<!DOCTYPE') && !postContentType.includes('text/html')) {
+              responseText = postText;
+              isHtml = false;
+              response = postResponse;
+            }
+          }
+        } catch (postErr) {
+          console.warn('[CleopatraService] POST fallback failed:', postErr);
+        }
+      }
+
+      if (isHtml || (response && response.redirected)) {
+        throw new Error('Cleopatra portalı (t.cleopatraink.com) oturumunuz kapalı veya süresi dolmuş. Lütfen tarayıcınızda t.cleopatraink.com sayfasına gidip giriş yapın ve tekrar deneyin.');
+      }
+
+      if (!response || !response.ok) {
+        if (response && (response.status === 401 || response.status === 403)) {
+          throw new Error('Cleopatra oturumu sona erdi. Lütfen t.cleopatraink.com portalından tekrar giriş yapın.');
+        }
+        throw new Error(`Cleopatra API Yanıt Hatası (${response ? response.status : 'Bağlantı Yok'})`);
+      }
+
+      try {
+        const rawData = JSON.parse(responseText);
+        return rawData.Data || rawData.data || (Array.isArray(rawData) ? rawData : []);
+      } catch (parseErr) {
+        throw new Error('Cleopatra portalından geçersiz veri alındı. Lütfen t.cleopatraink.com portalında oturumunuzun açık olduğunu kontrol edin.');
+      }
     }
   };
 
