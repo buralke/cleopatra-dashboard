@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Cleopatra Rezervasyon Takipçisi",
+  "version": "1.0",
+  "description": "Cleopatra Ink portalı için rezervasyon takip ve oturum koruma eklentisi.",
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://t.cleopatraink.com/*",
+    "https://*.supabase.co/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "dashboard.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
