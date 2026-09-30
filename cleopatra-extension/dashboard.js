@@ -2306,12 +2306,9 @@ function updateSelectionUI() {
   }
 }
 
-/**
- * Get list of currently selected customer objects
- */
 function getSelectedCustomersList() {
   if (!globalData || !Array.isArray(globalData.customers)) return [];
-  return globalData.customers.filter(c => selectedCustomerIds.has(c.id));
+  return globalData.customers.filter(c => selectedCustomerIds.has(c.id) || selectedCustomerIds.has(String(c.id)));
 }
 
 /**
@@ -3084,12 +3081,18 @@ function applyTemplateLanguageFilter(overrideLang = null) {
   // Apply selection to selectedCustomerIds
   selectedCustomerIds.clear();
   if (activeLang === 'all') {
-    validCustomers.forEach(c => selectedCustomerIds.add(c.id));
+    validCustomers.forEach(c => {
+      selectedCustomerIds.add(c.id);
+      selectedCustomerIds.add(String(c.id));
+    });
     if (langTagEl) langTagEl.style.display = 'none';
   } else {
     const activeMeta = getLanguageMetaInfo(activeLang, tmplName);
     const filteredForActive = validCustomers.filter(c => isPhoneMatchingLang(c.phone, activeLang, tmplName));
-    filteredForActive.forEach(c => selectedCustomerIds.add(c.id));
+    filteredForActive.forEach(c => {
+      selectedCustomerIds.add(c.id);
+      selectedCustomerIds.add(String(c.id));
+    });
     if (langTagEl) {
       langTagEl.style.display = 'inline-block';
       langTagEl.textContent = `${activeMeta.flag} ${activeMeta.name} Filtresi (${filteredForActive.length})`;
@@ -4550,12 +4553,13 @@ function renderModalCustomerList(forceSelectAll = false) {
   const isFiltering = autoFilterCheckbox ? autoFilterCheckbox.checked : true;
   const activeLang = isFiltering ? (currentBulkFilterLang !== null ? currentBulkFilterLang : langMeta.lang) : 'all';
 
-  // Only auto-select all if forced or if no customer is currently selected!
-  if (forceSelectAll || selectedCustomerIds.size === 0) {
+  // Only auto-select all if explicitly forced!
+  if (forceSelectAll) {
     selectedCustomerIds.clear();
     customers.forEach(c => {
-      if (isValidWhatsAppNumber(c.phone) && isPhoneMatchingLang(c.phone, activeLang, tmplName)) {
+      if (isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName))) {
         selectedCustomerIds.add(c.id);
+        selectedCustomerIds.add(String(c.id));
       }
     });
     if (searchInput) searchInput.value = '';
@@ -4567,7 +4571,7 @@ function renderModalCustomerList(forceSelectAll = false) {
     filtered = customers.filter(c =>
       (c.name && c.name.toLowerCase().includes(query)) ||
       (c.phone && c.phone.toLowerCase().includes(query)) ||
-      (c.id && c.id.toLowerCase().includes(query))
+      (c.id && String(c.id).toLowerCase().includes(query))
     );
   }
 
@@ -4589,20 +4593,25 @@ function renderModalCustomerList(forceSelectAll = false) {
 
   if (customers.length === 0) {
     container.innerHTML = `<div style="text-align: center; color: #94a3b8; padding: 20px; font-size: 12px;">Veritabanında kayıtlı müşteri bulunamadı.</div>`;
+    if (selectAll) selectAll.checked = false;
+    updateBulkRecipientUI();
     return;
   }
 
   if (filtered.length === 0) {
     container.innerHTML = `<div style="text-align: center; color: #94a3b8; padding: 20px; font-size: 12px;">"${escapeHtml(query)}" ile eşleşen müşteri bulunamadı.</div>`;
+    if (selectAll) selectAll.checked = false;
+    updateBulkRecipientUI();
     return;
   }
 
   const validFilteredCustomers = filtered.filter(c => isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)));
-  if (selectAll) selectAll.checked = validFilteredCustomers.length > 0 && validFilteredCustomers.every(c => selectedCustomerIds.has(c.id));
+  const allFilteredSelected = validFilteredCustomers.length > 0 && validFilteredCustomers.every(c => selectedCustomerIds.has(c.id) || selectedCustomerIds.has(String(c.id)));
+  if (selectAll) selectAll.checked = allFilteredSelected;
 
   container.innerHTML = filtered.map(cust => {
     const isValid = isValidWhatsAppNumber(cust.phone);
-    const isChecked = selectedCustomerIds.has(cust.id);
+    const isChecked = selectedCustomerIds.has(cust.id) || selectedCustomerIds.has(String(cust.id));
     const cleanP = cust.phone ? cleanPhoneNumber(cust.phone) : '-';
     const phoneMeta = detectPhoneCountryAndLang(cust.phone);
     const isMatch = isPhoneMatchingLang(cust.phone, activeLang, tmplName);
@@ -4646,14 +4655,22 @@ function renderModalCustomerList(forceSelectAll = false) {
 
       if (e.target.checked) {
         selectedCustomerIds.add(id);
+        if (cust) {
+          selectedCustomerIds.add(cust.id);
+          selectedCustomerIds.add(String(cust.id));
+        }
         if (parentRow) parentRow.style.background = 'rgba(0, 168, 132, 0.12)';
       } else {
         selectedCustomerIds.delete(id);
+        if (cust) {
+          selectedCustomerIds.delete(cust.id);
+          selectedCustomerIds.delete(String(cust.id));
+        }
         if (parentRow) parentRow.style.background = isValid ? 'transparent' : 'rgba(239, 68, 68, 0.04)';
       }
       
       const vFiltered = filtered.filter(c => isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)));
-      if (selectAll) selectAll.checked = vFiltered.length > 0 && vFiltered.every(c => selectedCustomerIds.has(c.id));
+      if (selectAll) selectAll.checked = vFiltered.length > 0 && vFiltered.every(c => selectedCustomerIds.has(c.id) || selectedCustomerIds.has(String(c.id)));
       updateBulkRecipientUI();
     });
   });
@@ -4664,17 +4681,17 @@ function renderModalCustomerList(forceSelectAll = false) {
     const newSelectAll = document.getElementById('modalSelectAllCustomers');
     newSelectAll.addEventListener('change', (e) => {
       const isChecked = e.target.checked;
+      const targetPool = filtered.filter(c => isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)));
+      
       if (isChecked) {
-        customers.forEach(c => {
-          if (isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName))) {
-            selectedCustomerIds.add(c.id);
-          }
+        targetPool.forEach(c => {
+          selectedCustomerIds.add(c.id);
+          selectedCustomerIds.add(String(c.id));
         });
       } else {
-        customers.forEach(c => {
-          if (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)) {
-            selectedCustomerIds.delete(c.id);
-          }
+        targetPool.forEach(c => {
+          selectedCustomerIds.delete(c.id);
+          selectedCustomerIds.delete(String(c.id));
         });
       }
       renderModalCustomerList(false);
