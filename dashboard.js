@@ -823,7 +823,161 @@ async function fetchOptOutList() {
 }
 
 /**
- * Render Customers Table (Sub-Tab: Customers with 20-50-100-All limit filter)
+ * Date extraction and range filtering utilities for Customers & Appointments
+ */
+function getCustomerDateValue(cust) {
+  if (!cust) return null;
+  const candidates = [
+    cust.lastVisit,
+    cust.date,
+    cust.StartDate,
+    cust.appointmentDate,
+    cust.appointment_date,
+    cust.created_at,
+    cust.reservation_date
+  ];
+  for (const c of candidates) {
+    if (c && c !== '-' && typeof c === 'string') {
+      const trimmed = c.trim();
+      if (trimmed.length >= 8) {
+        const match = trimmed.match(/\d{4}[-/.]\d{1,2}[-/.]\d{1,2}/);
+        if (match) {
+          const d = new Date(match[0].replace(/[-/.]/g, '-'));
+          if (!isNaN(d.getTime())) return d;
+        }
+        const d = new Date(trimmed);
+        if (!isNaN(d.getTime())) return d;
+      }
+    }
+  }
+
+  // Check linked appointments in globalData.appointments if available
+  if (globalData && Array.isArray(globalData.appointments)) {
+    const custPhone = cust.phone ? String(cust.phone).replace(/\D/g, '') : '';
+    const custName = cust.name ? cust.name.trim().toLowerCase() : '';
+    const matchedApp = globalData.appointments.find(a => {
+      const client = (a.client || a.CustomerNameSurname || '').trim().toLowerCase();
+      return (custName && client && (client.includes(custName) || custName.includes(client)));
+    });
+    if (matchedApp && (matchedApp.date || matchedApp.StartDate)) {
+      const dStr = matchedApp.date || matchedApp.StartDate;
+      const d = new Date(dStr);
+      if (!isNaN(d.getTime())) return d;
+    }
+  }
+
+  return null;
+}
+
+function formatDateToYMD(d) {
+  if (!d || isNaN(d.getTime())) return '';
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function computePresetDateRange(presetKey) {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  
+  let start = null;
+  let end = null;
+  let label = 'Tüm Zamanlar';
+
+  switch (presetKey) {
+    case 'today': {
+      start = today;
+      end = today;
+      label = 'Bugün';
+      break;
+    }
+    case 'this_month': {
+      start = new Date(now.getFullYear(), now.getMonth(), 1);
+      end = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+      label = 'Bu Ay';
+      break;
+    }
+    case 'last_month': {
+      start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+      end = new Date(now.getFullYear(), now.getMonth(), 0);
+      label = 'Geçen Ay';
+      break;
+    }
+    case 'last_30': {
+      start = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+      end = today;
+      label = 'Son 30 Gün';
+      break;
+    }
+    case 'last_90': {
+      start = new Date(today.getTime() - 90 * 24 * 60 * 60 * 1000);
+      end = today;
+      label = 'Son 90 Gün';
+      break;
+    }
+    case 'last_6m': {
+      start = new Date(today.getTime() - 180 * 24 * 60 * 60 * 1000);
+      end = today;
+      label = 'Son 6 Ay';
+      break;
+    }
+    case 'last_1y': {
+      start = new Date(today.getTime() - 365 * 24 * 60 * 60 * 1000);
+      end = today;
+      label = 'Son 1 Yıl';
+      break;
+    }
+    case 'future': {
+      start = today;
+      end = new Date(today.getTime() + 365 * 24 * 60 * 60 * 1000);
+      label = 'Gelecek Randevular';
+      break;
+    }
+    case 'all':
+    default: {
+      start = null;
+      end = null;
+      label = 'Tüm Zamanlar';
+      break;
+    }
+  }
+
+  return {
+    startDateStr: start ? formatDateToYMD(start) : '',
+    endDateStr: end ? formatDateToYMD(end) : '',
+    label: label
+  };
+}
+
+function isCustomerInDateRange(cust, startDateStr, endDateStr) {
+  if (!startDateStr && !endDateStr) return true;
+  const custDate = getCustomerDateValue(cust);
+  if (!custDate) return false;
+  
+  const custTime = new Date(custDate.getFullYear(), custDate.getMonth(), custDate.getDate()).getTime();
+  
+  if (startDateStr) {
+    const sDate = new Date(startDateStr);
+    if (!isNaN(sDate.getTime())) {
+      const sTime = new Date(sDate.getFullYear(), sDate.getMonth(), sDate.getDate()).getTime();
+      if (custTime < sTime) return false;
+    }
+  }
+  
+  if (endDateStr) {
+    const eDate = new Date(endDateStr);
+    if (!isNaN(eDate.getTime())) {
+      const eTime = new Date(eDate.getFullYear(), eDate.getMonth(), eDate.getDate()).getTime();
+      if (custTime > eTime) return false;
+    }
+  }
+  
+  return true;
+}
+
+/**
+ * Render Customers Table (Sub-Tab: Customers with 20-50-100-All limit filter & Date Preset Filter)
  */
 function renderCustomersTable(customers) {
   const body = document.getElementById('customerTableBody');
@@ -832,9 +986,11 @@ function renderCustomersTable(customers) {
   const t = TRANSLATIONS[currentLang];
   const searchInput = document.getElementById('customerSearch');
   const limitSelect = document.getElementById('customerLimitSelect');
+  const datePresetSelect = document.getElementById('customerDatePresetSelect');
 
   const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
   const limitVal = limitSelect ? limitSelect.value : '20';
+  const datePreset = datePresetSelect ? datePresetSelect.value : 'all';
 
   let list = Array.isArray(customers) ? customers : [];
 
@@ -843,16 +999,23 @@ function renderCustomersTable(customers) {
     list = list.filter(c => 
       (c.name && c.name.toLowerCase().includes(query)) ||
       (c.phone && c.phone.toLowerCase().includes(query)) ||
-      (c.id && c.id.toLowerCase().includes(query))
+      (c.id && String(c.id).toLowerCase().includes(query))
     );
   }
 
+  // 2. Filter by Date Preset
+  if (datePreset && datePreset !== 'all') {
+    const range = computePresetDateRange(datePreset);
+    list = list.filter(c => isCustomerInDateRange(c, range.startDateStr, range.endDateStr));
+  }
+
   if (list.length === 0) {
-    body.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-dim); padding: 30px;">- Müşteri Bulunamadı -</td></tr>`;
+    body.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-dim); padding: 30px;">- Seçilen Kriterlerde Müşteri Bulunamadı -</td></tr>`;
+    updateSelectionUI();
     return;
   }
 
-  // 2. Slice list based on 20-50-100-all selector
+  // 3. Slice list based on 20-50-100-all selector
   let displayed = list;
   if (limitVal !== 'all') {
     const limitNum = parseInt(limitVal, 10);
@@ -864,7 +1027,7 @@ function renderCustomersTable(customers) {
     let badgeClass = 'badge-blue';
     if (cust.status_en === 'Reactivated') badgeClass = 'badge-green';
     if (cust.status_en === 'Inactive') badgeClass = 'badge-yellow';
-    const isChecked = selectedCustomerIds.has(cust.id);
+    const isChecked = selectedCustomerIds.has(cust.id) || selectedCustomerIds.has(String(cust.id));
     const rowClass = isChecked ? 'selected-row' : '';
     const cleanP = cust.phone ? String(cust.phone).replace(/\D/g, '') : '';
     const isOptedOut = globalOptOutList.includes(cleanP);
@@ -873,6 +1036,9 @@ function renderCustomersTable(customers) {
     if (isOptedOut) {
       statusHtml = `<span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); font-size: 10px;">🚫 Listeden Çıktı (DUR)</span>`;
     }
+
+    const custDateObj = getCustomerDateValue(cust);
+    const dateFormatted = custDateObj ? formatDateToYMD(custDateObj) : (cust.lastVisit || '-');
 
     return `
       <tr class="${rowClass}">
@@ -884,8 +1050,8 @@ function renderCustomersTable(customers) {
           <span style="font-size: 11px; color: var(--text-dim);">${cust.id}</span>
         </td>
         <td style="font-family: monospace; color: var(--text-muted);">${cust.phone}</td>
-        <td>${cust.lastVisit}</td>
-        <td style="font-weight: 700; color: #10B981;">${cust.totalSpent}</td>
+        <td><span style="color: #38bdf8; font-weight: 600;">📅 ${dateFormatted}</span></td>
+        <td style="font-weight: 700; color: #10B981;">${cust.totalSpent || '-'}</td>
         <td>${statusHtml}</td>
         <td>
           <button class="btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="openSingleCustomerWhatsApp('${cust.id}', '${cust.phone}', '${escapeHtml(cust.name)}')">${t.sendWhatsappBtn || '💬 WhatsApp Gönder'}</button>
@@ -2071,6 +2237,7 @@ function setupChatHandlers() {
 function setupFilters() {
   const searchInput = document.getElementById('customerSearch');
   const limitSelect = document.getElementById('customerLimitSelect');
+  const datePresetSelect = document.getElementById('customerDatePresetSelect');
 
   if (searchInput) {
     searchInput.addEventListener('input', () => {
@@ -2082,6 +2249,14 @@ function setupFilters() {
 
   if (limitSelect) {
     limitSelect.addEventListener('change', () => {
+      if (globalData && globalData.customers) {
+        renderCustomersTable(globalData.customers);
+      }
+    });
+  }
+
+  if (datePresetSelect) {
+    datePresetSelect.addEventListener('change', () => {
       if (globalData && globalData.customers) {
         renderCustomersTable(globalData.customers);
       }
@@ -2454,6 +2629,69 @@ function setupBulkMessagingEventListeners() {
     });
   }
 
+  // Bulk Date Filter Inputs & Presets Handlers
+  const bulkDateStartInput = document.getElementById('bulkDateStart');
+  const bulkDateEndInput = document.getElementById('bulkDateEnd');
+  const bulkClearDateBtn = document.getElementById('bulkClearDateBtn');
+  const bulkPresetBtns = document.querySelectorAll('.bulk-date-preset-btn');
+  const bulkDateBadge = document.getElementById('bulkDateMatchBadge');
+
+  if (bulkPresetBtns.length > 0) {
+    bulkPresetBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        bulkPresetBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const preset = btn.getAttribute('data-preset') || 'all';
+        const range = computePresetDateRange(preset);
+        if (bulkDateStartInput) bulkDateStartInput.value = range.startDateStr;
+        if (bulkDateEndInput) bulkDateEndInput.value = range.endDateStr;
+        if (bulkDateBadge) bulkDateBadge.textContent = range.label;
+        renderModalCustomerList(true);
+        updateBulkRecipientUI();
+      });
+    });
+  }
+
+  if (bulkDateStartInput) {
+    bulkDateStartInput.addEventListener('change', () => {
+      bulkPresetBtns.forEach(b => b.classList.remove('active'));
+      const sVal = bulkDateStartInput.value;
+      const eVal = bulkDateEndInput ? bulkDateEndInput.value : '';
+      if (bulkDateBadge) {
+        bulkDateBadge.textContent = (sVal || eVal) ? `${sVal || '...'} → ${eVal || '...'}` : 'Tüm Zamanlar';
+      }
+      renderModalCustomerList(true);
+      updateBulkRecipientUI();
+    });
+  }
+
+  if (bulkDateEndInput) {
+    bulkDateEndInput.addEventListener('change', () => {
+      bulkPresetBtns.forEach(b => b.classList.remove('active'));
+      const sVal = bulkDateStartInput ? bulkDateStartInput.value : '';
+      const eVal = bulkDateEndInput.value;
+      if (bulkDateBadge) {
+        bulkDateBadge.textContent = (sVal || eVal) ? `${sVal || '...'} → ${eVal || '...'}` : 'Tüm Zamanlar';
+      }
+      renderModalCustomerList(true);
+      updateBulkRecipientUI();
+    });
+  }
+
+  if (bulkClearDateBtn) {
+    bulkClearDateBtn.addEventListener('click', () => {
+      if (bulkDateStartInput) bulkDateStartInput.value = '';
+      if (bulkDateEndInput) bulkDateEndInput.value = '';
+      bulkPresetBtns.forEach(b => {
+        if (b.getAttribute('data-preset') === 'all') b.classList.add('active');
+        else b.classList.remove('active');
+      });
+      if (bulkDateBadge) bulkDateBadge.textContent = 'Tüm Zamanlar';
+      renderModalCustomerList(true);
+      updateBulkRecipientUI();
+    });
+  }
+
   // Modal Select All Checkbox Listener (Bound once)
   const modalSelectAll = document.getElementById('modalSelectAllCustomers');
   if (modalSelectAll && !modalSelectAll.dataset.bound) {
@@ -2470,11 +2708,17 @@ function setupBulkMessagingEventListeners() {
       const isFiltering = autoFilterCheckbox ? autoFilterCheckbox.checked : true;
       const activeLang = isFiltering ? (currentBulkFilterLang !== null ? currentBulkFilterLang : langMeta.lang) : 'all';
 
+      const sDateVal = bulkDateStartInput ? bulkDateStartInput.value : '';
+      const eDateVal = bulkDateEndInput ? bulkDateEndInput.value : '';
+
       const searchInput = document.getElementById('modalCustomerSearch');
       const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
       let filtered = customers;
+      if (sDateVal || eDateVal) {
+        filtered = filtered.filter(c => isCustomerInDateRange(c, sDateVal, eDateVal));
+      }
       if (query) {
-        filtered = customers.filter(c =>
+        filtered = filtered.filter(c =>
           (c.name && c.name.toLowerCase().includes(query)) ||
           (c.phone && c.phone.toLowerCase().includes(query)) ||
           (c.id && String(c.id).toLowerCase().includes(query))
@@ -2488,7 +2732,7 @@ function setupBulkMessagingEventListeners() {
           selectedCustomerIds.add(String(c.id));
         });
       } else {
-        if (query) {
+        if (query || sDateVal || eDateVal) {
           targetPool.forEach(c => {
             selectedCustomerIds.delete(c.id);
             selectedCustomerIds.delete(String(c.id));
@@ -4595,13 +4839,15 @@ async function deleteRule(ruleId) {
 }
 
 /**
- * Render customer list inside modal with phone validation filter, country flags & language filter
+ * Render customer list inside modal with phone validation filter, country flags, language & date range filter
  */
 function renderModalCustomerList(forceSelectAll = false) {
   const container = document.getElementById('modalCustomerListContainer');
   const countBadge = document.getElementById('modalCustomerTotalBadge');
   const selectAll = document.getElementById('modalSelectAllCustomers');
   const searchInput = document.getElementById('modalCustomerSearch');
+  const bulkDateStartInput = document.getElementById('bulkDateStart');
+  const bulkDateEndInput = document.getElementById('bulkDateEnd');
   if (!container) return;
 
   const customers = (globalData && Array.isArray(globalData.customers)) ? globalData.customers : [];
@@ -4615,10 +4861,19 @@ function renderModalCustomerList(forceSelectAll = false) {
   const isFiltering = autoFilterCheckbox ? autoFilterCheckbox.checked : true;
   const activeLang = isFiltering ? (currentBulkFilterLang !== null ? currentBulkFilterLang : langMeta.lang) : 'all';
 
-  // Only auto-select all if explicitly forced!
+  const sDateVal = bulkDateStartInput ? bulkDateStartInput.value : '';
+  const eDateVal = bulkDateEndInput ? bulkDateEndInput.value : '';
+
+  // 1. Date Range Pre-filter
+  let dateFilteredCustomers = customers;
+  if (sDateVal || eDateVal) {
+    dateFilteredCustomers = customers.filter(c => isCustomerInDateRange(c, sDateVal, eDateVal));
+  }
+
+  // Only auto-select all matching filtered if explicitly forced!
   if (forceSelectAll) {
     selectedCustomerIds.clear();
-    customers.forEach(c => {
+    dateFilteredCustomers.forEach(c => {
       if (isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName))) {
         selectedCustomerIds.add(c.id);
         selectedCustomerIds.add(String(c.id));
@@ -4628,28 +4883,30 @@ function renderModalCustomerList(forceSelectAll = false) {
   }
 
   const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
-  let filtered = customers;
+  let filtered = dateFilteredCustomers;
   if (query) {
-    filtered = customers.filter(c =>
+    filtered = dateFilteredCustomers.filter(c =>
       (c.name && c.name.toLowerCase().includes(query)) ||
       (c.phone && c.phone.toLowerCase().includes(query)) ||
       (c.id && String(c.id).toLowerCase().includes(query))
     );
   }
 
-  const validCount = customers.filter(c => isValidWhatsAppNumber(c.phone)).length;
-  const matchingValidCount = customers.filter(c => isValidWhatsAppNumber(c.phone) && isPhoneMatchingLang(c.phone, activeLang, tmplName)).length;
+  const validCount = dateFilteredCustomers.filter(c => isValidWhatsAppNumber(c.phone)).length;
+  const matchingValidCount = dateFilteredCustomers.filter(c => isValidWhatsAppNumber(c.phone) && isPhoneMatchingLang(c.phone, activeLang, tmplName)).length;
 
   if (countBadge) {
+    const isDateActive = !!(sDateVal || eDateVal);
+    const dateTag = isDateActive ? ` [📅 Filtreli]` : '';
     if (activeLang !== 'all') {
       const activeMeta = getLanguageMetaInfo(activeLang, tmplName);
       countBadge.textContent = query 
-        ? `(${filtered.length} / ${customers.length} - ${matchingValidCount} ${activeMeta.flag} ${activeMeta.name} Uyumlu)` 
-        : `(${customers.length} Kayıt - ${matchingValidCount} ${activeMeta.flag} ${activeMeta.name} Uyumlu)`;
+        ? `(${filtered.length} / ${dateFilteredCustomers.length} - ${matchingValidCount} ${activeMeta.flag} ${activeMeta.name} Uyumlu${dateTag})` 
+        : `(${dateFilteredCustomers.length} Kayıt - ${matchingValidCount} ${activeMeta.flag} ${activeMeta.name} Uyumlu${dateTag})`;
     } else {
       countBadge.textContent = query 
-        ? `(${filtered.length} / ${customers.length} Kayıt - ${validCount} Geçerli)` 
-        : `(${customers.length} Kayıt - ${validCount} Geçerli Numara)`;
+        ? `(${filtered.length} / ${dateFilteredCustomers.length} Kayıt - ${validCount} Geçerli${dateTag})` 
+        : `(${dateFilteredCustomers.length} Kayıt - ${validCount} Geçerli Numara${dateTag})`;
     }
   }
 
@@ -4661,7 +4918,10 @@ function renderModalCustomerList(forceSelectAll = false) {
   }
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div style="text-align: center; color: #94a3b8; padding: 20px; font-size: 12px;">"${escapeHtml(query)}" ile eşleşen müşteri bulunamadı.</div>`;
+    const emptyMsg = (sDateVal || eDateVal)
+      ? `Seçilen tarih aralığı (${sDateVal || '...'} → ${eDateVal || '...'}) veya arama ile eşleşen müşteri bulunamadı.`
+      : `"${escapeHtml(query)}" ile eşleşen müşteri bulunamadı.`;
+    container.innerHTML = `<div style="text-align: center; color: #94a3b8; padding: 20px; font-size: 12px;">${emptyMsg}</div>`;
     if (selectAll) selectAll.checked = false;
     updateBulkRecipientUI();
     return;
@@ -4679,6 +4939,9 @@ function renderModalCustomerList(forceSelectAll = false) {
     const cleanP = cust.phone ? cleanPhoneNumber(cust.phone) : '-';
     const phoneMeta = detectPhoneCountryAndLang(cust.phone);
     const isMatch = isPhoneMatchingLang(cust.phone, activeLang, tmplName);
+
+    const custDateObj = getCustomerDateValue(cust);
+    const dateFormatted = custDateObj ? formatDateToYMD(custDateObj) : (cust.lastVisit && cust.lastVisit !== '-' ? cust.lastVisit : '');
     
     let bgStyle = 'transparent';
     if (isChecked) {
@@ -4689,23 +4952,30 @@ function renderModalCustomerList(forceSelectAll = false) {
 
     let statusTag = '';
     if (!isValid) {
-      statusTag = '<span class="badge badge-yellow" style="font-size: 10px; padding: 2px 6px; background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4);">⚠️ Geçersiz Numara</span>';
+      statusTag = '<span class="badge badge-yellow" style="font-size: 10px; padding: 2px 6px; background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4);">⚠️ Geçersiz</span>';
     } else if (isMatch) {
       statusTag = `<span class="badge badge-green" style="font-size: 10px; padding: 2px 6px; background: rgba(0, 168, 132, 0.2); color: #25d366; border: 1px solid rgba(0, 168, 132, 0.4);">✓ ${phoneMeta.flag} ${phoneMeta.name}</span>`;
     } else {
       statusTag = `<span class="badge" style="font-size: 10px; padding: 2px 6px; background: rgba(255, 255, 255, 0.06); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1);">${phoneMeta.flag} ${phoneMeta.name}</span>`;
     }
 
+    const dateBadge = dateFormatted 
+      ? `<span style="display: inline-flex; align-items: center; gap: 2px; font-size: 10px; color: #38bdf8; background: rgba(56,189,248,0.12); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(56,189,248,0.25); white-space: nowrap;">📅 ${escapeHtml(dateFormatted)}</span>`
+      : '';
+
     const safeId = escapeHtml(String(cust.id));
     return `
-      <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); background: ${bgStyle}; border-radius: 6px; margin-bottom: 3px; font-size: 12px; opacity: ${isValid ? '1' : '0.65'}; transition: background 0.15s ease;">
-        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; margin: 0; color: ${isValid ? '#F8FAFC' : '#94A3B8'};">
-          <input type="checkbox" class="modal-cust-checkbox" data-id="${safeId}" ${isChecked ? 'checked' : ''} style="cursor: pointer; accent-color: #00A884;">
-          <span style="font-weight: 600;">${escapeHtml(cust.name)}</span>
-          <span class="country-flag-badge" title="${phoneMeta.name}">${phoneMeta.flag} ${phoneMeta.code ? '+' + phoneMeta.code : ''}</span>
-          <span style="color: #94A3B8; font-family: monospace; font-size: 11.5px;">(${cleanP})</span>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); background: ${bgStyle}; border-radius: 6px; margin-bottom: 3px; font-size: 12px; opacity: ${isValid ? '1' : '0.65'}; transition: background 0.15s ease; gap: 8px;">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; margin: 0; color: ${isValid ? '#F8FAFC' : '#94A3B8'}; overflow: hidden;">
+          <input type="checkbox" class="modal-cust-checkbox" data-id="${safeId}" ${isChecked ? 'checked' : ''} style="cursor: pointer; accent-color: #00A884; flex-shrink: 0;">
+          <span style="font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px;">${escapeHtml(cust.name)}</span>
+          <span class="country-flag-badge" title="${phoneMeta.name}" style="flex-shrink: 0;">${phoneMeta.flag} ${phoneMeta.code ? '+' + phoneMeta.code : ''}</span>
+          <span style="color: #94A3B8; font-family: monospace; font-size: 11px; flex-shrink: 0;">(${cleanP})</span>
         </label>
-        ${statusTag}
+        <div style="display: flex; align-items: center; gap: 5px; flex-shrink: 0;">
+          ${dateBadge}
+          ${statusTag}
+        </div>
       </div>
     `;
   }).join('');

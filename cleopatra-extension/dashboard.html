@@ -434,10 +434,20 @@
         <div class="card-panel" style="margin-bottom: 20px;">
           <div class="panel-header">
             <div class="panel-title" data-i18n="customerDirectoryStatus">Müşteri Dizini ve Reaktivasyon Durumu</div>
-            <div class="action-row">
+            <div class="action-row" style="flex-wrap: wrap; gap: 8px;">
               <button class="btn-primary" id="openBulkMsgBtn" style="background: linear-gradient(135deg, #00A884 0%, #059669 100%); display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0, 168, 132, 0.3);">
                 💬 <span data-i18n="bulkSendBtnLabel">Seçilenlere Mesaj Gönder</span> (<span id="selectedCountBadge">0</span>)
               </button>
+              <select class="timeframe-select" id="customerDatePresetSelect" title="Randevu / Ziyaret Tarih Filtresi" style="background: #0f172a; border-color: rgba(0, 168, 132, 0.4); color: #25d366; font-weight: 700; cursor: pointer;">
+                <option value="all">📅 Tüm Randevular</option>
+                <option value="last_30">📅 Son 30 Gün</option>
+                <option value="this_month">📅 Bu Ay</option>
+                <option value="last_month">📅 Geçen Ay</option>
+                <option value="last_90">📅 Son 90 Gün</option>
+                <option value="last_6m">📅 Son 6 Ay</option>
+                <option value="last_1y">📅 Son 1 Yıl</option>
+                <option value="future">📅 Gelecek Randevular</option>
+              </select>
               <select class="timeframe-select" id="customerLimitSelect" title="Gösterilecek Müşteri Sayısı">
                 <option value="20" data-i18n="limit20">20 Göster</option>
                 <option value="50" data-i18n="limit50">50 Göster</option>
@@ -1062,6 +1072,45 @@
 
             <!-- Expandable Customer Selection List -->
             <div id="sectionCustomerList" style="display: none; margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 10px;">
+              
+              <!-- Date Range & Preset Filters for Appointments / Last Visits -->
+              <div style="background: rgba(11, 20, 26, 0.9); border: 1px solid rgba(0, 168, 132, 0.35); border-radius: 8px; padding: 8px 10px; margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 4px;">
+                  <span style="font-size: 11px; font-weight: 700; color: #25d366; display: flex; align-items: center; gap: 4px;">
+                    📅 Randevu / Ziyaret Tarih Filtresi:
+                  </span>
+                  <span id="bulkDateMatchBadge" style="font-size: 10.5px; color: #38bdf8; font-weight: 600;">Tüm Zamanlar</span>
+                </div>
+
+                <!-- Date Inputs Row -->
+                <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-bottom: 6px;">
+                  <div style="display: flex; align-items: center; gap: 4px; flex: 1; min-width: 125px;">
+                    <span style="font-size: 10px; color: #94a3b8; white-space: nowrap;">Başlangıç:</span>
+                    <input type="date" id="bulkDateStart" class="form-input" style="padding: 3px 6px; font-size: 11px; background: #070d11; border-color: #334155; color: #fff; border-radius: 4px; width: 100%;">
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 4px; flex: 1; min-width: 125px;">
+                    <span style="font-size: 10px; color: #94a3b8; white-space: nowrap;">Bitiş:</span>
+                    <input type="date" id="bulkDateEnd" class="form-input" style="padding: 3px 6px; font-size: 11px; background: #070d11; border-color: #334155; color: #fff; border-radius: 4px; width: 100%;">
+                  </div>
+                  <button type="button" id="bulkClearDateBtn" class="btn-secondary" style="padding: 3px 8px; font-size: 10.5px; border-radius: 4px; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" title="Tarih Filtresini Temizle">
+                    ✕ Temizle
+                  </button>
+                </div>
+
+                <!-- Quick Date Preset Chips -->
+                <div style="display: flex; gap: 4px; flex-wrap: wrap; align-items: center;" id="bulkDatePresetsRow">
+                  <button type="button" class="bulk-date-preset-btn active" data-preset="all">🌐 Tümü</button>
+                  <button type="button" class="bulk-date-preset-btn" data-preset="last_30">Son 30 Gün</button>
+                  <button type="button" class="bulk-date-preset-btn" data-preset="this_month">Bu Ay</button>
+                  <button type="button" class="bulk-date-preset-btn" data-preset="last_month">Geçen Ay</button>
+                  <button type="button" class="bulk-date-preset-btn" data-preset="last_90">Son 90 Gün</button>
+                  <button type="button" class="bulk-date-preset-btn" data-preset="last_6m">Son 6 Ay</button>
+                  <button type="button" class="bulk-date-preset-btn" data-preset="last_1y">Son 1 Yıl</button>
+                  <button type="button" class="bulk-date-preset-btn" data-preset="future">⏳ Gelecek Randevular</button>
+                </div>
+              </div>
+
+              <!-- Search & Select All Row -->
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
                 <span style="font-size: 11px; color: #cbd5e1; font-weight: 600;" id="modalCustomerTotalBadge">(0 Kayıt)</span>
                 <label style="font-size: 11px; color: #38bdf8; cursor: pointer; display: flex; align-items: center; gap: 4px; user-select: none;">
@@ -1070,7 +1119,7 @@
                 </label>
               </div>
               <input type="text" class="form-input" id="modalCustomerSearch" placeholder="🔍 İsim veya telefon ile ara..." style="font-size: 11.5px; padding: 5px 8px; background: #0b141a; border-color: #334155; margin-bottom: 6px; border-radius: 6px;">
-              <div id="modalCustomerListContainer" style="max-height: 130px; overflow-y: auto; padding-right: 4px; scrollbar-width: thin;"></div>
+              <div id="modalCustomerListContainer" style="max-height: 140px; overflow-y: auto; padding-right: 4px; scrollbar-width: thin;"></div>
             </div>
 
             <!-- Manual CSV Input Section (Hidden unless toggled) -->

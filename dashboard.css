@@ -2704,5 +2704,33 @@ tr.selected-row {
   background: rgba(0, 168, 132, 0.08) !important;
 }
 
+/* Bulk Date Preset Filter Buttons */
+.bulk-date-preset-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.bulk-date-preset-btn:hover {
+  background: rgba(0, 168, 132, 0.15);
+  border-color: rgba(0, 168, 132, 0.4);
+  color: #25d366;
+}
+
+.bulk-date-preset-btn.active {
+  background: rgba(0, 168, 132, 0.25);
+  border-color: #00A884;
+  color: #25d366;
+  font-weight: 700;
+  box-shadow: 0 0 6px rgba(0, 168, 132, 0.25);
+}
+
 
 
