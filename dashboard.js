@@ -2454,6 +2454,68 @@ function setupBulkMessagingEventListeners() {
     });
   }
 
+  // Modal Select All Checkbox Listener (Bound once)
+  const modalSelectAll = document.getElementById('modalSelectAllCustomers');
+  if (modalSelectAll && !modalSelectAll.dataset.bound) {
+    modalSelectAll.dataset.bound = 'true';
+    modalSelectAll.addEventListener('change', (e) => {
+      const isChecked = e.target.checked;
+      const customers = (globalData && Array.isArray(globalData.customers)) ? globalData.customers : [];
+      const select = document.getElementById('bulkTemplateSelect');
+      const opt = select ? select.options[select.selectedIndex] : null;
+      const tmplName = opt ? (opt.getAttribute('data-name') || opt.value) : '';
+      const tmplLang = opt ? (opt.getAttribute('data-lang') || 'en_US') : 'en_US';
+      const langMeta = getLanguageMetaInfo(tmplLang, tmplName);
+      const autoFilterCheckbox = document.getElementById('bulkAutoFilterByLangCheckbox');
+      const isFiltering = autoFilterCheckbox ? autoFilterCheckbox.checked : true;
+      const activeLang = isFiltering ? (currentBulkFilterLang !== null ? currentBulkFilterLang : langMeta.lang) : 'all';
+
+      const searchInput = document.getElementById('modalCustomerSearch');
+      const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+      let filtered = customers;
+      if (query) {
+        filtered = customers.filter(c =>
+          (c.name && c.name.toLowerCase().includes(query)) ||
+          (c.phone && c.phone.toLowerCase().includes(query)) ||
+          (c.id && String(c.id).toLowerCase().includes(query))
+        );
+      }
+      const targetPool = filtered.filter(c => isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)));
+
+      if (isChecked) {
+        targetPool.forEach(c => {
+          selectedCustomerIds.add(c.id);
+          selectedCustomerIds.add(String(c.id));
+        });
+      } else {
+        if (query) {
+          targetPool.forEach(c => {
+            selectedCustomerIds.delete(c.id);
+            selectedCustomerIds.delete(String(c.id));
+          });
+        } else {
+          customers.forEach(c => {
+            if (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)) {
+              selectedCustomerIds.delete(c.id);
+              selectedCustomerIds.delete(String(c.id));
+            }
+          });
+        }
+      }
+      renderModalCustomerList(false);
+      updateBulkRecipientUI();
+    });
+  }
+
+  // Modal Customer Search Input Listener (Bound once)
+  const modalSearchInput = document.getElementById('modalCustomerSearch');
+  if (modalSearchInput && !modalSearchInput.dataset.bound) {
+    modalSearchInput.dataset.bound = 'true';
+    modalSearchInput.addEventListener('input', () => {
+      renderModalCustomerList(false);
+    });
+  }
+
   // Bulk Media Dropzone & Upload Handlers
   const bulkFileInp = document.getElementById('bulkHeaderFileInput');
   const bulkChooseBtn = document.getElementById('bulkChooseFileBtn');
@@ -4607,7 +4669,9 @@ function renderModalCustomerList(forceSelectAll = false) {
 
   const validFilteredCustomers = filtered.filter(c => isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)));
   const allFilteredSelected = validFilteredCustomers.length > 0 && validFilteredCustomers.every(c => selectedCustomerIds.has(c.id) || selectedCustomerIds.has(String(c.id)));
-  if (selectAll) selectAll.checked = allFilteredSelected;
+  if (selectAll) {
+    selectAll.checked = allFilteredSelected;
+  }
 
   container.innerHTML = filtered.map(cust => {
     const isValid = isValidWhatsAppNumber(cust.phone);
@@ -4632,10 +4696,11 @@ function renderModalCustomerList(forceSelectAll = false) {
       statusTag = `<span class="badge" style="font-size: 10px; padding: 2px 6px; background: rgba(255, 255, 255, 0.06); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1);">${phoneMeta.flag} ${phoneMeta.name}</span>`;
     }
 
+    const safeId = escapeHtml(String(cust.id));
     return `
       <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); background: ${bgStyle}; border-radius: 6px; margin-bottom: 3px; font-size: 12px; opacity: ${isValid ? '1' : '0.65'}; transition: background 0.15s ease;">
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; margin: 0; color: ${isValid ? '#F8FAFC' : '#94A3B8'};">
-          <input type="checkbox" class="modal-cust-checkbox" data-id="${cust.id}" ${isChecked ? 'checked' : ''} style="cursor: pointer; accent-color: #00A884;">
+          <input type="checkbox" class="modal-cust-checkbox" data-id="${safeId}" ${isChecked ? 'checked' : ''} style="cursor: pointer; accent-color: #00A884;">
           <span style="font-weight: 600;">${escapeHtml(cust.name)}</span>
           <span class="country-flag-badge" title="${phoneMeta.name}">${phoneMeta.flag} ${phoneMeta.code ? '+' + phoneMeta.code : ''}</span>
           <span style="color: #94A3B8; font-family: monospace; font-size: 11.5px;">(${cleanP})</span>
@@ -4670,42 +4735,12 @@ function renderModalCustomerList(forceSelectAll = false) {
       }
       
       const vFiltered = filtered.filter(c => isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)));
-      if (selectAll) selectAll.checked = vFiltered.length > 0 && vFiltered.every(c => selectedCustomerIds.has(c.id) || selectedCustomerIds.has(String(c.id)));
+      if (selectAll) {
+        selectAll.checked = vFiltered.length > 0 && vFiltered.every(c => selectedCustomerIds.has(c.id) || selectedCustomerIds.has(String(c.id)));
+      }
       updateBulkRecipientUI();
     });
   });
-
-  // Modal Select All Checkbox Listener
-  if (selectAll) {
-    selectAll.replaceWith(selectAll.cloneNode(true));
-    const newSelectAll = document.getElementById('modalSelectAllCustomers');
-    newSelectAll.addEventListener('change', (e) => {
-      const isChecked = e.target.checked;
-      const targetPool = filtered.filter(c => isValidWhatsAppNumber(c.phone) && (activeLang === 'all' || isPhoneMatchingLang(c.phone, activeLang, tmplName)));
-      
-      if (isChecked) {
-        targetPool.forEach(c => {
-          selectedCustomerIds.add(c.id);
-          selectedCustomerIds.add(String(c.id));
-        });
-      } else {
-        targetPool.forEach(c => {
-          selectedCustomerIds.delete(c.id);
-          selectedCustomerIds.delete(String(c.id));
-        });
-      }
-      renderModalCustomerList(false);
-      updateBulkRecipientUI();
-    });
-  }
-
-  // Attach Search Input listener
-  if (searchInput && !searchInput.dataset.bound) {
-    searchInput.dataset.bound = 'true';
-    searchInput.addEventListener('input', () => {
-      renderModalCustomerList(false);
-    });
-  }
 
   updateBulkRecipientUI();
 }
