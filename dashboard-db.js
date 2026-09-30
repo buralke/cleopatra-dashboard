@@ -17,6 +17,7 @@ class DashboardDB {
   constructor() {
     this.isOnline = false;
     this.accessToken = null;
+    this.missingTables = new Set();
   }
 
   async init() {
@@ -40,6 +41,10 @@ class DashboardDB {
    * Returns array if table exists and has data, otherwise null
    */
   async fetchLiveTable(tableName) {
+    if (this.missingTables.has(tableName)) {
+      return null;
+    }
+
     const authHeader = this.accessToken ? `Bearer ${this.accessToken}` : `Bearer ${DB_CONFIG.SUPABASE_ANON_KEY}`;
 
     try {
@@ -52,7 +57,12 @@ class DashboardDB {
         }
       });
 
-      if (!response.ok) return null;
+      if (!response.ok) {
+        if (response.status === 404) {
+          this.missingTables.add(tableName);
+        }
+        return null;
+      }
       const data = await response.json();
       return Array.isArray(data) && data.length > 0 ? data : null;
     } catch (err) {

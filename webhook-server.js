@@ -1620,6 +1620,9 @@ if (req.method === 'GET' && pathname === '/debug') {
 }
 
 // 6. Serve Static Web Dashboard Files (dashboard.html, js, css)
+if (pathname === '/favicon.ico') {
+  pathname = '/icon.png';
+}
 let staticPath = pathname === '/' ? '/dashboard.html' : pathname;
 let filePath = path.join(__dirname, staticPath);
 
