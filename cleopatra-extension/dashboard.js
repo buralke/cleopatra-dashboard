@@ -811,7 +811,8 @@ let globalOptOutList = [];
 
 async function fetchOptOutList() {
   try {
-    const res = await fetch('/api/opt_out_list');
+    const serverUrl = getLiveWebhookServerUrl();
+    const res = await fetch(`${serverUrl}/api/opt_out_list`);
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data.optOutList)) {
@@ -1766,12 +1767,13 @@ function setupChatHandlers() {
     }
 
     try {
+      const serverUrl = getLiveWebhookServerUrl();
       const form = new FormData();
       form.append('messaging_product', 'whatsapp');
       form.append('type', f.type || 'image/jpeg');
       form.append('file', f, f.name);
 
-      let resp = await fetch('/api/upload_media', {
+      let resp = await fetch(`${serverUrl}/api/upload_media`, {
         method: 'POST',
         headers: { 'x-meta-phoneid': phoneId, 'x-meta-token': token },
         body: form
@@ -1791,7 +1793,7 @@ function setupChatHandlers() {
         const arr = await f.arrayBuffer();
         const b64 = btoa(String.fromCharCode(...new Uint8Array(arr)));
         const body = JSON.stringify({ filename: f.name, mime: f.type || 'application/octet-stream', data: b64 });
-        resp = await fetch('/api/upload_media', {
+        resp = await fetch(`${serverUrl}/api/upload_media`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-meta-phoneid': phoneId, 'x-meta-token': token },
           body
@@ -2491,11 +2493,12 @@ function setupBulkMessagingEventListeners() {
       return;
     }
     try {
+      const serverUrl = getLiveWebhookServerUrl();
       const form = new FormData();
       form.append('messaging_product', 'whatsapp');
       form.append('type', f.type || 'image/jpeg');
       form.append('file', f, f.name);
-      let resp = await fetch('/api/upload_media', {
+      let resp = await fetch(`${serverUrl}/api/upload_media`, {
         method: 'POST',
         headers: { 'x-meta-phoneid': phoneId, 'x-meta-token': token },
         body: form
@@ -2662,6 +2665,9 @@ function setupBulkMessagingEventListeners() {
  */
 function openBulkModalWithManualNumbers(prefilledNumbersText = '') {
   openModal('bulkMessageModal');
+  if (typeof selectBulkMode === 'function') {
+    selectBulkMode('manual');
+  }
   const btnSrcManual = document.getElementById('btnSourceManual');
   if (btnSrcManual) btnSrcManual.click();
 
@@ -4073,7 +4079,8 @@ let currentBotRulesConfig = {
 
 async function loadBotRules() {
   try {
-    const res = await fetch('/api/bot-rules');
+    const serverUrl = getLiveWebhookServerUrl();
+    const res = await fetch(`${serverUrl}/api/bot-rules`);
     if (res.ok) {
       currentBotRulesConfig = await res.json();
       renderBotRulesUI();
@@ -4353,7 +4360,8 @@ function renderBotRulesUI() {
 
 async function saveBotRulesToServer() {
   try {
-    const res = await fetch('/api/bot-rules', {
+    const serverUrl = getLiveWebhookServerUrl();
+    const res = await fetch(`${serverUrl}/api/bot-rules`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(currentBotRulesConfig)

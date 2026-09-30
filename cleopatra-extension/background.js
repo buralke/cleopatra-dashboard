@@ -8,10 +8,26 @@ const PING_INTERVAL_MINUTES = 15;
 const PING_URL = 'https://t.cleopatraink.com/api/user/status';
 const TIMEOUT_MS = 10000;
 
-// Alarm listener setup
-chrome.alarms.create(ALARM_NAME, {
-  periodInMinutes: PING_INTERVAL_MINUTES
+// Alarm setup (Idempotent for Manifest V3 Service Worker)
+function ensureAlarm() {
+  chrome.alarms.get(ALARM_NAME, (existingAlarm) => {
+    if (!existingAlarm) {
+      chrome.alarms.create(ALARM_NAME, {
+        periodInMinutes: PING_INTERVAL_MINUTES
+      });
+    }
+  });
+}
+
+chrome.runtime.onInstalled.addListener(() => {
+  ensureAlarm();
 });
+
+chrome.runtime.onStartup.addListener(() => {
+  ensureAlarm();
+});
+
+ensureAlarm();
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === ALARM_NAME) {

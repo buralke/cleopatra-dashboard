@@ -144,7 +144,11 @@ class DashboardDB {
             data.messages.forEach(msg => {
               const phone = msg.direction === 'outgoing' ? (msg.to || msg.from) : msg.from;
               const cleanP = String(phone).replace(/\D/g, '');
-              let conv = defaultConversations.find(c => c.phone.includes(cleanP) || cleanP.includes(c.phone));
+              const normCleanP = cleanP.length >= 10 ? cleanP.slice(-10) : cleanP;
+              let conv = defaultConversations.find(c => {
+                const cNorm = c.phone.length >= 10 ? c.phone.slice(-10) : c.phone;
+                return c.phone === cleanP || (normCleanP.length >= 10 && cNorm === normCleanP);
+              });
               if (!conv) {
                 const name = (msg.senderName && msg.senderName !== 'Stüdyo') ? msg.senderName : `Müşteri (${cleanP})`;
                 let initials = 'WA';

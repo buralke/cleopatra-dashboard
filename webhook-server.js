@@ -281,6 +281,18 @@ function sendAutoReply(toPhone, replyText, ruleName, locationData = null, button
       metaRes.on('end', () => {
         if (metaRes.statusCode >= 200 && metaRes.statusCode < 300) {
           console.log(`✅ [BOT AUTO-REPLY] [${ruleName}] -> ${cleanTo}`);
+          messageStore.push({
+            id: `bot-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+            from: 'studio',
+            to: cleanTo,
+            senderName: 'Cleopatra Bot 🤖',
+            text: formattedReplyText,
+            timestamp: Date.now(),
+            type: 'text',
+            direction: 'outgoing',
+            status: 'sent'
+          });
+          saveDB();
           resolve(true);
         } else if (payloadObject.type === 'interactive' && payloadObject.interactive && payloadObject.interactive.type === 'cta_url') {
           console.warn(`[BOT WARN] cta_url button API error (${metaRes.statusCode}), retrying with standard text mode...`);
@@ -301,6 +313,18 @@ function sendAutoReply(toPhone, replyText, ruleName, locationData = null, button
           }, (fbRes) => {
             if (fbRes.statusCode >= 200 && fbRes.statusCode < 300) {
               console.log(`✅ [BOT AUTO-REPLY FALLBACK TEXT] [${ruleName}] -> ${cleanTo}`);
+              messageStore.push({
+                id: `bot-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+                from: 'studio',
+                to: cleanTo,
+                senderName: 'Cleopatra Bot 🤖',
+                text: formattedReplyText,
+                timestamp: Date.now(),
+                type: 'text',
+                direction: 'outgoing',
+                status: 'sent'
+              });
+              saveDB();
               resolve(true);
             } else {
               console.error(`❌ [BOT ERROR] Meta Fallback API (${fbRes.statusCode})`);
@@ -818,10 +842,11 @@ async function processAutoReply(incomingMsg) {
       const keywords = (rule.keywords || []).map(k => normalizeTurkish(k)).filter(Boolean);
       let isMatch = false;
 
+      const rawBtnId = buttonId ? String(buttonId).toLowerCase() : '';
       if (rule.matchType === 'exact') {
-        isMatch = keywords.includes(normText);
+        isMatch = keywords.includes(normText) || (rawBtnId && keywords.includes(rawBtnId));
       } else { // default 'contains'
-        isMatch = keywords.some(kw => normText.includes(kw));
+        isMatch = keywords.some(kw => normText.includes(kw) || (rawBtnId && (kw === rawBtnId || rawBtnId.includes(kw) || kw.includes(rawBtnId))));
       }
 
       if (isMatch) {
@@ -836,7 +861,7 @@ async function processAutoReply(incomingMsg) {
 function enableCORS(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-meta-phoneid, x-meta-token');
 }
 
 const server = http.createServer((req, res) => {
@@ -930,6 +955,12 @@ const server = http.createServer((req, res) => {
                     msgText = `[${msg.type}]`;
                   }
 
+                  const alreadyExists = messageStore.some(m => m.id === msg.id);
+                  if (alreadyExists) {
+                    console.log(`[DEDUP] Mesaj zaten işlendi [${msg.id}], mükerrer atlandı.`);
+                    return;
+                  }
+
                   const newMsg = {
                     id: msg.id,
                     from: fromNum,
@@ -975,7 +1006,7 @@ const server = http.createServer((req, res) => {
                         id: st.id,
                         from: 'studio',
                         to: recip,
-                        text: `tattoo_reengagement_tr_redirect (Şablon Gönderildi) [Durum: ${st.status.toUpperCase()}]`,
+                        text: `[WhatsApp Mesajı] (${st.status.toUpperCase()})`,
                         timestamp: parseInt(st.timestamp) * 1000 || Date.now(),
                         direction: 'outgoing',
                         status: st.status
